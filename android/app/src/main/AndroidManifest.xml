@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.joyfulfashionista_app">
    <application
-        android:label="joyfulfashionista_app"
+        android:label="flutter_woo_commerce_getx_learn"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
