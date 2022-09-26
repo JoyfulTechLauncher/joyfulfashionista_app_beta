@@ -20,7 +20,7 @@ class LanguagePage extends GetView<LanguageController> {
       id: "language",
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("language")),
+          appBar: AppBar(title: const Text("language setting")),
           body: SafeArea(
             child: _buildView(),
           ),

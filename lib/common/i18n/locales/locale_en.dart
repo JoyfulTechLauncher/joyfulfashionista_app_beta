@@ -123,6 +123,8 @@ Map<String, String> localeEn = {
   LocaleKeys.myBtnStyles: 'Styles',
   LocaleKeys.myBtnBillingAddress: 'Billing address',
   LocaleKeys.myBtnShippingAddress: 'Shipping address',
+  LocaleKeys.myBtnAboutMe: 'About me',
+
 
   // 订单配送地址
   LocaleKeys.addressViewTitle: '@type address',

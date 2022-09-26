@@ -163,6 +163,14 @@ class MyIndexPage extends GetView<MyIndexController> {
         onTap: () => ConfigService.to.switchThemeModel(),
       ),
 
+      //About me
+      ButtonItemWidget(
+        title: LocaleKeys.myBtnAboutMe.tr,
+        svgPath: AssetsSvgs.pThemeSvg,
+        color: "4971FF".toColor,
+        onTap: () => Get.toNamed(RouteNames.aboutMe),
+      ),
+
       // 调试工具
       ButtonItemWidget(
         title: LocaleKeys.myBtnStyles.tr,

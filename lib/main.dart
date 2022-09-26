@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           maxOverScrollExtent: 100, // 最大的拖动距离
           footerTriggerDistance: 150, // 触发加载的距离
           child: GetMaterialApp(
-            title: 'Flutter Demo',
+            title: 'Joyfulfashionista Demo',
 
             // 样式
             theme:

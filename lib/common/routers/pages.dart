@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:joyfulfashionista_app/pages/index.dart';
 import 'package:get/get.dart';
+import 'package:joyfulfashionista_app/pages/my/about_me/view.dart';
 
 import 'index.dart';
 
@@ -161,6 +162,10 @@ class RoutePages {
     GetPage(
       name: RouteNames.systemWelcome,
       page: () => const WelcomePage(),
+    ),
+    GetPage(
+      name: RouteNames.aboutMe,
+      page: () => const AboutMePage(),
     ),
   ];
 }

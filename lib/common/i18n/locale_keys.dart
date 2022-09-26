@@ -119,6 +119,7 @@ class LocaleKeys {
   static const myBtnLogout = "my_btn_logout";
   static const myBtnBillingAddress = "my_btn_billing_address";
   static const myBtnShippingAddress = "my_btn_shipping_address";
+  static const myBtnAboutMe = "my_btn_about_me";
 
   // 订单配送地址
   static const addressViewTitle = "address_view_title";
@@ -152,8 +153,7 @@ class LocaleKeys {
   static const placeOrderPriceShipping = "place_order_price_shipping";
   static const placeOrderPriceDiscount = "place_order_price_discount";
   static const placeOrderPriceVoucherCode = "place_order_price_voucher_code";
-  static const placeOrderPriceVoucherCodeEnter =
-      "place_order_price_voucher_code_enter";
+  static const placeOrderPriceVoucherCodeEnter = "place_order_price_voucher_code_enter";
   static const placeOrderTotal = "place_order_total";
   static const placeOrderBtnPlaceOrder = "place_order_btn_place_order";
 

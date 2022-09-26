@@ -122,6 +122,7 @@ Map<String, String> localeZh = {
   LocaleKeys.myBtnLogout: '注销',
   LocaleKeys.myBtnBillingAddress: '发票地址',
   LocaleKeys.myBtnShippingAddress: '配送地址',
+  LocaleKeys.myBtnAboutMe: '关于我',
 
   // 订单配送地址
   LocaleKeys.addressViewTitle: '@type 地址',
