@@ -73,7 +73,7 @@ class MyIndexPage extends GetView<MyIndexController> {
               // 称呼
               TextWidget.title1(
                 "${UserService.to.profile.username}",
-                color: AppColors.primary,
+                color: Colors.black,
                 size: 26.sp,
               ),
             ].toRow().paddingHorizontal(AppSpace.card),
@@ -148,35 +148,35 @@ class MyIndexPage extends GetView<MyIndexController> {
       ),
 
       // Language
-      ButtonItemWidget(
-        title: LocaleKeys.myBtnLanguage.tr,
-        svgPath: AssetsSvgs.pTranslateSvg,
-        color: "41AA3D".toColor,
-        onTap: () => Get.toNamed(RouteNames.myLanguage),
-      ),
+      //ButtonItemWidget(
+      //  title: LocaleKeys.myBtnLanguage.tr,
+      //  svgPath: AssetsSvgs.pTranslateSvg,
+      //  color: "41AA3D".toColor,
+      //  onTap: () => Get.toNamed(RouteNames.myLanguage),
+      //),
 
       // Theme
-      ButtonItemWidget(
-        title: LocaleKeys.myBtnTheme.tr,
-        svgPath: AssetsSvgs.pThemeSvg,
-        color: "F89C52".toColor,
-        onTap: () => ConfigService.to.switchThemeModel(),
-      ),
+     // ButtonItemWidget(
+     //   title: LocaleKeys.myBtnTheme.tr,
+     //   svgPath: AssetsSvgs.pThemeSvg,
+     //   color: "F89C52".toColor,
+     //   onTap: () => ConfigService.to.switchThemeModel(),
+     // ),
 
       //About me
       ButtonItemWidget(
         title: LocaleKeys.myBtnAboutMe.tr,
-        svgPath: AssetsSvgs.pThemeSvg,
+        svgPath: AssetsSvgs.pCurrencySvg,
         color: "4971FF".toColor,
         onTap: () => Get.toNamed(RouteNames.aboutMe),
       ),
 
       // 调试工具
       ButtonItemWidget(
-        title: LocaleKeys.myBtnStyles.tr,
-        svgPath: AssetsSvgs.pCurrencySvg,
+        title: LocaleKeys.myBtnStylesSetting.tr,
+        svgPath: AssetsSvgs.pThemeSvg,
         color: "4971FF".toColor,
-        onTap: () => Get.toNamed(RouteNames.stylesStylesIndex),
+        onTap: () => Get.toNamed(RouteNames.stylesSettingIndex),
       ),
 
       // end
@@ -208,9 +208,9 @@ class MyIndexPage extends GetView<MyIndexController> {
             .sliverBox,
 
         // 版权
-        const TextWidget.body2(
-          "Code by: https://ducafefcat.tech",
-        ).alignCenter().paddingBottom(AppSpace.listRow).sliverBox,
+       // const TextWidget.body2(
+       //   "Code by: https://ducafefcat.tech",
+       // ).alignCenter().paddingBottom(AppSpace.listRow).sliverBox,
 
         // 版本号
         TextWidget.body2(

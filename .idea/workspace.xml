@@ -4,33 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e071d44d-9606-4e0e-b035-05aefce9cbee" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/android/joyfulfashionista_app_android.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/About_me.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/app_icon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/my/about_me/controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/my/about_me/index.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/my/about_me/view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="e071d44d-9606-4e0e-b035-05aefce9cbee" name="Changes" comment="Adding aboutMe page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/joyfulfashionista_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/joyfulfashionista_app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/i18n/locale_keys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locale_keys.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/routers/names.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/names.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/routers/pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/language/view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/style/color_schemes.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/style/color_schemes.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pages/my/my_index/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/my_index/view.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/profile_edit/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/profile_edit/view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/styles/styles_index/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/styles/styles_index/view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +52,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
@@ -92,6 +78,14 @@
       <option name="presentableId" value="Default" />
       <updated>1663845681481</updated>
     </task>
+    <task id="LOCAL-00001" summary="Adding aboutMe page">
+      <created>1664212593199</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664212593199</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -99,5 +93,20 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Adding aboutMe page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding aboutMe page" />
   </component>
 </project>

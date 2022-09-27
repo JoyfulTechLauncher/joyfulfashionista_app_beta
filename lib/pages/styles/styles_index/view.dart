@@ -11,40 +11,42 @@ class StylesIndexPage extends GetView<StylesIndexController> {
   Widget _buildView() {
     return Column(children: [
       // 文本
-      ListTile(
-        onTap: () => Get.toNamed(RouteNames.stylesText),
-        title: const Text("Text 文本"),
-      ),
+    /*ListTile(
+      onTap: () => Get.toNamed(RouteNames.stylesText),
+      title: const Text("Text"),
+    ),
 
-      // Icon 图标
-      ListTile(
-        onTap: () => Get.toNamed(RouteNames.stylesIcon),
-        title: const TextWidget.body1("Icon 图标"),
-      ),
+     Icon 图标
+    ListTile(
+      onTap: () => Get.toNamed(RouteNames.stylesIcon),
+      title: const TextWidget.body1("Icon"),
+    ),
 
-      // Image 图片
-      ListTile(
-        onTap: () => Get.toNamed(RouteNames.stylesImage),
-        title: const TextWidget.body1("Image 图片"),
-      ),
+    // Image 图片
+    ListTile(
+      onTap: () => Get.toNamed(RouteNames.stylesImage),
+      title: const TextWidget.body1("Image"),
+    ),
 
-      // Button 按钮
-      ListTile(
-        onTap: () => Get.toNamed(RouteNames.stylesButtons),
-        title: const TextWidget.body1("Button 按钮"),
-      ),
+    // Button 按钮
+    ListTile(
+      onTap: () => Get.toNamed(RouteNames.stylesButtons),
+      title: const TextWidget.body1("Button 按钮"),
+    ),
 
-      // Input 输入框
-      ListTile(
-        onTap: () => Get.toNamed(RouteNames.stylesInputs),
-        title: const TextWidget.body1("Input 输入框"),
-      ),
+    // Input 输入框
+    ListTile(
+      onTap: () => Get.toNamed(RouteNames.stylesInputs),
+      title: const TextWidget.body1("Input 输入框"),
+    ),
 
-      // form 表单
-      ListTile(
-        onTap: () => Get.toNamed(RouteNames.stylesTextForm),
-        title: const TextWidget.body1("form 表单"),
-      ),
+    // form 表单
+    ListTile(
+      onTap: () => Get.toNamed(RouteNames.stylesTextForm),
+      title: const TextWidget.body1("form 表单"),
+    ),
+
+     */
 
       ////////////////////////////////////////
 
@@ -52,14 +54,14 @@ class StylesIndexPage extends GetView<StylesIndexController> {
       ListTile(
         onTap: controller.onLanguageSelected,
         title: Text(
-          "语言 : ${ConfigService.to.locale.toLanguageTag()}",
+          "Language : ${ConfigService.to.locale.toLanguageTag()}",
         ),
       ),
 
       // 主题样式
       ListTile(
         onTap: controller.onThemeSelected,
-        title: Text("主题 : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
+        title: Text("Theme : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
       ),
     ]);
   }

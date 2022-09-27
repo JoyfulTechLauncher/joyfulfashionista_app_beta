@@ -23,8 +23,8 @@ class ProfileEditPage extends GetView<ProfileEditController> {
                 radius: 25.w,
               )
             : ImageWidget.url(
-                // UserService.to.profile.avatarUrl,
-                "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/avatar/00258VC3ly1gty0r05zh2j60ut0u0tce02.jpg",
+                "${UserService.to.profile.avatarUrl}" ,
+                //"https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/avatar/00258VC3ly1gty0r05zh2j60ut0u0tce02.jpg",
                 width: 50.w,
                 height: 50.w,
                 fit: BoxFit.cover,

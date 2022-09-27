@@ -124,7 +124,7 @@ class RoutePages {
       page: () => const OtherPage(),
     ),
     GetPage(
-      name: RouteNames.stylesStylesIndex,
+      name: RouteNames.stylesSettingIndex,
       page: () => const StylesIndexPage(),
     ),
     GetPage(

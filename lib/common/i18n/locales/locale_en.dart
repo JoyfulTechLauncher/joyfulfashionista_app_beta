@@ -120,7 +120,7 @@ Map<String, String> localeEn = {
   LocaleKeys.myBtnTheme: 'Theme',
   LocaleKeys.myBtnWinGift: 'Win Gift',
   LocaleKeys.myBtnLogout: 'Logout',
-  LocaleKeys.myBtnStyles: 'Styles',
+  LocaleKeys.myBtnStylesSetting: 'Setting',
   LocaleKeys.myBtnBillingAddress: 'Billing address',
   LocaleKeys.myBtnShippingAddress: 'Shipping address',
   LocaleKeys.myBtnAboutMe: 'About me',

@@ -115,7 +115,7 @@ class LocaleKeys {
   static const myBtnLanguage = "my_btn_language";
   static const myBtnTheme = "my_btn_theme";
   static const myBtnWinGift = "my_btn_win_gift";
-  static const myBtnStyles = "my_btn_styles";
+  static const myBtnStylesSetting = "my_btn_styles_setting";
   static const myBtnLogout = "my_btn_logout";
   static const myBtnBillingAddress = "my_btn_billing_address";
   static const myBtnShippingAddress = "my_btn_shipping_address";

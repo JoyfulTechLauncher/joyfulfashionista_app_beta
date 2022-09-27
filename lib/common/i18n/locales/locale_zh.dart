@@ -118,7 +118,7 @@ Map<String, String> localeZh = {
   LocaleKeys.myBtnLanguage: '语言',
   LocaleKeys.myBtnTheme: '主题',
   LocaleKeys.myBtnWinGift: '赢取礼物',
-  LocaleKeys.myBtnStyles: '样式组件',
+  LocaleKeys.myBtnStylesSetting: '设置',
   LocaleKeys.myBtnLogout: '注销',
   LocaleKeys.myBtnBillingAddress: '发票地址',
   LocaleKeys.myBtnShippingAddress: '配送地址',
