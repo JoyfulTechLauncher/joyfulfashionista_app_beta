@@ -51,10 +51,7 @@ class RoutePages {
       name: RouteNames.goodsProductList,
       page: () => const ProductListPage(),
     ),
-    GetPage(
-      name: RouteNames.myLanguage,
-      page: () => const LanguagePage(),
-    ),
+   
     GetPage(
       name: RouteNames.myMyAddress,
       page: () => const MyAddressPage(),

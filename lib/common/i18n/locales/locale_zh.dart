@@ -15,7 +15,7 @@ Map<String, String> localeZh = {
   LocaleKeys.commonMessageIncorrect: '@method 不正确',
 
   // 样式
-  LocaleKeys.stylesTitle: '样式 && 功能 && 调试',
+  LocaleKeys.stylesTitle: '设置',
 
   // 验证提示
   LocaleKeys.validatorRequired: '字段不能为空',

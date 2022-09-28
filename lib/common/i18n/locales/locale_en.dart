@@ -15,7 +15,7 @@ Map<String, String> localeEn = {
   LocaleKeys.commonMessageIncorrect: '@method incorrect',
 
   // 样式
-  LocaleKeys.stylesTitle: 'Sytles && Function',
+  LocaleKeys.stylesTitle: 'Setting',
 
   // 验证提示
   LocaleKeys.validatorRequired: 'The field is obligatory',

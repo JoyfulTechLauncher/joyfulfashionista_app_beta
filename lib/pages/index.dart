@@ -9,7 +9,6 @@ export 'goods/home/index.dart';
 export 'goods/product_details/index.dart';
 export 'goods/product_list/index.dart';
 export 'msg/msg_index/index.dart';
-export 'my/language/index.dart';
 export 'my/my_address/index.dart';
 export 'my/my_index/index.dart';
 export 'my/order_details/index.dart';
