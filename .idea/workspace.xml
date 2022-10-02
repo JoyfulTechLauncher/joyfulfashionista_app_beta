@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e071d44d-9606-4e0e-b035-05aefce9cbee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/routers/pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/controller.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/index.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/view.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +21,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -113,6 +107,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding aboutMe page" />
     <MESSAGE value="Update theme color, improve my_index page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update theme color, improve my_index page" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
 </project>
