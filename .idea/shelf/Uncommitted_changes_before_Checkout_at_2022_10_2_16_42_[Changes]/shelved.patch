@@ -1,0 +1,100 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"NONE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e071d44d-9606-4e0e-b035-05aefce9cbee\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/android/joyfulfashionista_app_android.iml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/assets/images/About_me.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/assets/images/app_icon.jpg\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lib/pages/my/about_me/controller.dart\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lib/pages/my/about_me/index.dart\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/lib/pages/my/about_me/view.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/android/local.properties\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/android/local.properties\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/joyfulfashionista_app.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/joyfulfashionista_app.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/common/i18n/locale_keys.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/common/i18n/locale_keys.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/common/routers/names.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/common/routers/names.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/common/routers/pages.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/common/routers/pages.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/main.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/main.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/pages/my/language/view.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/pages/my/language/view.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/lib/pages/my/my_index/view.dart\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/lib/pages/my/my_index/view.dart\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/linux/flutter/generated_plugins.cmake\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/linux/flutter/generated_plugins.cmake\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/windows/flutter/generated_plugins.cmake\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/windows/flutter/generated_plugins.cmake\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Dart File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2F7afXdJbvSEgqVGwEOmaB6esFK\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectView\">\r\n    <navigator currentView=\"ProjectPane\" proportions=\"\" version=\"1\" />\r\n    <panes>\r\n      <pane id=\"ProjectPane\">\r\n        <option name=\"show-excluded-files\" value=\"false\" />\r\n      </pane>\r\n    </panes>\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n    <option name=\"showMembers\" value=\"true\" />\r\n    <option name=\"showVisibilityIcons\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.cidr.known.project.marker\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"cidr.known.project.marker\" value=\"true\" />\r\n    <property name=\"dart.analysis.tool.window.force.activate\" value=\"true\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"io.flutter.reload.alreadyRun\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/assets/images\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"AndroidSdkUpdater\" />\r\n    <property name=\"show.migrate.to.gradle.popup\" value=\"false\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\JAYTA\\AndroidStudioProjects\\joyfulfashionista_app_beta\\assets\\images\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e071d44d-9606-4e0e-b035-05aefce9cbee\" name=\"Changes\" comment=\"\" />\r\n      <created>1663845681481</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1663845681481</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"ToolWindowManager\">\r\n    <editor active=\"true\" />\r\n    <layout>\r\n      <window_info id=\"Project\" active=\"false\" anchor=\"left\" auto_hide=\"false\" internal_type=\"DOCKED\" type=\"DOCKED\" visible=\"true\" show_stripe_button=\"true\" weight=\"0.25\" sideWeight=\"0.5\" order=\"0\" side_tool=\"false\" content_ui=\"combo\" />\r\n    </layout>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 418b38038a6ee01029b5217391724a0f4370e2d5)
++++ b/.idea/workspace.xml	(date 1664699819815)
+@@ -5,32 +5,14 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="e071d44d-9606-4e0e-b035-05aefce9cbee" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/android/joyfulfashionista_app_android.iml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/assets/images/About_me.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/assets/images/app_icon.jpg" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/lib/pages/my/about_me/controller.dart" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/lib/pages/my/about_me/index.dart" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/lib/pages/my/about_me/view.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/joyfulfashionista_app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/joyfulfashionista_app.iml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/common/i18n/locale_keys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locale_keys.dart" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/common/routers/names.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/names.dart" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/lib/common/routers/pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/routers/pages.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/language/view.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/lib/pages/my/my_index/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/my_index/view.dart" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/linux/flutter/generated_plugins.cmake" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lib/pages/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/index.dart" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/controller.dart" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/index.dart" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/lib/pages/my/language/view.dart" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -68,6 +50,8 @@
+   </component>
+   <component name="PropertiesComponent">
+     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
++    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
++    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="cidr.known.project.marker" value="true" />
+@@ -92,6 +76,21 @@
+       <option name="presentableId" value="Default" />
+       <updated>1663845681481</updated>
+     </task>
++    <task id="LOCAL-00001" summary="Adding aboutMe page">
++      <created>1664212593199</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1664212593199</updated>
++    </task>
++    <task id="LOCAL-00002" summary="Update theme color, improve my_index page">
++      <created>1664265560589</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1664265560589</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="ToolWindowManager">
+@@ -100,4 +99,20 @@
+       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+     </layout>
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Adding aboutMe page" />
++    <MESSAGE value="Update theme color, improve my_index page" />
++    <option name="LAST_COMMIT_MESSAGE" value="Update theme color, improve my_index page" />
++  </component>
+ </project>
+\ No newline at end of file
