@@ -14,7 +14,7 @@ class SearchIndexPage extends GetView<SearchIndexController> {
       // 搜索栏
       title: InputWidget.textBorder(
         controller: controller.searchEditController,
-        hintText: "You can try T-Shirt", //LocaleKeys.commonSearchInput.tr,
+        hintText: "type something...", //LocaleKeys.commonSearchInput.tr,
         // onChanged: (val) {
         //   printInfo(info: val);
         // },

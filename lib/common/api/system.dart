@@ -8,15 +8,15 @@ class SystemApi {
       KeyValueModel(
           key: "01",
           value:
-              "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/flutter_woo_commerce_getx_ducafecat/banner01.png"),
+              "https://the-riotact.com/wp-content/uploads/2021/10/2021-10-13_13-23-35-810x406.jpg"),
       KeyValueModel(
           key: "02",
           value:
-              "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/flutter_woo_commerce_getx_ducafecat/banner02.png"),
+              "https://joyfulfashionista.com.au/wp-content/uploads/2021/12/yz-pTJ0U-scaled-300x148.jpeg"),
       KeyValueModel(
           key: "03",
           value:
-              "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/flutter_woo_commerce_getx_ducafecat/banner03.png"),
+              "https://scontent.fcbr2-1.fna.fbcdn.net/v/t39.30808-6/305566231_502672698532270_62980227276076846_n.png?_nc_cat=105&ccb=1-7&_nc_sid=e3f864&_nc_ohc=7rnJZPHjk4IAX-olANA&_nc_ht=scontent.fcbr2-1.fna&oh=00_AT_Uye7N4_vYe1h_sksc1abdLKeJEqgVTJRngzIl7nRPFw&oe=634B9E31"),
     ];
 
     return bannerItems;

@@ -14,6 +14,11 @@ class ProductApi {
     }
     // 排序 menuOrder , 小号在前
     categories.sort((a, b) => a.menuOrder!.compareTo(b.menuOrder as int));
+    categories[2].name = "Children";
+    categories[3].name = "Inclusive";
+    categories[4].name = "Shipping";
+    categories[5].name = "Accessories";
+    categories[6].name = "Popular";
     return categories;
   }
 
