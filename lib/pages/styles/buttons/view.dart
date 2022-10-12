@@ -7,7 +7,7 @@ import 'index.dart';
 class ButtonsPage extends GetView<ButtonsController> {
   const ButtonsPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main
   Widget _buildView() {
     return SingleChildScrollView(
       child: Column(
@@ -20,19 +20,19 @@ class ButtonsPage extends GetView<ButtonsController> {
 
   Widget _buildButtons() {
     return <Widget>[
-      // primary 主按钮
+      // primary button
       ButtonWidget.primary(
         "主按钮",
         onTap: () {},
       ).paddingBottom(AppSpace.listRow),
 
-      // secondary 次按钮
+      // secondary button
       ButtonWidget.secondary(
         "次按钮",
         onTap: () {},
       ).paddingBottom(AppSpace.listRow),
 
-      // 文字按钮
+      // text button
       ButtonWidget.text(
         "文字按钮",
         textSize: 15,
@@ -43,7 +43,7 @@ class ButtonsPage extends GetView<ButtonsController> {
         // },
       ).paddingBottom(AppSpace.listRow),
 
-      // 图标按钮
+      // icon button
       ButtonWidget.icon(
         IconWidget.svg(
           AssetsSvgs.cHomeSvg,
@@ -52,7 +52,7 @@ class ButtonsPage extends GetView<ButtonsController> {
         onTap: () {},
       ).tightSize(30).paddingBottom(AppSpace.listRow),
 
-      // 文字/填充 按钮
+      // Text/fill button
       ButtonWidget.textFilled(
         "15",
         bgColor: Get.theme.colorScheme.surfaceVariant.withOpacity(0.5),
@@ -60,7 +60,7 @@ class ButtonsPage extends GetView<ButtonsController> {
         onTap: () {},
       ).paddingBottom(AppSpace.listRow),
 
-      // 文字/填充/圆形 按钮
+      // Text/Fill/Round Button
       ButtonWidget.textRoundFilled(
         "5",
         bgColor: Get.theme.colorScheme.surfaceVariant.withOpacity(0.4),
@@ -69,7 +69,7 @@ class ButtonsPage extends GetView<ButtonsController> {
         onTap: () {},
       ).tight(width: 24, height: 24).paddingBottom(AppSpace.listRow),
 
-      // iconTextUpDown, // 图标/文字/上下
+      // iconTextUpDown, /
       ButtonWidget.iconTextUpDown(
         IconWidget.svg(
           AssetsSvgs.cHomeSvg,
@@ -79,7 +79,7 @@ class ButtonsPage extends GetView<ButtonsController> {
         onTap: () {},
       ).paddingBottom(AppSpace.listRow),
 
-      // iconTextOutlined, // 图标/文字/边框
+      // iconTextOutlined,
       ButtonWidget.iconTextOutlined(
         IconWidget.svg(
           AssetsSvgs.cHomeSvg,
@@ -94,7 +94,7 @@ class ButtonsPage extends GetView<ButtonsController> {
           )
           .paddingBottom(AppSpace.listRow),
 
-      // iconTextUpDownOutlined, // 图标/文字/上下/边框
+      // iconTextUpDownOutlined,
       ButtonWidget.iconTextUpDownOutlined(
         IconWidget.svg(
           AssetsSvgs.cHomeSvg,
@@ -109,7 +109,7 @@ class ButtonsPage extends GetView<ButtonsController> {
           )
           .paddingBottom(AppSpace.listRow),
 
-      // textIcon, // 文字/图标
+      // textIcon,
       ButtonWidget.textIcon(
         "Home",
         IconWidget.svg(

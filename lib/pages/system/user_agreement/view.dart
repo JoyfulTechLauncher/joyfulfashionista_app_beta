@@ -6,7 +6,7 @@ import 'index.dart';
 class UserAgreementPage extends GetView<UserAgreementController> {
   const UserAgreementPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main
   Widget _buildView() {
     return const Center(
       child: Text("UserAgreementPage"),

@@ -7,40 +7,40 @@ import 'index.dart';
 class StylesIndexPage extends GetView<StylesIndexController> {
   const StylesIndexPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main view
   Widget _buildView() {
     return Column(children: [
-      // 文本
-    /*ListTile(
+      // text
+      /*ListTile(
       onTap: () => Get.toNamed(RouteNames.stylesText),
       title: const Text("Text"),
     ),
 
-     Icon 图标
+     Icon 
     ListTile(
       onTap: () => Get.toNamed(RouteNames.stylesIcon),
       title: const TextWidget.body1("Icon"),
     ),
 
-    // Image 图片
+    // Image 
     ListTile(
       onTap: () => Get.toNamed(RouteNames.stylesImage),
       title: const TextWidget.body1("Image"),
     ),
 
-    // Button 按钮
+    // Button 
     ListTile(
       onTap: () => Get.toNamed(RouteNames.stylesButtons),
       title: const TextWidget.body1("Button 按钮"),
     ),
 
-    // Input 输入框
+    // Input 
     ListTile(
       onTap: () => Get.toNamed(RouteNames.stylesInputs),
       title: const TextWidget.body1("Input 输入框"),
     ),
 
-    // form 表单
+    // form 
     ListTile(
       onTap: () => Get.toNamed(RouteNames.stylesTextForm),
       title: const TextWidget.body1("form 表单"),
@@ -50,7 +50,7 @@ class StylesIndexPage extends GetView<StylesIndexController> {
 
       ////////////////////////////////////////
 
-      // 多语言
+      // language
       ListTile(
         onTap: controller.onLanguageSelected,
         title: Text(
@@ -58,10 +58,11 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         ),
       ),
 
-      // 主题样式
+      // theme style
       ListTile(
         onTap: controller.onThemeSelected,
-        title: Text("Theme : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
+        title:
+            Text("Theme : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
       ),
     ]);
   }

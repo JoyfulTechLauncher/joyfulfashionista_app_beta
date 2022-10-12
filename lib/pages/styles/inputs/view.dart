@@ -7,7 +7,7 @@ import 'index.dart';
 class InputsPage extends GetView<InputsController> {
   const InputsPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main page
   Widget _buildView() {
     return SingleChildScrollView(
       child: _buildInputs().center(),

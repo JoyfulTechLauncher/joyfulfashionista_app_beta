@@ -27,7 +27,7 @@ class SplashController extends GetxController {
     // } else {
     //   Get.offAllNamed(RouteNames.main);
     // }
-    // 欢迎页
+    //
     // Future.delayed(const Duration(seconds: 1), () {
     //   Get.offAllNamed(RouteNames.systemWelcome);
     // });
@@ -41,9 +41,9 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     super.onReady();
-    FlutterNativeSplash.remove(); // 删除设备启动图
-    // _initData(); // 初始数据
-    _jumpToPage(); // 跳转界面
+    FlutterNativeSplash.remove(); // Delete device splash map
+    // _initData(); //
+    _jumpToPage(); // jump
   }
 
   // @override

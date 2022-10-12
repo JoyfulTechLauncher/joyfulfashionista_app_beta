@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class ApplyPromoCodeController extends GetxController {
   ApplyPromoCodeController();
 
-  // 优惠券控制器
+  // Coupon Controller
   TextEditingController couponController = TextEditingController();
 
   _initData() {

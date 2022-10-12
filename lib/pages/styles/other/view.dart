@@ -6,7 +6,7 @@ import 'index.dart';
 class OtherPage extends GetView<OtherController> {
   const OtherPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main view
   Widget _buildView() {
     return const Center(
       child: Text("OtherPage"),

@@ -9,7 +9,7 @@ import 'index.dart';
 class RegisterPage extends GetView<RegisterController> {
   const RegisterPage({Key? key}) : super(key: key);
 
-  // 按钮
+  // button
   Widget _buildBtnSignUp() {
     return ButtonWidget.primary(
       LocaleKeys.loginSignUp.tr,
@@ -17,13 +17,12 @@ class RegisterPage extends GetView<RegisterController> {
     ).paddingBottom(AppSpace.listRow);
   }
 
-  // 提示
+  // tips
   Widget _buildTips() {
     return <Widget>[
-      // 提示
       TextWidget.body2(LocaleKeys.registerHaveAccount.tr),
 
-      // 登录文字按钮
+      // text button
       ButtonWidget.text(
         LocaleKeys.loginSignIn.tr,
         onTap: controller.onSignIn,
@@ -35,10 +34,10 @@ class RegisterPage extends GetView<RegisterController> {
     );
   }
 
-  // 表单页
+  // form page
   Widget _buildForm() {
     return Form(
-      key: controller.formKey, // 设置globalKey，用于后面获取FormState
+      key: controller.formKey, // Set globalKey to get FormState later
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: <Widget>[
         // username
@@ -112,10 +111,10 @@ class RegisterPage extends GetView<RegisterController> {
           ]),
         ).paddingBottom(50),
 
-        // 注册按钮
+        // sign up button
         _buildBtnSignUp(),
 
-        // 提示文字
+        // tips
         _buildTips(),
 
         //
@@ -123,17 +122,17 @@ class RegisterPage extends GetView<RegisterController> {
     ).paddingAll(AppSpace.card);
   }
 
-  // 内容页
+  // content
   Widget _buildView() {
     return SingleChildScrollView(
       child: <Widget>[
-        // 头部标题
+        // header
         PageTitleWidget(
           title: LocaleKeys.registerTitle.tr,
           desc: LocaleKeys.registerDesc.tr,
         ).paddingTop(50.w),
 
-        // 表单
+        // form
         _buildForm().card(),
       ]
           .toColumn(

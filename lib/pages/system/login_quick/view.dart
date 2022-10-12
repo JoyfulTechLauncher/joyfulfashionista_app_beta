@@ -7,7 +7,7 @@ import 'index.dart';
 class LoginQuickPage extends GetView<LoginQuickController> {
   const LoginQuickPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main view
   Widget _buildView() {
     return <Widget>[
       // logo
@@ -17,19 +17,19 @@ class LoginQuickPage extends GetView<LoginQuickController> {
         height: 57,
       ).paddingBottom(22),
 
-      // 标题1
+      // header 1
       TextWidget.title2(
         "Let’s Sign You In",
         color: AppColors.onPrimary,
       ).paddingBottom(10),
 
-      // 标题2
+      // header 2
       TextWidget.body2(
         "Welcome back, you’ve",
         color: AppColors.onPrimary,
       ).paddingBottom(55),
 
-      // 表单
+      // form
       <Widget>[
         // username
         const TextWidget.body1(
@@ -51,22 +51,22 @@ class LoginQuickPage extends GetView<LoginQuickController> {
         InputWidget.iconTextFilled(IconWidget.icon(Icons.lock_outline))
             .paddingBottom(29),
 
-        // 登录按钮
+        // login button
         const ButtonWidget.primary(
           "Sıgn In",
           backgroundColor: Color(0xffFD8700),
           borderRadius: 18,
         ).tight(width: double.infinity, height: 57),
 
-        // 注册
+        // register
         <Widget>[
-          // 文字
+          // text
           const TextWidget.body1(
             "Don’t have an accoun?",
             color: Color(0xff838383),
           ).paddingRight(AppSpace.listItem),
 
-          // 注册按钮
+          // register button
           ButtonWidget.text(
             "Sign Up",
             textColor: const Color(0xff0274BC),

@@ -23,7 +23,7 @@ class WelcomePage extends GetView<WelcomeController> {
     );
   }
 
-  // 控制栏
+  // control bar
   Widget _buildBar() {
     return GetBuilder<WelcomeController>(
       id: "bar",
@@ -31,7 +31,7 @@ class WelcomePage extends GetView<WelcomeController> {
       builder: (controller) {
         return controller.isShowStart
             ?
-            // 开始
+            // strat
             ButtonWidget.primary(
                 LocaleKeys.welcomeStart.tr,
                 onTap: controller.onToMain,
@@ -40,17 +40,17 @@ class WelcomePage extends GetView<WelcomeController> {
                 height: 50.h,
               )
             : <Widget>[
-                // 跳过
+                // jump
                 ButtonWidget.text(
                   LocaleKeys.welcomeSkip.tr,
                   onTap: controller.onToMain,
                 ),
-                // 指示标
+                // indicator
                 SliderIndicatorWidget(
                   length: 3,
                   currentIndex: controller.currentIndex,
                 ),
-                // 下一页
+                // next page
                 ButtonWidget.text(
                   LocaleKeys.welcomeNext.tr,
                   onTap: controller.onNext,
@@ -62,12 +62,12 @@ class WelcomePage extends GetView<WelcomeController> {
     );
   }
 
-  // 主视图
+  // main view
   Widget _buildView() {
     return <Widget>[
-      // slider切换
+      // slider change
       _buildSlider(),
-      // 控制栏
+      // control bar
       _buildBar(),
     ]
         .toColumn(

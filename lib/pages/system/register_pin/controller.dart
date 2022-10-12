@@ -5,28 +5,28 @@ import 'package:get/get.dart';
 class RegisterPinController extends GetxController {
   RegisterPinController();
 
-  // 注册界面传值
+  // register interface pass value
   UserRegisterReq? req = Get.arguments;
 
-  // ping 文字输入控制器
+  // pin text input controller
   TextEditingController pinController = TextEditingController();
 
-  // 表单 key
+  // form key
   GlobalKey formKey = GlobalKey<FormState>();
 
-  // 验证 pin
+  // verify pin
   String? pinValidator(val) {
     return val == '111111'
         ? null
         : LocaleKeys.commonMessageIncorrect.trParams({"method": "Pin"});
   }
 
-  // 注册
+  // register
   Future<void> _register() async {
     try {
       Loading.show();
 
-      // 暂时提交，后续改 aes 加密后处理
+      // Temporarily submitted, subsequent changes to aes encryption post-processing
       bool isOk = await UserApi.register(req);
       if (isOk) {
         Loading.success(
@@ -34,7 +34,7 @@ class RegisterPinController extends GetxController {
         Get.back(result: true);
       }
 
-      // // 提示成功
+      // // succes
       // Loading.success(
       //     LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
       // Get.back(result: true);
@@ -47,17 +47,17 @@ class RegisterPinController extends GetxController {
     update(["register_pin"]);
   }
 
-  // pin 触发提交
+  // pin trigger commit
   void onPinSubmit(String val) {
     debugPrint("onPinSubmit: $val");
   }
 
-  // 按钮提交
+  // button trigger commit
   void onBtnSubmit() {
     _register();
   }
 
-  // 按钮返回
+  //button trigger backup
   void onBtnBackup() {
     Get.back();
   }
