@@ -63,7 +63,7 @@ class MyIndexPage extends GetView<MyIndexController> {
               // 头像
               ImageWidget.url(
                 // 测试需要改成自定义头像
-                "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/avatar/00258VC3ly1gty0r05zh2j60ut0u0tce02.jpg",
+                "https://joyfulfashionista.com.au/wp-content/uploads/2022/01/JF-logo-colour-darkbg-scaled-300x209.jpg",
                 width: 100.w,
                 height: 100.w,
                 fit: BoxFit.fill,
@@ -72,9 +72,9 @@ class MyIndexPage extends GetView<MyIndexController> {
 
               // 称呼
               TextWidget.title1(
-                "${UserService.to.profile.username}",
-                color: Colors.black,
-                size: 26.sp,
+                "Joyful Team",
+                color: Colors.white,
+                size: 21.sp,
               ),
             ].toRow().paddingHorizontal(AppSpace.card),
 
@@ -156,12 +156,12 @@ class MyIndexPage extends GetView<MyIndexController> {
       //),
 
       // Theme
-     // ButtonItemWidget(
-     //   title: LocaleKeys.myBtnTheme.tr,
-     //   svgPath: AssetsSvgs.pThemeSvg,
-     //   color: "F89C52".toColor,
-     //   onTap: () => ConfigService.to.switchThemeModel(),
-     // ),
+      // ButtonItemWidget(
+      //   title: LocaleKeys.myBtnTheme.tr,
+      //   svgPath: AssetsSvgs.pThemeSvg,
+      //   color: "F89C52".toColor,
+      //   onTap: () => ConfigService.to.switchThemeModel(),
+      // ),
 
       //About me
       ButtonItemWidget(
@@ -208,9 +208,9 @@ class MyIndexPage extends GetView<MyIndexController> {
             .sliverBox,
 
         // 版权
-       // const TextWidget.body2(
-       //   "Code by: https://ducafefcat.tech",
-       // ).alignCenter().paddingBottom(AppSpace.listRow).sliverBox,
+        // const TextWidget.body2(
+        //   "Code by: https://ducafefcat.tech",
+        // ).alignCenter().paddingBottom(AppSpace.listRow).sliverBox,
 
         // 版本号
         TextWidget.body2(

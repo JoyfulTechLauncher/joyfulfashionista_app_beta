@@ -154,7 +154,7 @@ class HomePage extends GetView<HomeController> {
               controller.flashShellProductList.isNotEmpty
                   ? BuildListTitle(
                       title: LocaleKeys.gHomeFlashSell.tr,
-                      subTitle: "03. 30. 30",
+                      subTitle: "17/10/2022",
                       onTap: () => controller.onAllTap(true),
                     )
                       .sliverToBoxAdapter()

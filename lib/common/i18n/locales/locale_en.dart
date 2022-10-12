@@ -76,8 +76,8 @@ Map<String, String> localeEn = {
 
   // 商品 - 首页
   LocaleKeys.gHomeSearch: 'Search Product',
-  LocaleKeys.gHomeFlashSell: 'Flash Sell',
-  LocaleKeys.gHomeNewProduct: 'New Product',
+  LocaleKeys.gHomeFlashSell: 'New arrivals',
+  LocaleKeys.gHomeNewProduct: 'Featured products',
   LocaleKeys.gHomeMore: 'ALL',
 
   // 商品 - 列表
@@ -124,7 +124,6 @@ Map<String, String> localeEn = {
   LocaleKeys.myBtnBillingAddress: 'Billing address',
   LocaleKeys.myBtnShippingAddress: 'Shipping address',
   LocaleKeys.myBtnAboutMe: 'About me',
-
 
   // 订单配送地址
   LocaleKeys.addressViewTitle: '@type address',
