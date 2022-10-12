@@ -12,7 +12,7 @@ class LoginPage extends GetView<LoginController> {
   // 表单页
   Widget _buildForm() {
     return Form(
-      key: controller.formKey, //设置globalKey，用于后面获取FormState
+      key: controller.formKey, //Set globalKey to get FormState later
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: <Widget>[
         // username
@@ -59,7 +59,7 @@ class LoginPage extends GetView<LoginController> {
             .alignRight()
             .paddingBottom(50.w),
 
-        // 登录按钮
+        // Login button
         ButtonWidget.primary(
           LocaleKeys.loginSignIn.tr,
           onTap: controller.onSignIn,
@@ -68,7 +68,7 @@ class LoginPage extends GetView<LoginController> {
         // OR
         TextWidget.body1(LocaleKeys.loginOrText.tr).paddingBottom(30.w),
 
-        // 其它登录按钮
+        // Other login buttons
         <Widget>[
           ButtonWidget.iconTextOutlined(
             IconWidget.svg(AssetsSvgs.facebookSvg),
@@ -93,17 +93,17 @@ class LoginPage extends GetView<LoginController> {
     ).paddingAll(AppSpace.card);
   }
 
-  // 主视图
+  // main view
   Widget _buildView() {
     return SingleChildScrollView(
       child: <Widget>[
-        // 头部标题
+        // header title
         PageTitleWidget(
           title: LocaleKeys.loginBackTitle.tr,
           desc: LocaleKeys.loginBackDesc.tr,
         ).paddingTop(50.w),
 
-        // 表单
+        // form
         _buildForm().card(),
       ]
           .toColumn(

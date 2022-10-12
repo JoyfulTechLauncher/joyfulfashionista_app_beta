@@ -26,11 +26,11 @@ class _MainPageState extends State<MainPage>
 class _MainViewGetX extends GetView<MainController> {
   const _MainViewGetX({Key? key}) : super(key: key);
 
-  // 主视图
+  // main view
   Widget _buildView() {
     DateTime? lastPressedAt;
     return WillPopScope(
-      // 防止连续点击两次退出
+      // Prevent two consecutive clicks to exit
       onWillPop: () async {
         if (lastPressedAt == null ||
             DateTime.now().difference(lastPressedAt!) >
@@ -45,7 +45,7 @@ class _MainViewGetX extends GetView<MainController> {
       child: Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: false,
-        // 导航栏
+        // navigation bar
         bottomNavigationBar: GetBuilder<MainController>(
           id: 'navigation',
           builder: (controller) {
@@ -59,7 +59,7 @@ class _MainViewGetX extends GetView<MainController> {
                     NavigationItemModel(
                       label: LocaleKeys.tabBarCart.tr,
                       icon: AssetsSvgs.navCartSvg,
-                      // 购物车数量
+                      // Cart quantity
                       count: CartService.to.lineItemsCount,
                     ),
                     NavigationItemModel(
@@ -72,11 +72,11 @@ class _MainViewGetX extends GetView<MainController> {
                       icon: AssetsSvgs.navProfileSvg,
                     ),
                   ],
-                  onTap: controller.onJumpToPage, // 切换tab事件
+                  onTap: controller.onJumpToPage, // toggle tab event
                 ));
           },
         ),
-        // 内容页
+        // Content page
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: controller.pageController,

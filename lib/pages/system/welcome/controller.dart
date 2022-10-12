@@ -6,24 +6,25 @@ class WelcomeController extends GetxController {
   WelcomeController();
 
   List<WelcomeModel>? items;
-  // 当前位置
+  // current index
   int currentIndex = 0;
-  bool isShowStart = false; // 是否显示 Start
-  CarouselController carouselController = CarouselController(); // slider 控制器
+  bool isShowStart = false; //
+  CarouselController carouselController =
+      CarouselController(); // slider controller
 
-  // 当前位置发生改变
+  // The current location has changed
   void onPageChanged(int index) {
     currentIndex = index;
     isShowStart = currentIndex == 2;
     update(['slider', 'bar']);
   }
 
-  // 去首页
+  // jump to main page
   void onToMain() {
     Get.offAllNamed(RouteNames.main);
   }
 
-  // 下一个
+  // next
   void onNext() {
     carouselController.nextPage();
   }
@@ -62,7 +63,7 @@ class WelcomeController extends GetxController {
     super.onReady();
     _initData();
 
-    // 设置已打开
+    // test
     ConfigService().setAlreadyOpen();
   }
 

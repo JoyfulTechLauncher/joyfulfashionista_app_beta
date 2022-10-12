@@ -1,7 +1,7 @@
 import 'package:joyfulfashionista_app/pages/index.dart';
 import 'package:get/get.dart';
 
-/// 主界面依赖
+/// main interface dependencies
 class MainBinding implements Bindings {
   @override
   void dependencies() {

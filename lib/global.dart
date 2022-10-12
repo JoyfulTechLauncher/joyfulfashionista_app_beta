@@ -12,49 +12,49 @@ class Global {
 
     setSystemUi();
 
-    // 工具类
+    // Tools
     await Storage().init();
     Loading();
 
-    // 初始化服务
+    // init service
     Get.put<ConfigService>(ConfigService());
     Get.put<WPHttpService>(WPHttpService());
     Get.put<UserService>(UserService());
     Get.put<CartService>(CartService());
   }
 
-  // 系统样式
+  // system
   static void setSystemUi() {
     if (GetPlatform.isMobile) {
-      // 屏幕方向 竖直上
+      // screen orientation upright
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-      // 透明状态栏
+      // Transparent status bar
       // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       //   statusBarColor: Colors.transparent, // transparent status bar
       // ));
     }
 
     if (GetPlatform.isAndroid) {
-      // 去除顶部系统下拉和底部系统按键
+      // Remove top system drop down and bottom system button
       // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-      // 去掉底部系统按键
+      // Remove the bottom system button
       // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       //     overlays: [SystemUiOverlay.bottom]);
 
-      // 自定义样式
+      // custom style
       SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
-        // 顶部状态栏颜色
+        // top status bar color
         // statusBarColor: Colors.transparent,
-        // 该属性仅用于 iOS 设备顶部状态栏亮度
+        // This property is only used for the brightness of the top status bar on iOS devices
         // statusBarBrightness: Brightness.light,
-        // 顶部状态栏图标的亮度
+        // Brightness of top status bar icons
         // statusBarIconBrightness: Brightness.light,
 
-        // 底部状态栏与主内容分割线颜色
+        // Bottom status bar and main content divider color
         systemNavigationBarDividerColor: Colors.transparent,
-        // 底部状态栏颜色
+        // Bottom status bar color
         systemNavigationBarColor: Colors.white,
-        // 底部状态栏图标样式
+        // Bottom status bar icon style
         systemNavigationBarIconBrightness: Brightness.dark,
       );
       SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);

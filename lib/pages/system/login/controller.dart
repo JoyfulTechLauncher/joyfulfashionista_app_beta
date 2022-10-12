@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   LoginController();
 
-  /// 定义输入控制器
+  /// Define the input controller
   TextEditingController userNameController =
       TextEditingController(text: "ducafecat5");
   TextEditingController passwordController =
       TextEditingController(text: "123456");
 
-  /// 表单 key
+  /// form key
   GlobalKey formKey = GlobalKey<FormState>();
 
   /// Sign In
@@ -20,18 +20,18 @@ class LoginController extends GetxController {
       try {
         Loading.show();
 
-        // aes 加密密码
+        // aes encrypted password
         var password = EncryptUtil().aesEncode(passwordController.text);
 
-        // api 请求
+        // api request
         UserTokenModel res = await UserApi.login(UserLoginReq(
           username: userNameController.text,
           password: password,
         ));
 
-        // 本地保存 token
+        // local save token
         await UserService.to.setToken(res.token!);
-        // 获取用户资料
+        // get user profile
         await UserService.to.getProfile();
 
         Loading.success();
@@ -69,7 +69,7 @@ class LoginController extends GetxController {
   //   super.onClose();
   // }
 
-  /// 释放
+  /// dispose
   @override
   void dispose() {
     super.dispose();

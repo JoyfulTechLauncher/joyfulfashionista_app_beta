@@ -7,28 +7,28 @@ class RegisterController extends GetxController {
 
   GlobalKey formKey = GlobalKey<FormState>();
 
-  // 用户名
+  // User
   TextEditingController userNameController =
       TextEditingController(text: "ducafecat5");
-  // 邮件
+  // Mail
   TextEditingController emailController =
       TextEditingController(text: "ducafecat5@gmail.com");
-  // 姓
+  // last name
   TextEditingController firstNameController =
       TextEditingController(text: "ducafe");
-  // 名
+  // first name
   TextEditingController lastNameController = TextEditingController(text: "cat");
-  // 密码
+  // password
   TextEditingController passwordController =
       TextEditingController(text: "12345678");
 
-  // 注册
+  // sign up
   void onSignUp() {
     if ((formKey.currentState as FormState).validate()) {
-      // aes 加密密码
+      // aes password
       var password = EncryptUtil().aesEncode(passwordController.text);
 
-      //验证通过
+      //Verified
       Get.offNamed(
         RouteNames.systemRegisterPin,
         arguments: UserRegisterReq(
@@ -42,7 +42,7 @@ class RegisterController extends GetxController {
     }
   }
 
-  // 登录
+  // Sign in
   void onSignIn() {
     Get.offNamed(RouteNames.systemLogin);
   }
@@ -73,6 +73,4 @@ class RegisterController extends GetxController {
     lastNameController.dispose();
     passwordController.dispose();
   }
-
-  // 释放
 }

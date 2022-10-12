@@ -9,7 +9,7 @@ class TextFormPage extends GetView<TextFormController> {
 
   Widget _buildTextForm() {
     return Form(
-        key: controller.formKey, //设置globalKey，用于后面获取FormState
+        key: controller.formKey, //Set globalKey to get FormState later
         autovalidateMode: AutovalidateMode.onUserInteraction,
         child: <Widget>[
           TextFormWidget(

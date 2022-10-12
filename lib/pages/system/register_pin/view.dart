@@ -7,13 +7,13 @@ import 'index.dart';
 
 class RegisterPinPage extends GetView<RegisterPinController> {
   const RegisterPinPage({Key? key}) : super(key: key);
-  // 表单页
+  // form page
   Widget _buildForm() {
     return Form(
-      key: controller.formKey, //设置globalKey，用于后面获取FormState
+      key: controller.formKey, //Set globalKey to get FormState later
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: <Widget>[
-        // 提示文
+        // tips
         TextWidget.body1(LocaleKeys.registerPinFormTip.tr)
             .paddingBottom(20.w)
             .alignLeft(),
@@ -25,13 +25,13 @@ class RegisterPinPage extends GetView<RegisterPinController> {
           onSubmit: controller.onPinSubmit,
         ).paddingBottom(50.w),
 
-        // 提交按钮
+        // submit button
         ButtonWidget.primary(
           LocaleKeys.registerPinButton.tr,
           onTap: controller.onBtnSubmit,
         ).paddingBottom(AppSpace.listRow),
 
-        // 返回按钮
+        // return button
         ButtonWidget.text(
           LocaleKeys.commonBottomCancel.tr,
           onTap: controller.onBtnBackup,
@@ -42,17 +42,17 @@ class RegisterPinPage extends GetView<RegisterPinController> {
     ).paddingAll(AppSpace.card);
   }
 
-  // 主视图
+  // main view
   Widget _buildView() {
     return SingleChildScrollView(
       child: <Widget>[
-        // 头部标题
+        // header
         PageTitleWidget(
           title: LocaleKeys.registerPinTitle.tr,
           desc: LocaleKeys.registerPinDesc.tr,
         ),
 
-        // 表单
+        // form
         _buildForm().card(),
       ]
           .toColumn(

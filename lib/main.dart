@@ -19,42 +19,45 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(414, 896), // 设计稿中设备的尺寸(单位随意,建议dp,但在使用过程中必须保持一致)
-      // splitScreenMode: false, // 支持分屏尺寸
-      // minTextAdapt: false, // 是否根据宽度/高度中的最小值适配文字
+      designSize: const Size(414,
+          896), // The size of the equipment in the design draft (the unit is arbitrary, dp is recommended, but it must be consistent during use)
+      // splitScreenMode: false, // Support split screen size
+      // minTextAdapt: false, // Whether to fit text according to minimum width/height
       builder: (context, child) {
         return RefreshConfiguration(
-          headerBuilder: () => const ClassicHeader(), // 自定义刷新头部
-          footerBuilder: () => const ClassicFooter(), // 自定义刷新尾部
-          hideFooterWhenNotFull: true, // 当列表不满一页时,是否隐藏刷新尾部
-          headerTriggerDistance: 80, // 触发刷新的距离
-          maxOverScrollExtent: 100, // 最大的拖动距离
-          footerTriggerDistance: 150, // 触发加载的距离
+          headerBuilder: () => const ClassicHeader(), // custom refresh header
+          footerBuilder: () => const ClassicFooter(), // custom refresh tail
+          hideFooterWhenNotFull:
+              true, // When the list is less than one page, whether to hide the refresh tail
+          headerTriggerDistance: 80, // Distance to trigger refresh
+          maxOverScrollExtent: 100, // Maximum drag distance
+          footerTriggerDistance: 150, // Distance to trigger loading
           child: GetMaterialApp(
             title: 'Joyfulfashionista Demo',
 
-            // 样式
+            // style
             theme:
                 ConfigService.to.isDarkModel ? AppTheme.dark : AppTheme.light,
 
-            // 路由
+            // router
             initialRoute: RouteNames.systemSplash,
             // initialRoute: RouteNames.stylesStylesIndex,
             getPages: RoutePages.list,
             navigatorObservers: [RoutePages.observer],
 
-            // 多语言
-            translations: Translation(), // 词典
-            localizationsDelegates: Translation.localizationsDelegates, // 代理
-            supportedLocales: Translation.supportedLocales, // 支持的语言种类
-            locale: ConfigService.to.locale, // 当前语言种类
-            fallbackLocale: Translation.fallbackLocale, // 默认语言种类
+            // mutilaunguage
+            translations: Translation(), // dictionary
+            localizationsDelegates:
+                Translation.localizationsDelegates, // localizationsDelegates
+            supportedLocales: Translation.supportedLocales, // supportedLocales
+            locale: ConfigService.to.locale, // locale
+            fallbackLocale: Translation.fallbackLocale, // fallbackLocale
 
             // builder
             builder: (context, widget) {
-              widget = EasyLoading.init()(context, widget); // EasyLoading 初始化
+              widget = EasyLoading.init()(context, widget); // EasyLoading
 
-              // 不随系统字体缩放比例
+              // Does not scale with system fonts
               return MediaQuery(
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
                 child: widget,

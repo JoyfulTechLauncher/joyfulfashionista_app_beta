@@ -6,7 +6,7 @@ import 'index.dart';
 class BottomSheetPage extends GetView<BottomSheetController> {
   const BottomSheetPage({Key? key}) : super(key: key);
 
-  // 主视图
+  // main
   Widget _buildView() {
     return const Center(
       child: Text("BottomSheetPage"),
