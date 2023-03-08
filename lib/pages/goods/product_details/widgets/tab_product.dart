@@ -23,7 +23,7 @@ class TabProductView extends GetView<ProductDetailsController> {
   Widget build(BuildContext context) {
     return <Widget>[
       // 颜色
-      _buildTitle("Color"),
+      _buildTitle("Color: Gray"),
       GetBuilder<ProductDetailsController>(
         id: "product_colors",
         tag: uniqueTag,
@@ -38,7 +38,7 @@ class TabProductView extends GetView<ProductDetailsController> {
       ),
 
       // 尺寸
-      _buildTitle("Size"),
+      _buildTitle("Size: 10"),
       GetBuilder<ProductDetailsController>(
         id: "product_sizes",
         tag: uniqueTag,
