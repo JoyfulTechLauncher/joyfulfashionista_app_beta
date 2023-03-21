@@ -1,8 +1,7 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../index.dart';
+import 'package:badges/badges.dart' as Badge;
 
 enum IconWidgetType { icon, svg, image, url }
 
@@ -168,8 +167,8 @@ class IconWidget extends StatelessWidget {
 
     // 圆点
     if (isDot == true) {
-      return Badge(
-        position: BadgePosition.bottomEnd(bottom: 0, end: -2),
+      return Badge.Badge(
+        position: Badge.BadgePosition.bottomEnd(bottom: 0, end: -2),
         elevation: 0,
         badgeColor: AppColors.primary,
         padding: const EdgeInsets.all(4.0),
@@ -179,7 +178,7 @@ class IconWidget extends StatelessWidget {
 
     // 文字、数字
     if (badgeString != null) {
-      return Badge(
+      return Badge.Badge(
         badgeContent: Text(
           badgeString!,
           style: TextStyle(
@@ -187,7 +186,7 @@ class IconWidget extends StatelessWidget {
             fontSize: 9,
           ),
         ),
-        position: BadgePosition.topEnd(top: -7, end: -8),
+        position: Badge.BadgePosition.topEnd(top: -7, end: -8),
         elevation: 0,
         badgeColor: AppColors.primary,
         padding: const EdgeInsets.all(4.0),

@@ -6,7 +6,7 @@ import FlutterMacOS
 import Foundation
 
 import package_info_plus_macos
-import path_provider_macos
+import path_provider_foundation
 import photo_manager
 import shared_preferences_macos
 import smart_auth
