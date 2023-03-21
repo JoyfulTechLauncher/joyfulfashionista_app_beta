@@ -39,7 +39,7 @@ class CartIndexPage extends GetView<CartIndexController> {
     return <Widget>[
       // 输入框
       InputWidget.textBorder(
-        hintText: "Voucher Code",
+        hintText: LocaleKeys.placeOrderPriceVoucherCode.tr,
         fillColor: AppColors.surface,
         // 输入优惠券代码
         onChanged: (value) => controller.couponCode = value,
