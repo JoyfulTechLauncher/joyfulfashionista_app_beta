@@ -138,6 +138,9 @@ Map<String, String> localeEn = {
   LocaleKeys.addressCompany: 'Company',
   LocaleKeys.addressPhoneNumber: 'Phone number',
   LocaleKeys.addressEmail: 'Email',
+  LocaleKeys.shippingAddress: 'Shipping',
+  LocaleKeys.billingAddress: 'Billing',
+
 
   // 购物车
   LocaleKeys.gCartTitle: 'My Cart',
@@ -202,4 +205,8 @@ Map<String, String> localeEn = {
   LocaleKeys.profileEditNewPassword: 'New password',
   LocaleKeys.profileEditConfirmPassword: 'Confirm password',
   LocaleKeys.profileEditPasswordTip: 'No input means no modification',
+
+  //消息
+  LocaleKeys.messagePage: 'Message',
+  LocaleKeys.noMessage: 'No Message',
 };

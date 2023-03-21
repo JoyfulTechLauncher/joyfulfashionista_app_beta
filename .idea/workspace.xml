@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e071d44d-9606-4e0e-b035-05aefce9cbee" name="Changes" comment="Fixed About Me Layout Conflict">
+    <list default="true" id="e071d44d-9606-4e0e-b035-05aefce9cbee" name="Changes" comment="Fixed Language Setting for Voucher code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/i18n/locale_keys.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locale_keys.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_en.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/i18n/locales/locale_zh.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/msg/msg_index/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/msg/msg_index/view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/my/my_index/view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/my/my_index/view.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +102,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679358982008</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fixed Language Setting for Voucher code">
+      <created>1679360697178</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679360697178</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -122,6 +134,7 @@
     <MESSAGE value="Update theme color, improve my_index page" />
     <MESSAGE value="Update" />
     <MESSAGE value="Fixed About Me Layout Conflict" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed About Me Layout Conflict" />
+    <MESSAGE value="Fixed Language Setting for Voucher code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Language Setting for Voucher code" />
   </component>
 </project>

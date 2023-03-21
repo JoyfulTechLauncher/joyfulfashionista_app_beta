@@ -134,6 +134,8 @@ class LocaleKeys {
   static const addressCompany = "address_company";
   static const addressPhoneNumber = "address_phone_number";
   static const addressEmail = "address_email";
+  static const shippingAddress = "address_shipping";
+  static const billingAddress = "address_billing";
 
   // 购物车
   static const gCartTitle = "goods_cart_title";
@@ -197,4 +199,8 @@ class LocaleKeys {
   static const profileEditNewPassword = "profile_edit_new_password";
   static const profileEditConfirmPassword = "profile_edit_confirm_password";
   static const profileEditPasswordTip = "profile_edit_password_tip";
+
+  //Message
+  static const messagePage = "message_page";
+  static const noMessage = "no_message";
 }
