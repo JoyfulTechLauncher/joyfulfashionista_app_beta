@@ -46,7 +46,7 @@ dependencies:
   shared_preferences: 2.0.15
   dio: 4.0.6
   flutter_svg: 1.1.4
-  badges: 2.0.3
+  badges: ^2.0.2
   extended_image: 6.3.0
   flutter_screenutil: 5.5.4
   flutter_native_splash: 2.2.9
@@ -72,6 +72,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
