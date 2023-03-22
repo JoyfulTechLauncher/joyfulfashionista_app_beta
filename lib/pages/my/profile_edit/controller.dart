@@ -66,7 +66,7 @@ class ProfileEditController extends GetxController {
       UserProfileModel profile = await UserApi.saveBaseInfo(UserProfileModel(
         firstName: firstNameController.text,
         lastName: lastNameController.text,
-        // email: emailController.text,
+        email: emailController.text,
       ));
 
       // 更新本地
