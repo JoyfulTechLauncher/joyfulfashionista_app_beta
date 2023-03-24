@@ -1,4 +1,5 @@
 import '../index.dart';
+import 'package:get/get.dart';
 
 /// 商品 api
 class ProductApi {
@@ -7,18 +8,30 @@ class ProductApi {
     var res = await WPHttpService.to.get(
       '/products/categories',
     );
-
     List<CategoryModel> categories = [];
     for (var item in res.data) {
       categories.add(CategoryModel.fromJson(item));
     }
     // 排序 menuOrder , 小号在前
     categories.sort((a, b) => a.menuOrder!.compareTo(b.menuOrder as int));
-    categories[2].name = "Children";
-    categories[3].name = "Inclusive";
-    categories[4].name = "Shipping";
-    categories[5].name = "Accessories";
-    categories[6].name = "Popular";
+    if(ConfigService.to.locale.toLanguageTag() == "en-US") {
+      categories[0].name = "Man";
+      categories[1].name = "Woman";
+      categories[2].name = "Children";
+      categories[3].name = "Inclusive";
+      categories[4].name = "Shipping";
+      categories[5].name = "Accessories";
+      categories[6].name = "Popular";
+    } else {
+      categories[0].name = "男性";
+      categories[1].name = "女性";
+      categories[2].name = "儿童";
+      categories[3].name = "包容性服装";
+      categories[4].name = "海魂衫";
+      categories[5].name = "配饰";
+      categories[6].name = "流行";
+      categories[7].name = "更多";
+    }
     return categories;
   }
 

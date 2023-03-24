@@ -98,9 +98,23 @@ class CategoryPage extends GetView<CategoryController> {
 
   @override
   Widget build(BuildContext context) {
+    if(ConfigService.to.locale.toLanguageTag() == "en-US") {
+      return GetBuilder<CategoryController>(
+        init: CategoryController(),
+        id: "category",
+        builder: (_) {
+          return Scaffold(
+            appBar: AppBar(title: const Text("category")),
+            body: SafeArea(
+              child: _buildView(),
+            ),
+          );
+        },
+      );
+    }
     return GetBuilder<CategoryController>(
       init: CategoryController(),
-      id: "category",
+      id: "类别",
       builder: (_) {
         return Scaffold(
           appBar: AppBar(title: const Text("category")),

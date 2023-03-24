@@ -29,7 +29,8 @@ class TabDetailView extends GetView<ProductDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return <Widget>[
+    if(ConfigService.to.locale.toLanguageTag() == "en-US") {
+      return <Widget>[
       // 说明
       _buildTitle("Description"),
       _buildContent(controller.product?.description?.clearHtml),
@@ -60,6 +61,40 @@ class TabDetailView extends GetView<ProductDetailsController> {
         .toColumn(
           crossAxisAlignment: CrossAxisAlignment.start,
         )
+        .scrollable()
+        .paddingVertical(AppSpace.page);
+    }
+    return <Widget>[
+      // 说明
+      _buildTitle("描述"),
+      _buildContent(controller.product?.description?.clearHtml),
+
+      // sku
+      _buildTitle("SKU"),
+      _buildContent(controller.product?.sku ?? "-"),
+
+      // price
+      _buildTitle("价格"),
+      _buildContent(controller.product?.price ?? "-"),
+
+      // 市场价
+      _buildTitle("市场价"),
+      _buildContent(controller.product?.regularPrice ?? "-"),
+
+      // 重量
+      _buildTitle("重量"),
+      _buildContent(controller.product?.weight ?? "-"),
+
+      // 尺寸
+      _buildTitle("尺寸"),
+      _buildContent(
+          "${controller.product?.dimensions?.length} x ${controller.product?.dimensions?.width} x ${controller.product?.dimensions?.height}"),
+
+      // end
+    ]
+        .toColumn(
+      crossAxisAlignment: CrossAxisAlignment.start,
+    )
         .scrollable()
         .paddingVertical(AppSpace.page);
   }
