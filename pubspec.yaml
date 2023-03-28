@@ -69,6 +69,8 @@ dependencies:
   wechat_assets_picker: 8.0.2
   wechat_camera_picker: 3.5.0+1
 
+  url_launcher: 6.1.10
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
