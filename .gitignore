@@ -27,15 +27,8 @@ doc/api/
 .flutter-plugins-dependencies
 .DS_Store
 
-./idea
-./vscode
+./vscode/
 *.properties
 *generated
 *local
-/.idea/libraries/Dart_Packages.xml
-/.idea/workspace.xml
-/.idea/libraries/Dart_SDK.xml
-/.idea/libraries/Flutter_Plugins.xml
-/.idea/joyfulfashionista_app_beta.iml
-/.idea/modules.xml
-/.idea/vcs.xml
+/.idea/
