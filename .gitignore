@@ -27,8 +27,8 @@ doc/api/
 .flutter-plugins-dependencies
 .DS_Store
 
-./idea
-./vscode
+./vscode/
 *.properties
 *generated
 *local
+/.idea/
