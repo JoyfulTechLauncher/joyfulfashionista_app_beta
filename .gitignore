@@ -30,6 +30,7 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 .DS_Store
+./android/local.properties/
 
 
 *.properties
