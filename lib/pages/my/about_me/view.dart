@@ -16,7 +16,7 @@ class AboutMePage extends GetView<AboutMeController> {
           Padding(padding: EdgeInsets.only(top: 10.h)),
           Container(
             height: 230.h,
-            width: 400.h,
+            width: 420.h,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: SizedBox.fromSize(
@@ -36,7 +36,7 @@ class AboutMePage extends GetView<AboutMeController> {
           ),
           Container(
             margin: const EdgeInsets.all(15.0),
-            height: 420.h,
+            height: 350.h,
             decoration: BoxDecoration(border: Border.all(
                 color: Colors.white,
                 width: 1.0),

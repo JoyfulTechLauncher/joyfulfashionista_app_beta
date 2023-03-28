@@ -136,7 +136,7 @@ class MyIndexPage extends GetView<MyIndexController> {
         title: LocaleKeys.myBtnBillingAddress.tr,
         svgPath: AssetsSvgs.pHomeSvg,
         color: "F43284".toColor,
-        onTap: () => controller.onToAddress("Billing"), // 类型 billing
+        onTap: () => controller.onToAddress(LocaleKeys.billingAddress.tr), // 类型 billing
       ),
 
       // Billing Address
@@ -144,7 +144,7 @@ class MyIndexPage extends GetView<MyIndexController> {
         title: LocaleKeys.myBtnShippingAddress.tr,
         svgPath: AssetsSvgs.pHomeSvg,
         color: "5F84FF".toColor,
-        onTap: () => controller.onToAddress("Shipping"), // 类型 shipping
+        onTap: () => controller.onToAddress(LocaleKeys.shippingAddress.tr), // 类型 shipping
       ),
 
       // Language

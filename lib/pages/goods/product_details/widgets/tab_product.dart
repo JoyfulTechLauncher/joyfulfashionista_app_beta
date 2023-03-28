@@ -21,9 +21,60 @@ class TabProductView extends GetView<ProductDetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    if(ConfigService.to.locale.toLanguageTag() == "en-US") {
+      return <Widget>[
+        // 颜色
+        _buildTitle("Color: Gray"),
+        GetBuilder<ProductDetailsController>(
+          id: "product_colors",
+          tag: uniqueTag,
+          builder: (_) {
+            return ColorsListWidget(
+              itemList: controller.colors,
+              keys: controller.colorKeys,
+              size: 33.w,
+              onTap: controller.onColorTap,
+            ).paddingBottom(AppSpace.listRow * 2);
+          },
+        ),
+
+        // 尺寸
+        _buildTitle("Size: 10"),
+        GetBuilder<ProductDetailsController>(
+          id: "product_sizes",
+          tag: uniqueTag,
+          builder: (_) {
+            return TagsListWidget(
+              itemList: controller.sizes,
+              keys: controller.sizeKeys,
+              onTap: controller.onSizeTap,
+            ).paddingBottom(AppSpace.listRow * 2);
+          },
+        ),
+
+        // 运费说明
+        _buildTitle("Shipping Charge"),
+        <Widget>[
+          // 运费
+          const TextWidget.body1(
+            "\$12.10",
+            size: 18,
+            weight: FontWeight.bold,
+          ).paddingRight(AppSpace.listItem),
+          // 说明
+          const TextWidget.body2(
+            "by paperfly shipment",
+          ),
+        ].toRow(),
+      ]
+          .toColumn(
+        crossAxisAlignment: CrossAxisAlignment.start,
+      )
+          .paddingVertical(AppSpace.page);
+    }
     return <Widget>[
       // 颜色
-      _buildTitle("Color: Gray"),
+      _buildTitle("颜色: 灰色"),
       GetBuilder<ProductDetailsController>(
         id: "product_colors",
         tag: uniqueTag,
@@ -38,7 +89,7 @@ class TabProductView extends GetView<ProductDetailsController> {
       ),
 
       // 尺寸
-      _buildTitle("Size: 10"),
+      _buildTitle("尺寸: 10"),
       GetBuilder<ProductDetailsController>(
         id: "product_sizes",
         tag: uniqueTag,
@@ -52,7 +103,7 @@ class TabProductView extends GetView<ProductDetailsController> {
       ),
 
       // 运费说明
-      _buildTitle("Shipping Charge"),
+      _buildTitle("运费"),
       <Widget>[
         // 运费
         const TextWidget.body1(
@@ -62,13 +113,13 @@ class TabProductView extends GetView<ProductDetailsController> {
         ).paddingRight(AppSpace.listItem),
         // 说明
         const TextWidget.body2(
-          "by paperfly shipment",
+          "通过Paperfly物流",
         ),
       ].toRow(),
     ]
         .toColumn(
-          crossAxisAlignment: CrossAxisAlignment.start,
-        )
+      crossAxisAlignment: CrossAxisAlignment.start,
+    )
         .paddingVertical(AppSpace.page);
   }
 }

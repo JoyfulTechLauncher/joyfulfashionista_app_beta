@@ -120,7 +120,7 @@ Map<String, String> localeZh = {
   LocaleKeys.myBtnWinGift: '赢取礼物',
   LocaleKeys.myBtnStylesSetting: '设置',
   LocaleKeys.myBtnLogout: '注销',
-  LocaleKeys.myBtnBillingAddress: '发票地址',
+  LocaleKeys.myBtnBillingAddress: '账单地址',
   LocaleKeys.myBtnShippingAddress: '配送地址',
   LocaleKeys.myBtnAboutMe: '关于我',
 
@@ -137,6 +137,8 @@ Map<String, String> localeZh = {
   LocaleKeys.addressCompany: '国家',
   LocaleKeys.addressPhoneNumber: '电话号码',
   LocaleKeys.addressEmail: '电子邮件',
+  LocaleKeys.shippingAddress: '配送',
+  LocaleKeys.billingAddress: '账单',
 
   // 购物车
   LocaleKeys.gCartTitle: '我的购物车',
@@ -200,4 +202,8 @@ Map<String, String> localeZh = {
   LocaleKeys.profileEditNewPassword: '新密码',
   LocaleKeys.profileEditConfirmPassword: '确认密码',
   LocaleKeys.profileEditPasswordTip: '不输入表示不修改',
+
+  //消息
+  LocaleKeys.messagePage: '消息',
+  LocaleKeys.noMessage: '无消息',
 };
