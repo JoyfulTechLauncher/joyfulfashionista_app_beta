@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:joyfulfashionista_app/pages/my/about_me/controller.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import '../../../common/i18n/locale_keys.dart';
 
 
@@ -97,10 +98,12 @@ class AboutMePage extends GetView<AboutMeController> {
             child: IconButton(
               icon: Icon(Icons.facebook_outlined, size: 40),
               onPressed: () {
-                String digital_url= "https://www.facebook.com/Joyfulfashionista/";
-                var fbUrl =
-                    "fb://facewebmodal/f?href=" + digital_url;
-                //launchFacebook(fbUrl, digital_url);
+                var fbUri = Uri(
+                  scheme: 'https',
+                  host: 'www.facebook.com',
+                  path: '/Joyfulfashionista'
+                );
+                launchUrl(fbUri);
               },
             ),
           ),
