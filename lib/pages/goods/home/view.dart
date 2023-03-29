@@ -65,6 +65,7 @@ class HomePage extends GetView<HomeController> {
 
   // 分类导航
   Widget _buildCategories() {
+    controller.onCategoryUpdate();
     return <Widget>[
       for (var i = 0; i < controller.categoryItems.length; i++)
         CategoryListItemWidget(

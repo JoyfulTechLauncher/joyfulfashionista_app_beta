@@ -14,6 +14,7 @@ class CategoryPage extends GetView<CategoryController> {
     return GetBuilder<CategoryController>(
       id: "left_nav", // 唯一标识
       builder: (_) {
+        controller.onCategoryUpdate();
         return ListView.separated(
           itemBuilder: (context, index) {
             var item = controller.categoryItems[index]; // 分类项数据

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
@@ -72,7 +73,6 @@ class CategoryController extends GetxController {
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories(); // 获取分类数据
     }
-
     update(["category"]);
   }
 
@@ -83,13 +83,18 @@ class CategoryController extends GetxController {
     update(["left_nav"]);
   }
 
+  //分类更新
+  void onCategoryUpdate() async {
+    categoryItems = await ProductApi.categories(); // 获取分类数据
+    update(["left_nav"]);
+  }
+
   // 上拉载入新商品
   void onLoading() async {
     if (items.isNotEmpty) {
       try {
         // 拉取数据是否为空
         var isEmpty = await _loadSearch(false);
-
         if (isEmpty) {
           // 设置无数据
           refreshController.loadNoData();
