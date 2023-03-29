@@ -7,6 +7,10 @@ build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
 
+# Avoid uploading local ide config files to repo
+.idea/
+.vscode/
+
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
 doc/api/
@@ -26,9 +30,9 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 .DS_Store
+./android/local.properties/
 
-./idea
-./vscode
+
 *.properties
 *generated
 *local
