@@ -12,6 +12,7 @@ class HomePage extends GetView<HomeController> {
 
   // 导航栏
   AppBar _buildAppBar() {
+
     return AppBar(
       // 背景透明
       backgroundColor: Colors.transparent,
@@ -64,20 +65,73 @@ class HomePage extends GetView<HomeController> {
   }
 
   // 分类导航
-  Widget _buildCategories() {
+  Widget _buildCategories1() {
     controller.onCategoryUpdate();
-    return <Widget>[
-      for (var i = 0; i < controller.categoryItems.length; i++)
+    if(ConfigService.to.locale.toLanguageTag() == "en-US"){
+      return <Widget>[
+      for (var i = 0; i < 4; i++)
         CategoryListItemWidget(
           category: controller.categoryItems[i],
           onTap: (categoryId) => controller.onCategoryTap(categoryId),
-        ).paddingRight(AppSpace.listItem)
+        ).paddingHorizontal(AppSpace.listRow)
     ]
         .toListView(
           scrollDirection: Axis.horizontal,
         )
         .height(90.w)
         .paddingVertical(AppSpace.listRow)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
+    }
+    return <Widget>[
+      for (var i = 0; i < 4; i++)
+        CategoryListItemWidget(
+          category: controller.categoryItems[i],
+          onTap: (categoryId) => controller.onCategoryTap(categoryId),
+        ).paddingHorizontal(AppSpace.page)
+    ]
+        .toListView(
+      scrollDirection: Axis.horizontal,
+    )
+        .height(90.w)
+        .paddingVertical(AppSpace.listRow)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
+  }
+
+  Widget _buildCategories2() {
+    controller.onCategoryUpdate();
+    if(ConfigService.to.locale.toLanguageTag() == "en-US"){
+      return <Widget>[
+        for (var i = 4; i < controller.categoryItems.length; i++)
+          CategoryListItemWidget(
+            category: controller.categoryItems[i],
+            onTap: (categoryId) => controller.onCategoryTap(categoryId),
+          ).paddingHorizontal(AppSpace.listItem-4)
+      ]
+          .toListView(
+        scrollDirection: Axis.horizontal,
+      )
+          .height(90.w)
+          .paddingVertical(AppSpace.listRow)
+          .sliverToBoxAdapter()
+          .sliverPaddingHorizontal(AppSpace.page);
+    }
+    return <Widget>[
+      for (var i = 4; i < controller.categoryItems.length; i++)
+        CategoryListItemWidget(
+          category: controller.categoryItems[i],
+          onTap: (categoryId) => controller.onCategoryTap(categoryId),
+        )
+            .paddingHorizontal(AppSpace.page)
+            .paddingRight(AppSpace.listRow-3)
+    ]
+        .toListView(
+      scrollDirection: Axis.horizontal,
+    )
+        .height(90.w)
+        .paddingVertical(AppSpace.listRow)
+        .paddingRight(AppSpace.listRow)
         .sliverToBoxAdapter()
         .sliverPaddingHorizontal(AppSpace.page);
   }
@@ -148,14 +202,14 @@ class HomePage extends GetView<HomeController> {
               _buildBanner(),
 
               // 分类导航
-              _buildCategories(),
-
+              _buildCategories1(),
+              _buildCategories2(),
               // 推荐商品
               // 栏位标题
               controller.flashShellProductList.isNotEmpty
                   ? BuildListTitle(
                       title: LocaleKeys.gHomeFlashSell.tr,
-                      subTitle: "17/10/2022",
+                      subTitle: DateTime.now().day.toString()+"/"+DateTime.now().month.toString()+"/"+DateTime.now().year.toString(),//"17/10/2022",
                       onTap: () => controller.onAllTap(true),
                     )
                       .sliverToBoxAdapter()
