@@ -1,7 +1,7 @@
 /// 常量
 class Constants {
   // wp 服务器
-  static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
+  static const wpApiBaseUrl = 'https://joyfulteams.shop';
 
   // 本地存储key
   static const storageLanguageCode = 'language_code';
@@ -11,8 +11,8 @@ class Constants {
   static const storageProfile = 'profile'; // 用户资料缓存
 
   // AES
-  static const aesKey = 'aH5aH5bG0dC6aA3oN0cK4aU5jU6aK2lN';
-  static const aesIV = 'hK6eB4aE1aF3gH5q';
+  static const aesKey = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
+  static const aesIV = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
 
   // 基础数据
   // 商品分类
