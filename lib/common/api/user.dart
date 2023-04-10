@@ -5,7 +5,9 @@ class UserApi {
   /// 注册
   static Future<bool> register(UserRegisterReq? req) async {
     var res = await WPHttpService.to.post(
-      '/users/register',
+      //'/users/register',
+      '/wp-json/wc/v3/customers',
+
       data: req,
     );
 
@@ -18,7 +20,8 @@ class UserApi {
   /// 登录
   static Future<UserTokenModel> login(UserLoginReq? req) async {
     var res = await WPHttpService.to.post(
-      '/users/login',
+      //'/users/login',
+      '/wp-json/wc/v3/customers',
       data: req,
     );
     return UserTokenModel.fromJson(res.data);
@@ -27,7 +30,8 @@ class UserApi {
   /// Profile
   static Future<UserProfileModel> profile() async {
     var res = await WPHttpService.to.get(
-      '/users/me',
+      //'/users/me',
+      '/wp-json/wc/v3/customers',
     );
     return UserProfileModel.fromJson(res.data);
   }
@@ -35,7 +39,8 @@ class UserApi {
   /// 保存用户 billing address
   static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
     var res = await WPHttpService.to.put(
-      '/users/me',
+      //'/users/me',
+      '/wp-json/wc/v3/customers',
       data: {
         "billing": req,
       },
@@ -46,7 +51,8 @@ class UserApi {
   /// 保存用户 shipping address
   static Future<UserProfileModel> saveShippingAddress(Shipping? req) async {
     var res = await WPHttpService.to.put(
-      '/users/me',
+      //'/users/me',
+      '/wp-json/wc/v3/customers',
       data: {
         "shipping": req,
       },
@@ -57,7 +63,8 @@ class UserApi {
   /// 大陆国家洲省列表
   static Future<List<ContinentsModel>> continents() async {
     var res = await WPHttpService.to.get(
-      '/users/continents',
+      //'/users/continents',
+      '/wp-json/wc/v3/customers/shipping/country',
     );
 
     List<ContinentsModel> continents = [];
@@ -70,7 +77,8 @@ class UserApi {
   /// 保存用户 first name 、 last name 、 email
   static Future<UserProfileModel> saveBaseInfo(UserProfileModel req) async {
     var res = await WPHttpService.to.put(
-      '/users/me',
+      //'/users/me',
+      '/wp-json/wc/v3/customers',
       data: {
         "first_name": req.firstName,
         "last_name": req.lastName,
