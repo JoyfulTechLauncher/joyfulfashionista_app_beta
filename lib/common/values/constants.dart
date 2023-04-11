@@ -11,9 +11,13 @@ class Constants {
   static const storageProfile = 'profile'; // 用户资料缓存
 
   // AES
-  static const aesKey = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
-  static const aesIV = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
+  static const aesKey = 'aH5aH5bG0dC6aA3oN0cK4aU5jU6aK2lN';
+  static const aesIV = 'hK6eB4aE1aF3gH5q';
 
+  // key&secret
+  static const consumer_key = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
+  static const consumer_secret = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
+  
   // 基础数据
   // 商品分类
   static const storageProductsCategories = 'home_categories';

@@ -1,8 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide Response, FormData, MultipartFile;
-
 import '../index.dart';
 
 class WPHttpService extends GetxService {
@@ -15,13 +15,18 @@ class WPHttpService extends GetxService {
   void onInit() {
     super.onInit();
 
+    String basicAuth = 'Basic ' +
+        base64Encode(utf8.encode(
+            'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
+
+
     // 初始 dio
     var options = BaseOptions(
       baseUrl: Constants.wpApiBaseUrl,
       connectTimeout: 10000, // 10秒
       receiveTimeout: 5000, // 5秒
-      headers: {},
-      contentType: 'application/json; charset=utf-8',
+      headers: {'Authorization': basicAuth}, // 添加basic auth凭证
+      contentType: 'application/json',
       responseType: ResponseType.json,
     );
     _dio = Dio(options);
