@@ -1,6 +1,6 @@
 /// 常量
 class Constants {
-  // wp 服务器
+  // wp Server address (Testing)
   static const wpApiBaseUrl = 'https://joyfulteams.shop';
 
   // 本地存储key
@@ -14,7 +14,7 @@ class Constants {
   static const aesKey = 'aH5aH5bG0dC6aA3oN0cK4aU5jU6aK2lN';
   static const aesIV = 'hK6eB4aE1aF3gH5q';
 
-  // key&secret
+  // key&secret (Testing)
   static const consumer_key = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
   static const consumer_secret = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
   

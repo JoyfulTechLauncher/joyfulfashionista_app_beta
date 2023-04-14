@@ -17,12 +17,12 @@ class UserApi {
     return false;
   }
 
-  /// 登录
+  /// login
   static Future<UserTokenModel> login(UserLoginReq? req) async {
-    var res = await WPHttpService.to.post(
+    var res = await WPHttpService.to.get(
       //'/users/login',
       '/wp-json/wc/v3/customers',
-      data: req,
+      //data: req,
     );
     return UserTokenModel.fromJson(res.data);
   }
