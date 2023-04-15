@@ -38,7 +38,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
+  path_provider: ^2.0.7
   # getx 框架
   get: 4.6.5
   intl: 0.17.0
@@ -68,8 +68,9 @@ dependencies:
   # 媒体选择
   wechat_assets_picker: 8.0.2
   wechat_camera_picker: 3.5.0+1
-
+  # for an onclick event to go to a hyperlink
   url_launcher: 6.1.10
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:
