@@ -28,6 +28,7 @@ doc/api/
 *.js.deps
 *.js.map
 
+android/gradle/local.properties
 android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
 macos/Flutter/GeneratedPluginRegistrant.swift
 linux/flutter/generated_plugin_registrant.cc
