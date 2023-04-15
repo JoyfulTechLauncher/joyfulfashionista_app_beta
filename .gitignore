@@ -8,8 +8,9 @@ build/
 pubspec.lock
 
 # Avoid uploading local ide config files to repo
-.idea/
-.vscode/
+.idea
+.vscode
+
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
@@ -27,10 +28,18 @@ doc/api/
 *.js.deps
 *.js.map
 
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+macos/Flutter/GeneratedPluginRegistrant.swift
+linux/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugin_registrant.cc
+linux/flutter/generated_plugins.cmake
+windows/flutter/generated_plugins.cmake
+android/local.properties
+
 .flutter-plugins
 .flutter-plugins-dependencies
 .DS_Store
-./android/local.properties/
+
 
 
 *.properties

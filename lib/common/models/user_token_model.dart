@@ -4,6 +4,8 @@ class UserTokenModel {
   UserTokenModel({this.token});
 
   factory UserTokenModel.fromJson(Map<String, dynamic> json) {
+    print("++++++++++++++++++++++++++++++++++++++" + json.toString());
+    print("+++++++++++++++++++" + json.containsKey('token').toString());
     return UserTokenModel(
       token: json['token'] as String?,
     );
