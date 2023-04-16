@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 // "username": "wpausersN4h4Cfb",
 // "password": "Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ"
@@ -11,11 +12,10 @@ String basicAuth = 'Basic ' +
         'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
 
 Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
-
-
   // 生成带有凭据的URL
   final String urlWithCredentials =
-      apiUrl + '?consumer_key=$consumerKey&consumer_secret=$consumerSecret';
+      apiUrl + '/wp-json/wc/v3/customers'
+          + '?consumer_key=$consumerKey&consumer_secret=$consumerSecret';
 
   try {
     final response = await http.get(
@@ -30,8 +30,6 @@ Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
       print(response.toString());
     }
   } catch (e) {
-
-
   }
 }
 
@@ -98,6 +96,59 @@ Future<int> loginUser(String username, String password) async {
   }
 }
 
+Future<String> fetchJwtToken() async {
+  final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
+  final String username = 'wpausersN4h4Cfb';
+  final String password = 'Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ';
+
+  final Map<String, String> headers = {
+    'Authorization': basicAuth,
+    'Accept': 'application/json',
+  };
+  final Map<String, String> body = {
+    'username': 'wpausersN4h4Cfb',
+    'password': 'Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ',
+  };
+
+  final response = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: json.encode(body),
+  );
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    return jsonResponse['token'];
+  } else {
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    throw Exception('Failed to fetch JWT token');
+  }
+}
+
+Future<String> login(String email, String password) async {
+  final response = await http.post(
+    Uri.parse('https://joyfulteams.shop/wp-json/jwt-auth/v1/token'),
+    body: {
+      'username': email,
+      'password': password,
+    },
+  );
+
+  if (response.statusCode == 200) {
+    final jsonResponse = jsonDecode(response.body);
+    String token = jsonResponse['token'];
+    print('Status code: ${response.statusCode}');
+    print('token $token');
+    print(jsonResponse);
+    return token;
+  } else {
+    print('Status code: ${response.statusCode}');
+    throw Exception('Failed to login');
+  }
+}
 
 void main() {
   String email = 'test@test.com';
@@ -105,9 +156,10 @@ void main() {
   String password = '123456';
 
   // fetchCustomers(consumer_key, consumer_secret);
-  // registerUser(email, username, password);
-  loginUser(username, password);
-
+  registerUser(email, username, password);
+  // loginUser(username, password);
+  // fetchJwtToken();
+  login(username, password);
 }
 
 
