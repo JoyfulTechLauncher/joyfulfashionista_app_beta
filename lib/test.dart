@@ -156,7 +156,7 @@ void main() {
   String password = '123456';
 
   // fetchCustomers(consumer_key, consumer_secret);
-  registerUser(email, username, password);
+  // registerUser(email, username, password);
   // loginUser(username, password);
   // fetchJwtToken();
   login(username, password);

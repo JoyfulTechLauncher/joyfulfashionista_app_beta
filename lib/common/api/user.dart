@@ -1,4 +1,6 @@
 import '../index.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 /// 用户 api
 class UserApi {
@@ -19,12 +21,12 @@ class UserApi {
 
   /// login
   static Future<UserTokenModel> login(UserLoginReq? req) async {
-    var res = await WPHttpService.to.get(
-      //'/users/login',
-      '/wp-json/wc/v3/customers',
-      //data: req,
+    var res = await WPHttpService.to.post(
+      '/wp-json/jwt-auth/v1/token',
+      data: req,
     );
-    return UserTokenModel.fromJson(res.data);
+
+    return UserTokenModel.fromResponse(res);
   }
 
   /// Profile
@@ -33,6 +35,7 @@ class UserApi {
       //'/users/me',
       '/wp-json/wc/v3/customers',
     );
+    print('---------------------------'+ UserProfileModel.fromJson(res.data).toString());
     return UserProfileModel.fromJson(res.data);
   }
 

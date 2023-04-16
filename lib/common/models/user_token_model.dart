@@ -1,17 +1,18 @@
 class UserTokenModel {
+  int statusCode;
   String? token;
 
-  UserTokenModel({this.token});
+  UserTokenModel({this.token, this.statusCode = 0});
 
-  factory UserTokenModel.fromJson(Map<String, dynamic> json) {
-    print("++++++++++++++++++++++++++++++++++++++" + json.toString());
-    print("+++++++++++++++++++" + json.containsKey('token').toString());
+  factory UserTokenModel.fromResponse(dynamic jsonResponse) {
     return UserTokenModel(
-      token: json['token'] as String?,
+      statusCode: jsonResponse['statusCode'] as int,
+      token: jsonResponse['token'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'token': token,
-      };
+    'statusCode': statusCode,
+    'token': token,
+  };
 }

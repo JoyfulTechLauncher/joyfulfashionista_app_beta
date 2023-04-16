@@ -2,6 +2,8 @@
 class Constants {
   // wp Server address (Testing)
   static const wpApiBaseUrl = 'https://joyfulteams.shop';
+  static const wcEndpointBaseUrl = '/wp-json/wc/v3';
+  static const jwtEndpointUrl = '/jwt-auth/v1/token';
 
   // 本地存储key
   static const storageLanguageCode = 'language_code';
