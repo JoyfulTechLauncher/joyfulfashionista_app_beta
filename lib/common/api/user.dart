@@ -30,6 +30,8 @@ class UserApi {
   }
 
   /// Profile
+  ///
+  // TODO: Fix getting profile use user token obtained from login
   static Future<UserProfileModel> profile() async {
     var res = await WPHttpService.to.get(
       //'/users/me',
