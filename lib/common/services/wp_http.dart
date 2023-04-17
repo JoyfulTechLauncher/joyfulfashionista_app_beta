@@ -15,11 +15,6 @@ class WPHttpService extends GetxService {
   void onInit() {
     super.onInit();
 
-    // String basicAuth = 'Basic ' +
-    //     base64Encode(utf8.encode(
-    //         'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
-
-
     // 初始 dio
     var options = BaseOptions(
       baseUrl: Constants.wpApiBaseUrl,

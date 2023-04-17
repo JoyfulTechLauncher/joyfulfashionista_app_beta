@@ -2,21 +2,42 @@ import '../index.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+
+String basicAuth = 'Basic ' +
+    base64Encode(utf8.encode(
+        'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
+
 /// 用户 api
 class UserApi {
   /// 注册
+  // static Future<bool> register(UserRegisterReq? req) async {
+  //   var res = await WPHttpService.to.post(
+  //     //'/users/register',
+  //     '/wp-json/wc/v3/customers',
+  //
+  //     data: req,
+  //   );
+  //   if (res.statusCode == 201) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
   static Future<bool> register(UserRegisterReq? req) async {
-    var res = await WPHttpService.to.post(
-      //'/users/register',
-      '/wp-json/wc/v3/customers',
+    final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
 
-      data: req,
-    );
-
+    var res = await http.post(
+          Uri.parse(apiUrl),
+          body: json.encode(req),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': basicAuth
+          }
+          );
     if (res.statusCode == 201) {
-      return true;
-    }
-    return false;
+           return true;
+         }
+         return false;
   }
 
   /// login

@@ -151,12 +151,12 @@ Future<String> login(String email, String password) async {
 }
 
 void main() {
-  String email = 'test@test.com';
-  String username = 'tester_1';
-  String password = '123456';
+  String email = 'Juhao@test.com';
+  String username = 'Juhao';
+  String password = '123456789';
 
   // fetchCustomers(consumer_key, consumer_secret);
-  // registerUser(email, username, password);
+   //registerUser(email, username, password);
   // loginUser(username, password);
   // fetchJwtToken();
   login(username, password);

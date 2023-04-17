@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
+import 'package:joyfulfashionista_app/test.dart';
 
 class RegisterController extends GetxController {
   RegisterController();
@@ -25,10 +26,11 @@ class RegisterController extends GetxController {
   // sign up
   void onSignUp() {
     if ((formKey.currentState as FormState).validate()) {
-      // aes password
-      var password = EncryptUtil().aesEncode(passwordController.text);
-
-      //Verified
+  //     // aes password
+       var password = passwordController.text;
+  //
+  //
+  //    Verified
       Get.offNamed(
         RouteNames.systemRegisterPin,
         arguments: UserRegisterReq(
@@ -40,6 +42,7 @@ class RegisterController extends GetxController {
         ),
       );
     }
+
   }
 
   // Sign in
@@ -53,10 +56,10 @@ class RegisterController extends GetxController {
 
   void onTap() {}
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
   @override
   void onReady() {
