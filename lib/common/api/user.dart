@@ -10,19 +10,6 @@ String basicAuth = 'Basic ' +
 /// 用户 api
 class UserApi {
   /// 注册
-  // static Future<bool> register(UserRegisterReq? req) async {
-  //   var res = await WPHttpService.to.post(
-  //     //'/users/register',
-  //     '/wp-json/wc/v3/customers',
-  //
-  //     data: req,
-  //   );
-  //   if (res.statusCode == 201) {
-  //     return true;
-  //   }
-  //   return false;
-  // }
-
   static Future<bool> register(UserRegisterReq? req) async {
     final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
 
