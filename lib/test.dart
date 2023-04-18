@@ -35,6 +35,7 @@ Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
 
 Future<void> registerUser(String email, String username, String password) async {
   final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
+  final String url = 'https://joyfulteams.shop';
 
   final Map<String, String> userData = {
     'email': email,
@@ -72,7 +73,7 @@ Future<void> registerUser(String email, String username, String password) async 
 Future<int> loginUser(String username, String password) async {
   final credentials = base64Encode(utf8.encode('$username:$password'));
   final response = await http.get(
-    Uri.parse('$apiUrl/json/wp/v2/users/me'), // doesn't work; need to use jwt for authentication
+    Uri.parse('$apiUrl/wp-json/wp/v2/users/me'), // doesn't work; need to use jwt for authentication
     headers: {
       'Authorization': 'Basic $credentials',
     },
@@ -84,6 +85,32 @@ Future<int> loginUser(String username, String password) async {
       print('Status code: ${response.statusCode}');
       print(jsonResponse[0]["id"]);
       return jsonResponse[0]["id"];
+    } else {
+      print('Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception("User not found");
+    }
+  } else {
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    throw Exception("Failed to login user");
+  }
+}
+
+Future<int> profile(String token) async{
+  final response = await http.get(
+      Uri.parse('$apiUrl/wp-json/wp/v2/users/me'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      }
+  );
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+    if (jsonResponse.isNotEmpty) {
+      print('Status code: ${response.statusCode}');
+      print(jsonResponse["id"]);
+      return jsonResponse["id"];
     } else {
       print('Status code: ${response.statusCode}');
       print('Response body: ${response.body}');
@@ -141,27 +168,30 @@ Future<String> login(String email, String password) async {
     final jsonResponse = jsonDecode(response.body);
     String token = jsonResponse['token'];
     print('Status code: ${response.statusCode}');
-    print('token $token');
-    print(jsonResponse);
+    // print('token $token');
+    // print(jsonResponse);
     return token;
   } else {
     print('Status code: ${response.statusCode}');
     throw Exception('Failed to login');
+
   }
 }
 
-void main() {
+void main() async{
   String email = 'Juhao@test.com';
-  String username = 'Juhao';
-  String password = '123456789';
-
+  String username = 'tom';
+  String password = 'QH2*Ip8y9KMnevaq3g1%Y02k';
   // fetchCustomers(consumer_key, consumer_secret);
-   //registerUser(email, username, password);
+  //registerUser(email, username, password);
   // loginUser(username, password);
   // fetchJwtToken();
-  login(username, password);
-}
 
+  String? token =  await login(username, password);
+  print(token);
+  await profile(token);
+
+}
 
 
 
