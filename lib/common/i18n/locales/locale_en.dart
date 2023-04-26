@@ -24,6 +24,7 @@ Map<String, String> localeEn = {
   LocaleKeys.validatorMax: 'Length cannot be greater than @size',
   LocaleKeys.validatorPassword:
       'password must have between @min and @max digits',
+  LocaleKeys.validatorConfirmPassword: 'The two passwords are inconsistent',
 
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: 'Choose Your Desire Product',
@@ -52,6 +53,7 @@ Map<String, String> localeEn = {
   LocaleKeys.registerFormEmail: 'Email',
   LocaleKeys.registerFormPhoneNumber: 'Phone number',
   LocaleKeys.registerFormPassword: 'Password',
+  LocaleKeys.registerFormConfirmPassword: 'Confirm password',
   LocaleKeys.registerFormFirstName: 'First name',
   LocaleKeys.registerFormLastName: 'Last name',
   LocaleKeys.registerHaveAccount: 'Already have an account?',

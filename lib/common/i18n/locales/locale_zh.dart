@@ -23,6 +23,8 @@ Map<String, String> localeZh = {
   LocaleKeys.validatorMin: '长度不能小于 @size',
   LocaleKeys.validatorMax: '长度不能大于 @size',
   LocaleKeys.validatorPassword: '密码长度必须 大于 @min 小于 @max',
+  LocaleKeys.validatorConfirmPassword: '两次输入密码不一致',
+
 
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: '选择您喜欢的产品',
@@ -51,6 +53,7 @@ Map<String, String> localeZh = {
   LocaleKeys.registerFormEmail: '电子邮件',
   LocaleKeys.registerFormPhoneNumber: '电话号码',
   LocaleKeys.registerFormPassword: '密码',
+  LocaleKeys.registerFormConfirmPassword: '确认密码',
   LocaleKeys.registerFormFirstName: '姓',
   LocaleKeys.registerFormLastName: '名',
   LocaleKeys.registerHaveAccount: '你有现成账号?',

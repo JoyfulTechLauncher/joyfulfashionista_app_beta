@@ -21,6 +21,7 @@ class LocaleKeys {
   static const validatorMin = 'validator_min';
   static const validatorMax = 'validator_max';
   static const validatorPassword = 'validator_password';
+  static const validatorConfirmPassword = 'validator_re_password';
 
   // APP 主导航
   static const tabBarHome = 'tab_bar_home';
@@ -54,6 +55,7 @@ class LocaleKeys {
   static const registerFormEmail = 'register_form_email';
   static const registerFormPhoneNumber = 'register_form_phone_number';
   static const registerFormPassword = 'register_form_password';
+  static const registerFormConfirmPassword = 'register_form_repeat_password';
   static const registerFormFirstName = 'register_form_first_name';
   static const registerFormLastName = 'register_form_last_name';
   static const registerHaveAccount = 'register_have_account';

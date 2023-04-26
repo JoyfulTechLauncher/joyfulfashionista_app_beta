@@ -109,6 +109,20 @@ class RegisterPage extends GetView<RegisterController> {
               ),
             ),
           ]),
+        ),
+
+        // repeat password
+        TextFormWidget(
+          controller: controller.repeatPasswordController,
+          labelText: LocaleKeys.registerFormConfirmPassword.tr,
+          isObscure: true,
+          validator: (rePwd) {
+            if (rePwd != controller.passwordController.text) {
+              return LocaleKeys.validatorConfirmPassword.tr;
+            } else {
+              return null;
+            }
+          },
         ).paddingBottom(50),
 
         // sign up button
