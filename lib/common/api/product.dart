@@ -6,7 +6,7 @@ class ProductApi {
   /// 分类列表
   static Future<List<CategoryModel>> categories() async {
     var res = await WPHttpService.to.get(
-      '/products/categories',
+      'wp-json/wc/v3/products/categories',
     );
     List<CategoryModel> categories = [];
     for (var item in res.data) {
@@ -38,7 +38,7 @@ class ProductApi {
   /// 商品列表
   static Future<List<ProductModel>> products(ProductsReq? req) async {
     var res = await WPHttpService.to.get(
-      '/products',
+      'wp-json/wc/v3/products',
       params: req?.toJson(),
     );
 
@@ -52,7 +52,7 @@ class ProductApi {
   /// 商品详情
   static Future<ProductModel> productDetail(int? id) async {
     var res = await WPHttpService.to.get(
-      '/products/$id',
+      'wp-json/wc/v3/products$id',
     );
     return ProductModel.fromJson(res.data);
   }
