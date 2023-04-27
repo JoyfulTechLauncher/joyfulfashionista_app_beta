@@ -1,5 +1,4 @@
 import '../index.dart';
-import 'package:get/get.dart';
 
 /// 商品 api
 class ProductApi {
@@ -38,8 +37,8 @@ class ProductApi {
   /// 商品列表
   static Future<List<ProductModel>> products(ProductsReq? req) async {
     var res = await WPHttpService.to.get(
-      'wp-json/wc/v3/products',
-      params: req?.toJson(),
+        'wp-json/wc/v3/products',
+        params: req?.toJson(),
     );
 
     List<ProductModel> products = [];
