@@ -13,6 +13,8 @@ Map<String, String> localeZh = {
   LocaleKeys.commonSelectTips: '请选择',
   LocaleKeys.commonMessageSuccess: '@method 成功',
   LocaleKeys.commonMessageIncorrect: '@method 不正确',
+  LocaleKeys.commonMessageSwipeLeftToDelete: '左滑删除',
+  LocaleKeys.commonBottomUpload: '上传',
 
   // 样式
   LocaleKeys.stylesTitle: '设置',
@@ -96,6 +98,22 @@ Map<String, String> localeZh = {
   LocaleKeys.gDetailTabReviews: '评论',
   LocaleKeys.gDetailBtnAddCart: '加入购物车',
   LocaleKeys.gDetailBtnBuy: '立刻购买',
+  // 商品-上传
+  LocaleKeys.gProductUpload: '上传商品',
+  LocaleKeys.gProductUploadImages: '商品图片',
+  LocaleKeys.gProductUploadTitle: '商品名称',
+  LocaleKeys.gProductUploadTitleHint: '输入商品名称',
+  LocaleKeys.gProductUploadDescription: '商品描述',
+  LocaleKeys.gProductUploadDescriptionHint: '输入商品描述',
+  LocaleKeys.gProductUploadSize: '商品尺寸',
+  LocaleKeys.gProductUploadSizeHint: '输入商品尺寸',
+  LocaleKeys.gProductUploadTag: '商品标签',
+  LocaleKeys.gProductUploadTagHint: '输入标签，点击右侧加号添加',
+  LocaleKeys.gProductUploadImagesExceedError: '最多上传 @max 张图片',
+  LocaleKeys.gProductUploadImagesEmptyError: '请添加商品图片',
+  LocaleKeys.gProductUploadTagsEmptyError: '请添加商品标签',
+  LocaleKeys.gProductUploadTagExists: '标签已存在',
+
 
   // 搜索
   LocaleKeys.searchPlaceholder: '搜索商品',
@@ -126,6 +144,10 @@ Map<String, String> localeZh = {
   LocaleKeys.myBtnBillingAddress: '账单地址',
   LocaleKeys.myBtnShippingAddress: '配送地址',
   LocaleKeys.myBtnAboutMe: '关于我',
+  LocaleKeys.myFollowers: '关注者',
+  LocaleKeys.mySettled: '加入于',
+  LocaleKeys.myTrading: '交易',
+  LocaleKeys.myRating: '评分',
 
   // 订单配送地址
   LocaleKeys.addressViewTitle: '@type 地址',
@@ -190,6 +212,8 @@ Map<String, String> localeZh = {
   LocaleKeys.orderDetailsPaid: '支付',
   LocaleKeys.orderDetailsShipping: '运费',
   LocaleKeys.orderDetailsDiscount: '折扣',
+  LocaleKeys.orderDelivery: '发货通知',
+  LocaleKeys.orderAddressEdit: '修改地址',
 
   // 拍照、相册
   LocaleKeys.pickerTakeCamera: '拍照',

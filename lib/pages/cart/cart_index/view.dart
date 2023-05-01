@@ -14,17 +14,34 @@ class CartIndexPage extends GetView<CartIndexController> {
     return ListView.separated(
       itemBuilder: (BuildContext context, int index) {
         LineItem item = CartService.to.lineItems[index];
-        return CartItem(
-          lineItem: item,
-          // 是否选中
-          isSelected: controller.isSelected(item.productId!),
-          // 选中回调
-          onSelect: (isSelected) =>
-              controller.onSelect(item.productId!, isSelected),
-          // 修改数量
-          onChangeQuantity: (quantity) =>
-              controller.onChangeQuantity(item, quantity),
-        ).paddingAll(AppSpace.card).card();
+        return Dismissible(
+          direction: DismissDirection.endToStart,
+          key: Key('${item.id}'),
+          onDismissed: (direction) {
+            print("delete product :${item.productId}",);
+            // todo: delete product from cart
+          },
+          background: Container(
+            color: Colors.red,
+            alignment: Alignment.centerRight,
+            padding: EdgeInsets.only(right: 10),
+            child: Text(
+              LocaleKeys.commonMessageSwipeLeftToDelete.tr,
+              style: TextStyle(color: Colors.white),
+            )
+          ),
+          child: CartItem(
+            lineItem: item,
+            // 是否选中
+            isSelected: controller.isSelected(item.productId!),
+            // 选中回调
+            onSelect: (isSelected) =>
+                controller.onSelect(item.productId!, isSelected),
+            // 修改数量
+            onChangeQuantity: (quantity) =>
+                controller.onChangeQuantity(item, quantity),
+          ).paddingAll(AppSpace.card),
+        );
         // return Text(item.product?.name ?? "").paddingAll(AppSpace.card).card();
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -112,7 +129,7 @@ class CartIndexPage extends GetView<CartIndexController> {
       ).paddingAll(AppSpace.page),
 
       // 订单列表
-      _buildOrders().paddingHorizontal(AppSpace.page).expanded(),
+      _buildOrders().expanded(),
 
       // 优惠券
       _buildCoupons().paddingAll(AppSpace.page),

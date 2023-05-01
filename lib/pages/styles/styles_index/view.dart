@@ -53,6 +53,7 @@ class StylesIndexPage extends GetView<StylesIndexController> {
       // language
       ListTile(
         onTap: controller.onLanguageSelected,
+        leading: Icon(Icons.language),
         title: Text(
           "Language : ${ConfigService.to.locale.toLanguageTag()}",
         ),
@@ -61,8 +62,22 @@ class StylesIndexPage extends GetView<StylesIndexController> {
       // theme style
       ListTile(
         onTap: controller.onThemeSelected,
+        leading: Icon(Icons.color_lens),
         title:
             Text("Theme : ${ConfigService.to.isDarkModel ? "Dark" : "Light"}"),
+      ),
+
+      ListTile(
+        onTap: () {
+          Get.toNamed(RouteNames.aboutMe);
+        },
+        leading: Image.asset(
+          "assets/images/app_icon.jpg",
+          width: 20,
+          height: 20,
+          fit: BoxFit.fill,
+        ),
+        title: Text(LocaleKeys.myBtnAboutMe.tr),
       ),
     ]);
   }

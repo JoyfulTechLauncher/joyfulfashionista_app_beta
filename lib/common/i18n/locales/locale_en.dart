@@ -13,6 +13,8 @@ Map<String, String> localeEn = {
   LocaleKeys.commonSelectTips: 'Please select',
   LocaleKeys.commonMessageSuccess: '@method successfully',
   LocaleKeys.commonMessageIncorrect: '@method incorrect',
+  LocaleKeys.commonMessageSwipeLeftToDelete: 'Swipe left to delete',
+  LocaleKeys.commonBottomUpload: 'Upload',
 
   // 样式
   LocaleKeys.stylesTitle: 'Setting',
@@ -80,7 +82,7 @@ Map<String, String> localeEn = {
   LocaleKeys.gHomeSearch: 'Search Product',
   LocaleKeys.gHomeFlashSell: 'New arrivals',
   LocaleKeys.gHomeNewProduct: 'Featured products',
-  LocaleKeys.gHomeMore: 'ALL',
+  LocaleKeys.gHomeMore: 'See All',
 
   // 商品 - 列表
   LocaleKeys.gFlashSellTitle: 'Flash Sell',
@@ -96,6 +98,21 @@ Map<String, String> localeEn = {
   LocaleKeys.gDetailTabReviews: 'Reviews',
   LocaleKeys.gDetailBtnAddCart: 'Add To Cart',
   LocaleKeys.gDetailBtnBuy: 'Buy Now',
+  // 商品-上传
+  LocaleKeys.gProductUpload: 'Product Upload',
+  LocaleKeys.gProductUploadImages: 'Product Images',
+  LocaleKeys.gProductUploadTitle: 'Title',
+  LocaleKeys.gProductUploadTitleHint: 'Please enter title',
+  LocaleKeys.gProductUploadDescription: 'Product Description',
+  LocaleKeys.gProductUploadDescriptionHint: 'Please enter description',
+  LocaleKeys.gProductUploadSize: 'Size',
+  LocaleKeys.gProductUploadSizeHint: 'Please enter size',
+  LocaleKeys.gProductUploadTag: 'Tag',
+  LocaleKeys.gProductUploadTagHint: 'Please enter tag, click "+" to add',
+  LocaleKeys.gProductUploadImagesExceedError: 'Upload up to @max images at most',
+  LocaleKeys.gProductUploadImagesEmptyError: 'Please upload at least one image',
+  LocaleKeys.gProductUploadTagsEmptyError: 'Please enter at least one tag',
+  LocaleKeys.gProductUploadTagExists: 'Tag already exists',
 
   // 搜索
   LocaleKeys.searchPlaceholder: 'Search Product',
@@ -126,6 +143,10 @@ Map<String, String> localeEn = {
   LocaleKeys.myBtnBillingAddress: 'Billing address',
   LocaleKeys.myBtnShippingAddress: 'Shipping address',
   LocaleKeys.myBtnAboutMe: 'About me',
+  LocaleKeys.myFollowers: 'Followers',
+  LocaleKeys.mySettled: 'Settled',
+  LocaleKeys.myTrading: 'Trading',
+  LocaleKeys.myRating: 'Rating',
 
   // 订单配送地址
   LocaleKeys.addressViewTitle: '@type address',
@@ -192,6 +213,8 @@ Map<String, String> localeEn = {
   LocaleKeys.orderDetailsPaid: 'Paid',
   LocaleKeys.orderDetailsShipping: 'Shipping',
   LocaleKeys.orderDetailsDiscount: 'Discount',
+  LocaleKeys.orderDelivery: 'Delivery',
+  LocaleKeys.orderAddressEdit: 'Address',
 
   // 拍照、相册
   LocaleKeys.pickerTakeCamera: 'Take camera',

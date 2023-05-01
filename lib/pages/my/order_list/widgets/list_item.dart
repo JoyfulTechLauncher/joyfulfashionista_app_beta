@@ -38,7 +38,18 @@ class BuildOrderListItem extends StatelessWidget {
 
         // 日期
         TextWidget.body2("${item.dateCreated}".dateFormatOfyyyyMMdd),
+
       ].toRow(),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          // delivery notify
+          ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.doorbell,size: 14,), label: TextWidget.body2(LocaleKeys.orderDelivery.tr)),
+          SizedBox(width: 10.w,),
+          // edit address
+          ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.edit,size: 14,), label: TextWidget.body2(LocaleKeys.orderAddressEdit.tr)),
+        ],
+      )
     ].toColumn().paddingAll(AppSpace.card).card();
   }
 

@@ -9,6 +9,7 @@ class RouteNames {
   static const goodsHome = '/goods_home';
   static const goodsProductDetails = '/goods_product_details';
   static const goodsProductList = '/goods_product_list';
+  static const goodsProductUpload = '/goods_product_upload';
   static const myLanguage = '/my_language';
   static const myMyAddress = '/my_my_address';
   static const myMyIndex = '/my_my_index';
