@@ -48,7 +48,7 @@ class UserService extends GetxService {
     if (token.isEmpty) return;
 
     // TODO: Fix getting profile
-    UserProfileModel result = await UserApi.profile();
+    UserProfileModel result = await UserApi.profile(token);
     _profile(result);
     _isLogin.value = true;
 
