@@ -94,16 +94,18 @@ class _TextFormWidgetState extends State<TextFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onTap: widget.onTap, // 点击事件
-      readOnly: widget.readOnly!, // 是否只读
-      autofocus: widget.autofocus!, // 自动焦点
-      keyboardType: widget.keyboardType, // 输入法类型
-      controller: widget.controller, // 控制器
-      minLines: widget.minLines, // 最大行数
-      maxLines: widget.maxLines, // 最大行数
-      decoration: widget.decoration ?? (widget.isObscure == true
-          ? InputDecoration(
+    final withObscure = TextFormField(
+      onTap: widget.onTap,
+      // 点击事件
+      readOnly: widget.readOnly!,
+      // 是否只读
+      autofocus: widget.autofocus!,
+      // 自动焦点
+      keyboardType: widget.keyboardType,
+      // 输入法类型
+      controller: widget.controller,
+      // 控制器
+      decoration: InputDecoration(
         hintText: widget.hintText, // 提示文字
         // 标题
         labelText: widget.isMustBeEnter == true
@@ -124,13 +126,7 @@ class _TextFormWidgetState extends State<TextFormWidget> {
             color: AppColors.surfaceVariant,
           ),
         ),
-      )
-          : InputDecoration(
-        hintText: widget.hintText,
-        labelText: widget.isMustBeEnter == true
-            ? "* ${widget.labelText}"
-            : widget.labelText,
-      )),
+      ),
       // 校验
       validator: widget.validator,
       // 是否密码
@@ -138,5 +134,31 @@ class _TextFormWidgetState extends State<TextFormWidget> {
       // 输入格式
       inputFormatters: widget.inputFormatters,
     );
+    final withoutObscure = TextFormField(
+      onTap: widget.onTap,
+      // 点击事件
+      readOnly: widget.readOnly!,
+      // 是否只读
+      autofocus: widget.autofocus!,
+      // 自动焦点
+      keyboardType: widget.keyboardType,
+      // 输入法类型
+      controller: widget.controller,
+      // 控制器
+      decoration: widget.decoration ??
+          InputDecoration(
+            hintText: widget.hintText,
+            labelText: widget.isMustBeEnter == true
+                ? "* ${widget.labelText}"
+                : widget.labelText,
+          ),
+      // 校验
+      validator: widget.validator,
+      // 是否密码
+      obscureText: _isShowObscureIcon,
+      // 输入格式
+      inputFormatters: widget.inputFormatters,
+    );
+    return widget.isObscure == true ? withObscure : withoutObscure;
   }
 }
