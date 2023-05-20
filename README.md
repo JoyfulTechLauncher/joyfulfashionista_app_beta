@@ -27,4 +27,6 @@ Developer Doc: https://hackmd.io/@iOA2NMUzS7egrzn9NOP4_g/r11Nz9gEn
 
 Architecture Diagram: https://drive.google.com/file/d/1GB__ENodwQG_5qktCma4obqBYf2xDQ_j/view?usp=share_link
 
+Api Introduction: https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
+
 
