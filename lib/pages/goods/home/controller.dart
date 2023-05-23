@@ -168,6 +168,11 @@ class HomeController extends GetxController {
     update(["home_news_sell"]);
   }
 
+  //分类更新
+  void onCategoryUpdate() async {
+    categoryItems = await ProductApi.categories(); // 获取分类数据
+    update(["home"]);
+  }
   // 下拉刷新
   void onRefresh() async {
     try {
