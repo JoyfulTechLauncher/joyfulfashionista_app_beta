@@ -1,5 +1,7 @@
 # joyfulfashionista_app
 
+Current release Version 2.0.1
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
