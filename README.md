@@ -1,6 +1,6 @@
 # joyfulfashionista_app
 
-A new Flutter project.
+Current release Version 2.0.1
 
 ## Getting Started
 
