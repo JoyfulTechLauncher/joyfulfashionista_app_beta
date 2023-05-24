@@ -1,6 +1,6 @@
 # joyfulfashionista_app
 
-Current release Version 2.2.0
+Current Development Version 2.2.0
 
 ## Getting Started
 
