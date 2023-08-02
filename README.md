@@ -17,7 +17,7 @@ samples, guidance on mobile development, and API references.
 
 ## Documentation
 
-Google Drive: https://drive.google.com/drive/folders/1DLFdnG8Waxmy0bqJHLRolsyWCrR8v7IK?usp=share_link
+Google Drive: https://drive.google.com/drive/folders/1tQWr3RSNDnVh6_8kT9q02h9V2ErS1Gov
 
 Handover Doc: https://docs.google.com/document/d/1YZrJK5xcn4Gp1iEAHEqlIAOfD_yojc8Z/edit?usp=share_link&ouid=106117912773886480299&rtpof=true&sd=true
 
