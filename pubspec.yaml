@@ -42,7 +42,6 @@ dependencies:
   get: 4.6.5
   intl: 0.17.0
   package_info_plus: 1.4.3+1
-  shared_preferences: 2.0.15
   dio: 4.0.6
   flutter_svg: 1.1.4
   badges: ^2.0.2
@@ -73,6 +72,10 @@ dependencies:
   jwt_decoder: ^2.0.0-nullsafety.0
   path_provider: ^2.0.7
   json_annotation: ^4.0.1
+
+  # buggy
+  shared_preferences: ^2.2.0
+
 
 dev_dependencies:
   flutter_test:
