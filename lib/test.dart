@@ -1,15 +1,15 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:jwt_decoder/jwt_decoder.dart';
+// import 'package:jwt_decoder/jwt_decoder.dart';
 
 // "username": "wpausersN4h4Cfb",
 // "password": "Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ"
-const consumer_key = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
-const consumer_secret = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
-const apiUrl = 'https://joyfulteams.shop';
+const consumer_key = 'ck_79e2c4c70e87dac66405834e972982eb7b02feb5';
+const consumer_secret = 'cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f';
+const apiUrl = 'https://teamjoyful.buzz';
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
-        'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
+        '$consumer_key:$consumer_secret'));
 
 Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
   // 生成带有凭据的URL
@@ -34,7 +34,7 @@ Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
 }
 
 Future<void> registerUser(String email, String username, String password) async {
-  final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
+  // final String apiUrl = '$apiUrl/wp-json/wc/v3/customers';
   final String url = 'https://joyfulteams.shop';
 
   final Map<String, String> userData = {
@@ -124,17 +124,19 @@ Future<int> profile(String token) async{
 }
 
 Future<String> fetchJwtToken() async {
-  final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
-  final String username = 'wpausersN4h4Cfb';
-  final String password = 'Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ';
+  // final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
+  final String url = 'https://teamjoyful.buzz/wp-json/jwt-auth/v1/token';
+
+  final String username = 'tester';
+  final String password = '123456';
 
   final Map<String, String> headers = {
-    'Authorization': basicAuth,
-    'Accept': 'application/json',
+    'Connection': 'keep-alive',
+    'Content-Type': 'application/json',
   };
   final Map<String, String> body = {
-    'username': 'wpausersN4h4Cfb',
-    'password': 'Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ',
+    'username': username,
+    'password': password,
   };
 
   final response = await http.post(
@@ -168,8 +170,7 @@ Future<String> login(String email, String password) async {
     final jsonResponse = jsonDecode(response.body);
     String token = jsonResponse['token'];
     print('Status code: ${response.statusCode}');
-    // print('token $token');
-    // print(jsonResponse);
+
     return token;
   } else {
     print('Status code: ${response.statusCode}');
@@ -178,18 +179,71 @@ Future<String> login(String email, String password) async {
   }
 }
 
+Future<void> performLogin() async {
+  final String baseURL = "https://teamjoyful.buzz/wp-json/wc/v3";
+  final String consumerKey = "ck_79e2c4c70e87dac66405834e972982eb7b02feb5";
+  final String consumerSecret = "cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f";
+
+  final response = await http.get(
+    Uri.parse("$baseURL/products"),
+    headers: {
+      'Authorization':
+      'Basic ' + base64Encode(utf8.encode('$consumerKey:$consumerSecret')),
+    },
+  );
+
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body);
+    print(data);
+  } else {
+    print('Request failed with status: ${response.statusCode}');
+  }
+}
+
+// final String baseURL = "https://teamjoyful.buzz/wp-json/wc/v3";
+// final String consumerKey = "ck_79e2c4c70e87dac66405834e972982eb7b02feb5";
+// final String consumerSecret = "cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f";
+
+Future<int> userLogin(String username, String password) async {
+  final String baseURL = "https://teamjoyful.buzz/wp-json/wc/v3";
+  final String consumerKey = "ck_79e2c4c70e87dac66405834e972982eb7b02feb5";
+  final String consumerSecret = "cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f";
+
+  final response = await http.post(
+    Uri.parse("$baseURL/customers"),
+    headers: {
+      'Authorization':
+      'Basic ' + base64Encode(utf8.encode('$consumerKey:$consumerSecret')),
+      'Content-Type': 'application/json',
+    },
+    body: json.encode({
+      "username": username,
+      "password": password,
+    }),
+  );
+
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body);
+    print("Login successful: $data");
+  } else {
+    print('Login failed with status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+  }
+
+  return response.statusCode;
+}
+
 void main() async{
-  String email = 'Juhao@test.com';
-  String username = 'tom';
-  String password = 'QH2*Ip8y9KMnevaq3g1%Y02k';
+  // String email = 'tester';
+  String username = 'johnbdoe@google.com';
+  String password = '123456';
   // fetchCustomers(consumer_key, consumer_secret);
   //registerUser(email, username, password);
   // loginUser(username, password);
   // fetchJwtToken();
 
-  String? token =  await login(username, password);
-  print(token);
-  await profile(token);
+  fetchJwtToken();
+
 
 }
 

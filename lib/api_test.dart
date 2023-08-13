@@ -1,13 +1,13 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'common/index.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
+// import 'package:jwt_decoder/jwt_decoder.dart';
 
 // "username": "wpausersN4h4Cfb",
 // "password": "Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ"
 const consumer_key = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
 const consumer_secret = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
-const apiUrl = 'https://joyfulteams.shop';
+const apiUrl = 'https://104.156.232.116';
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
@@ -33,6 +33,7 @@ Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
   } catch (e) {
   }
 }
+
 
 Future<void> registerUser(String email, String username, String password) async {
   final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
@@ -124,7 +125,7 @@ Future<int> getSelfId(String token) async{
   }
 }
 
-Future<void> profile(String token, int id) async{
+Future<void> profile(String token, int id) async {
 
   final response = await http.get(
       Uri.parse('$apiUrl/wp-json/wc/v3/customers/$id'),
