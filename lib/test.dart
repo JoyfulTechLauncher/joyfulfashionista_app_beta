@@ -1,23 +1,27 @@
-// import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-// import 'package:shared_preferences/shared_preferences.dart' as sp;
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'dart:convert';
 
 // "username": "wpausersN4h4Cfb",
 // "password": "Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ"
 const consumer_key = 'ck_79e2c4c70e87dac66405834e972982eb7b02feb5';
 const consumer_secret = 'cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f';
-const apiUrl = 'https://teamjoyful.buzz';
+final String baseUrl = 'https://teamjoyful.buzz';
+
+final storage = new FlutterSecureStorage();
 
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         '$consumer_key:$consumer_secret'));
-Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
 
+Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
   // 生成带有凭据的URL
   final String urlWithCredentials =
-      apiUrl + '/wp-json/wc/v3/customers'
+      baseUrl + '/wp-json/wc/v3/customers'
           + '?consumer_key=$consumerKey&consumer_secret=$consumerSecret';
 
   try {
@@ -48,7 +52,7 @@ Future<void> registerUser(String email, String username, String password) async 
 
   try {
     final response = await http.post(
-      Uri.parse(apiUrl),
+      Uri.parse(baseUrl),
       body: json.encode(userData),
       headers: {
         'Content-Type': 'application/json',
@@ -72,37 +76,9 @@ Future<void> registerUser(String email, String username, String password) async 
   }
 }
 
-// ------------------ login user ------------------ //
-Future<int> loginUser(String username, String password) async {
-  final credentials = base64Encode(utf8.encode('$username:$password'));
-  final response = await http.get(
-    Uri.parse('$apiUrl/wp-json/wp/v2/users/me'), // doesn't work; need to use jwt for authentication
-    headers: {
-      'Authorization': 'Basic $credentials',
-    },
-  );
-
-  if (response.statusCode == 200) {
-    final jsonResponse = json.decode(response.body);
-    if (jsonResponse.isNotEmpty) {
-      print('Status code: ${response.statusCode}');
-      print(jsonResponse[0]["id"]);
-      return jsonResponse[0]["id"];
-    } else {
-      print('Status code: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      throw Exception("User not found");
-    }
-  } else {
-    print('Status code: ${response.statusCode}');
-    print('Response body: ${response.body}');
-    throw Exception("Failed to login user");
-  }
-}
-
 Future<int> profile(String token) async{
   final response = await http.get(
-      Uri.parse('$apiUrl/wp-json/wp/v2/users/me'),
+      Uri.parse('$baseUrl/wp-json/wp/v2/users/me'),
       headers: {
         'Authorization': 'Bearer $token',
       }
@@ -126,17 +102,14 @@ Future<int> profile(String token) async{
   }
 }
 
-Future<String> fetchJwtToken() async {
-  // final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
-  final String url = 'https://teamjoyful.buzz/wp-json/jwt-auth/v1/token';
-
-  final String username = 'tester';
-  final String password = '123456';
+Future<String> fetchJwtToken(String username, String password) async {
+  final String url = '$baseUrl/wp-json/jwt-auth/v1/token';
 
   final Map<String, String> headers = {
     'Connection': 'keep-alive',
     'Content-Type': 'application/json',
   };
+
   final Map<String, String> body = {
     'username': username,
     'password': password,
@@ -147,10 +120,6 @@ Future<String> fetchJwtToken() async {
     headers: headers,
     body: json.encode(body),
   );
-
-  // sp.SharedPreferences prefs = await sp.SharedPreferences.getInstance();
-  // prefs.setString('jwt_token', json.decode(response.body)['token']);
-  // print(prefs.getString('jwt_token'));
 
   if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body);
@@ -164,38 +133,67 @@ Future<String> fetchJwtToken() async {
   }
 }
 
-Future<String> login(String email, String password) async {
+Future<bool> validateToken(String token) async {
+  String url = '$baseUrl/wp-json/jwt-auth/v1/token/validate';
+
+  final Map<String, String> headers = {
+    'Authorization': 'Bearer $token',
+    'Connection': 'keep-alive',
+    'Content-Type': 'application/json',
+  };
+
   final response = await http.post(
-    Uri.parse('https://joyfulteams.shop/wp-json/jwt-auth/v1/token'),
-    body: {
-      'username': email,
-      'password': password,
-    },
-  );
+      Uri.parse(url),
+      headers: headers);
 
-  if (response.statusCode == 200) {
-    final jsonResponse = jsonDecode(response.body);
-    String token = jsonResponse['token'];
-    print('Status code: ${response.statusCode}');
-
-    return token;
-  } else {
-    print('Status code: ${response.statusCode}');
-    throw Exception('Failed to login');
-
+  try {
+    if (response.statusCode == 200) {
+      print('Token validated successfully');
+      print('Response: ${response.body}');
+      return true;
+    } else {
+      print('Error: ${response.statusCode}');
+      throw Exception('Failed to validate JWT token');
+    }
+  } catch (e) {
+    print('Error: $e');
+    throw Exception('Failed to validate JWT token');
   }
 }
 
-void main() async{
-  // String email = 'tester';
-  String username = 'johnbdoe@google.com';
-  String password = '123456';
-  // fetchCustomers(consumer_key, consumer_secret);
-  //registerUser(email, username, password);
-  // loginUser(username, password);
-  // fetchJwtToken();
+Future<void> storeJwtToken(String username, String userToken) async {
+  await storage.write(key: username, value: userToken);
+}
 
-  fetchJwtToken();
+Future<String?> getToken(String username) async {
+  return await storage.read(key: username);
+}
+
+Future<bool> deleteToken(String username) async {
+  await storage.delete(key: username);
+  return true;
+}
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  String username = 'tester';
+  String password = '123456';
+  // fetchJwtToken(username, password);
+  //
+  // storeJwtToken("123", "12345");
+  // storeJwtToken("123", "99999");
+  //
+  // storeJwtToken("234", "23456");
+  //
+  //
+  // // deleteToken("123");
+  // // deleteToken("234");
+  // String? token1 = await getToken("123");
+  // String? token2 = await getToken("234");
+  // print(token1);
+  // print(token2);
+  //
+  validateToken(await fetchJwtToken(username, password));
 }
 
 
