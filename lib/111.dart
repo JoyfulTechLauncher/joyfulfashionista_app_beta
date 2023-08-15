@@ -1,7 +1,8 @@
-// import 'package:flutter/widgets.dart';
+import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-// import 'package:shared_preferences/shared_preferences.dart' as sp;
-//import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'dart:convert';
 
 // "username": "wpausersN4h4Cfb",
@@ -126,12 +127,9 @@ Future<int> profile(String token) async{
   }
 }
 
-Future<String> fetchJwtToken() async {
-  // final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
-  final String url = 'https://teamjoyful.buzz/wp-json/jwt-auth/v1/token';
 
-  final String username = 'tester';
-  final String password = '123456';
+Future<String> fetchJwtToken(String username, String password) async {
+  final String url = 'https://teamjoyful.buzz/wp-json/jwt-auth/v1/token';
 
   final Map<String, String> headers = {
     'Connection': 'keep-alive',
@@ -148,15 +146,26 @@ Future<String> fetchJwtToken() async {
     body: json.encode(body),
   );
 
-  // sp.SharedPreferences prefs = await sp.SharedPreferences.getInstance();
-  // prefs.setString('jwt_token', json.decode(response.body)['token']);
-  // print(prefs.getString('jwt_token'));
-
   if (response.statusCode == 200) {
     final jsonResponse = json.decode(response.body);
     print('Status code: ${response.statusCode}');
     print('Response body: ${response.body}');
-    return jsonResponse['token'];
+
+    // Check if local token is expired or not available
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? storedToken = prefs.getString('jwt_token');
+    final String? storedExpiry = prefs.getString('jwt_token_expiry');
+
+    if (storedToken == null || storedExpiry == null || DateTime.parse(storedExpiry).isBefore(DateTime.now())) {
+      // Store the new token and its expiry
+      prefs.setString('jwt_token', jsonResponse['token']);
+      final DateTime newExpiry = DateTime.now().add(Duration(hours: 1)); // Assuming token expires in 1 hour
+      prefs.setString('jwt_token_expiry', newExpiry.toIso8601String());
+
+      return jsonResponse['token'];
+    } else {
+      return storedToken;
+    }
   } else {
     print('Status code: ${response.statusCode}');
     print('Response body: ${response.body}');
@@ -188,14 +197,29 @@ Future<String> login(String email, String password) async {
 
 void main() async{
   // String email = 'tester';
-  String username = 'johnbdoe@google.com';
+  //String username = 'johnbdoe@google.com';
+
+  WidgetsFlutterBinding.ensureInitialized();
+  String username='tester';
   String password = '123456';
   // fetchCustomers(consumer_key, consumer_secret);
   //registerUser(email, username, password);
   // loginUser(username, password);
-  // fetchJwtToken();
 
-  fetchJwtToken();
+  //fetchJwtToken(username, password);
+
+
+  final String expiredToken = 'expired_token'; // 模拟一个过期的 token
+
+  // 模拟 SharedPreferences 返回过期的 token
+  SharedPreferences.setMockInitialValues({'jwt_token': expiredToken, 'jwt_token_expiry': '2000-01-01T00:00:00Z'});
+  final String newToken = await fetchJwtToken('tester', '123456'); // 替换为您的实际用户名和密码
+  if (newToken != expiredToken) {
+    print('New token obtained successfully!\n');
+  } else {
+    print('Token retrieval failed or token is still expired');
+  }
+
 }
 
 
