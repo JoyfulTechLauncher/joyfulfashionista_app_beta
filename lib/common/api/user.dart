@@ -4,14 +4,14 @@ import 'dart:convert';
 
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
-        'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
+        'ck_79e2c4c70e87dac66405834e972982eb7b02feb5:cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f'));
 
 /// 用户 api
 class UserApi {
 
   /// 注册
   static Future<bool> register(UserRegisterReq? req) async {
-    final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
+    final String apiUrl = 'https://teamjoyful.buzz/wp-json/wc/v3/customers';
 
     var res = await http.post(
           Uri.parse(apiUrl),
@@ -40,7 +40,7 @@ class UserApi {
   static Future<String> login(String email, String password) async {
 
     final response = await http.post(
-      Uri.parse('https://joyfulteams.shop/wp-json/jwt-auth/v1/token'),
+      Uri.parse('https://teamjoyful.buzz/wp-json/jwt-auth/v1/token'),
       body: {
         'username': email,
         'password': password,
