@@ -1,13 +1,15 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'common/index.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
+// import 'package:shared_preferences/shared_preferences.dart' as sp;
+
+// import 'package:jwt_decoder/jwt_decoder.dart';
 
 // "username": "wpausersN4h4Cfb",
 // "password": "Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ"
 const consumer_key = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
 const consumer_secret = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
-const apiUrl = 'https://joyfulteams.shop';
+const apiUrl = 'https://104.156.232.116';
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d:cs_1fcc12c1ff0aefe208147731cb51925744e089c2'));
@@ -33,6 +35,7 @@ Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
   } catch (e) {
   }
 }
+
 
 Future<void> registerUser(String email, String username, String password) async {
   final String apiUrl = 'https://joyfulteams.shop/wp-json/wc/v3/customers';
@@ -124,7 +127,7 @@ Future<int> getSelfId(String token) async{
   }
 }
 
-Future<void> profile(String token, int id) async{
+Future<void> profile(String token, int id) async {
 
   final response = await http.get(
       Uri.parse('$apiUrl/wp-json/wc/v3/customers/$id'),
@@ -152,38 +155,6 @@ Future<void> profile(String token, int id) async{
   }
 }
 
-Future<String> fetchJwtToken() async {
-  final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
-  final String username = 'wpausersN4h4Cfb';
-  final String password = 'Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ';
-
-  final Map<String, String> headers = {
-    'Authorization': basicAuth,
-    'Accept': 'application/json',
-  };
-  final Map<String, String> body = {
-    'username': 'wpausersN4h4Cfb',
-    'password': 'Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ',
-  };
-
-  final response = await http.post(
-    Uri.parse(url),
-    headers: headers,
-    body: json.encode(body),
-  );
-
-  if (response.statusCode == 200) {
-    final jsonResponse = json.decode(response.body);
-    print('Status code: ${response.statusCode}');
-    print('Response body: ${response.body}');
-    return jsonResponse['token'];
-  } else {
-    print('Status code: ${response.statusCode}');
-    print('Response body: ${response.body}');
-    throw Exception('Failed to fetch JWT token');
-  }
-}
-
 Future<String> login(String email, String password) async {
   final response = await http.post(
     Uri.parse('https://joyfulteams.shop/wp-json/jwt-auth/v1/token'),
@@ -206,6 +177,46 @@ Future<String> login(String email, String password) async {
 
   }
 }
+
+Future<String> fetchJwtToken() async {
+  // final String url = 'https://joyfulteams.shop/wp-json/jwt-auth/v1/token';
+  final String url = 'https://teamjoyful.buzz/wp-json/jwt-auth/v1/token';
+
+  final String username = 'tester';
+  final String password = '123456';
+
+  final Map<String, String> headers = {
+    'Connection': 'keep-alive',
+    'Content-Type': 'application/json',
+  };
+  final Map<String, String> body = {
+    'username': username,
+    'password': password,
+  };
+
+  final response = await http.post(
+    Uri.parse(url),
+    headers: headers,
+    body: json.encode(body),
+  );
+
+  // sp.SharedPreferences prefs = await sp.SharedPreferences.getInstance();
+  // prefs.setString('jwt_token', json.decode(response.body)['token']);
+  // print(prefs.getString('jwt_token'));
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    return jsonResponse['token'];
+  } else {
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    throw Exception('Failed to fetch JWT token');
+  }
+}
+
+
 class UserApi {
   /// 注册
   static Future<bool> register(UserRegisterReq? req) async {
@@ -356,17 +367,17 @@ class UserApi {
 
 void main() async{
   String email = 'tom@tom.com';
-  String username = 'tom';
+  String username = 'tester';
   String password = '123456';
 /// Aa1234567890--
-  String? token =  await UserApi.login(username, password);
-  print(token);
+//   String? token =  await UserApi.login(username, password);
+//   print(token);
 
   // int? id = await getSelfId(token);
   // // print(id);
   //
   // await profile(token, id);
-
+  fetchJwtToken();
 }
 
 
