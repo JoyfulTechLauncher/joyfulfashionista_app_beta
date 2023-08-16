@@ -6,12 +6,16 @@ String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         'ck_79e2c4c70e87dac66405834e972982eb7b02feb5:cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f'));
 
+
 /// 用户 api
 class UserApi {
 
   /// 注册
   static Future<bool> register(UserRegisterReq? req) async {
     final String apiUrl = 'https://teamjoyful.buzz/wp-json/wc/v3/customers';
+
+    String requestBody = json.encode(req);
+    print('Request Body: $requestBody');
 
     var res = await http.post(
           Uri.parse(apiUrl),
@@ -21,6 +25,9 @@ class UserApi {
             'Authorization': basicAuth
           }
           );
+
+    print('Response Status: ${res.statusCode}');
+    print('Response Body: ${res.body}');
     if (res.statusCode == 201) {
            return true;
          }
