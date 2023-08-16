@@ -18,25 +18,23 @@ String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         '$consumer_key:$consumer_secret'));
 
-Future<void> fetchCustomers(String consumerKey, String consumerSecret) async {
-  // 生成带有凭据的URL
-  final String urlWithCredentials =
-      baseUrl + '/wp-json/wc/v3/customers'
-          + '?consumer_key=$consumerKey&consumer_secret=$consumerSecret';
+Future<bool> login(String username, String password) async {
 
-  try {
-    final response = await http.get(
-        Uri.parse(urlWithCredentials)
-    );
-
-    if (response.statusCode == 200) {
-      print("succeeded to send request");
-      print(response.body.toString());
-    } else {
-      print("failed to send request");
-      print(response.toString());
+  if  (await storage.containsKey(key: username)) {
+    String? token = await storage.read(key: username);
+    if (await validateToken(token)) {
+      print('Token is valid');
+      return true;
     }
-  } catch (e) {
+    else {
+      String? token = await fetchJwtToken(username, password);
+      storeJwtToken(username, token);
+      return true;
+    }
+
+  }
+  else {
+    return false;
   }
 }
 
@@ -133,7 +131,7 @@ Future<String> fetchJwtToken(String username, String password) async {
   }
 }
 
-Future<bool> validateToken(String token) async {
+Future<bool> validateToken(String? token) async {
   String url = '$baseUrl/wp-json/jwt-auth/v1/token/validate';
 
   final Map<String, String> headers = {
@@ -158,6 +156,36 @@ Future<bool> validateToken(String token) async {
   } catch (e) {
     print('Error: $e');
     throw Exception('Failed to validate JWT token');
+  }
+}
+
+/// Checks if a user exists
+Future<bool> userExists(String username) async {
+  final String url = '$baseUrl/wp-json/wp/v2/users?search=$username';
+
+  // use tester's token as it has administrative privileges
+  String? token = await fetchJwtToken('tester', '123456');
+
+  final response = await http.get(
+    Uri.parse(url),
+    headers: {
+      'Authorization': 'Bearer $token',
+    }
+  );
+
+  if (response.statusCode == 200) {
+    final jsonResponse = json.decode(response.body);
+    if (jsonResponse.isNotEmpty) {
+      print('user exists');
+      return true;
+    } else {
+      print('user does not exist');
+      return false;
+    }
+  } else {
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    throw Exception("Failed to login user");
   }
 }
 
@@ -193,8 +221,10 @@ void main() async{
   // print(token1);
   // print(token2);
   //
-  validateToken(await fetchJwtToken(username, password));
+  // validateToken(await fetchJwtToken(username, password));
+  userExists('tester');
 }
+
 
 
 
