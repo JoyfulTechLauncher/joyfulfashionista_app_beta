@@ -164,7 +164,13 @@ Future<bool> userExists(String username) async {
   final String url = '$baseUrl/wp-json/wp/v2/users?search=$username';
 
   // use tester's token as it has administrative privileges
-  String? token = await fetchJwtToken('tester', '123456');
+  // check if token has expired
+  String? token = await getToken('tester');
+
+  if (!await validateToken(token)) {
+    // get a new token if the old one has expired
+    String? token = await fetchJwtToken('tester', '123456');
+  }
 
   final response = await http.get(
     Uri.parse(url),
@@ -185,7 +191,7 @@ Future<bool> userExists(String username) async {
   } else {
     print('Status code: ${response.statusCode}');
     print('Response body: ${response.body}');
-    throw Exception("Failed to login user");
+    return false;
   }
 }
 
@@ -200,7 +206,7 @@ Future<String?> getToken(String username) async {
 Future<bool> deleteToken(String username) async {
   await storage.delete(key: username);
   return true;
-}
+}W
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -221,8 +227,8 @@ void main() async{
   // print(token1);
   // print(token2);
   //
-  // validateToken(await fetchJwtToken(username, password));
-  userExists('tester');
+  validateToken(await fetchJwtToken(username, password));
+  // userExists('tester');
 }
 
 
