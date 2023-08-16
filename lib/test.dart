@@ -151,7 +151,8 @@ Future<bool> validateToken(String? token) async {
       return true;
     } else {
       print('Error: ${response.statusCode}');
-      throw Exception('Failed to validate JWT token');
+      return false;
+      // throw Exception('Failed to validate JWT token');
     }
   } catch (e) {
     print('Error: $e');
@@ -166,10 +167,16 @@ Future<bool> userExists(String username) async {
   // use tester's token as it has administrative privileges
   // check if token has expired
   String? token = await getToken('tester');
+  print('++++++++++++++++++++++++++++++++++');
+  print(token);
+
 
   if (!await validateToken(token)) {
     // get a new token if the old one has expired
-    String? token = await fetchJwtToken('tester', '123456');
+    token = await fetchJwtToken('tester', '123456');
+    storage.write(key: 'tester', value: token);
+    print('=================================');
+    print(token);
   }
 
   final response = await http.get(
@@ -206,7 +213,7 @@ Future<String?> getToken(String username) async {
 Future<bool> deleteToken(String username) async {
   await storage.delete(key: username);
   return true;
-}W
+}
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -227,8 +234,8 @@ void main() async{
   // print(token1);
   // print(token2);
   //
-  validateToken(await fetchJwtToken(username, password));
-  // userExists('tester');
+  // validateToken(await fetchJwtToken(username, password));
+  userExists('tester');
 }
 
 
