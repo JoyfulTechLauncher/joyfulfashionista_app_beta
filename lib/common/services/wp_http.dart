@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide Response, FormData, MultipartFile;
-
 import '../index.dart';
 
 class WPHttpService extends GetxService {
@@ -20,8 +18,12 @@ class WPHttpService extends GetxService {
       baseUrl: Constants.wpApiBaseUrl,
       connectTimeout: 10000, // 10秒
       receiveTimeout: 5000, // 5秒
-      headers: {},
-      contentType: 'application/json; charset=utf-8',
+      headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.'
+          'eyJpc3MiOiJodHRwczovL2pveWZ1bHRlYW1zLnNob3AiLCJpYXQiOjE2ODI'
+          '1NjE5NDUsIm5iZiI6MTY4MjU2MTk0NSwiZXhwIjoxNjgzMTY2NzQ1LCJkYX'
+          'RhIjp7InVzZXIiOnsiaWQiOiIxIn19fQ.9dxABuA1IjOLBnxUIYZGQsDDw7'
+          'FaihZSmYnBAem2BCs'}, // 添加JWT auth token凭证
+      contentType: 'application/json',
       responseType: ResponseType.json,
     );
     _dio = Dio(options);

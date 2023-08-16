@@ -38,12 +38,10 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-
   # getx 框架
   get: 4.6.5
   intl: 0.17.0
   package_info_plus: 1.4.3+1
-  shared_preferences: 2.0.15
   dio: 4.0.6
   flutter_svg: 1.1.4
   badges: ^2.0.2
@@ -68,12 +66,22 @@ dependencies:
   # 媒体选择
   wechat_assets_picker: 8.0.2
   wechat_camera_picker: 3.5.0+1
-
+  # for an onclick event to go to a hyperlink
   url_launcher: 6.1.10
+  http: ^0.13.3
+  jwt_decoder: ^2.0.0-nullsafety.0
+  path_provider: ^2.0.7
+  json_annotation: ^4.0.1
+
+  shared_preferences: ^2.2.0
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  build_runner: ^2.0.4
+  json_serializable: ^4.1.2
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

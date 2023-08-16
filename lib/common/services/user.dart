@@ -46,7 +46,9 @@ class UserService extends GetxService {
   /// 获取用户 profile
   Future<void> getProfile() async {
     if (token.isEmpty) return;
-    UserProfileModel result = await UserApi.profile();
+
+    // TODO: Fix getting profile
+    UserProfileModel result = await UserApi.profile(token);
     _profile(result);
     _isLogin.value = true;
 
