@@ -151,7 +151,8 @@ Future<bool> validateToken(String? token) async {
       return true;
     } else {
       print('Error: ${response.statusCode}');
-      throw Exception('Failed to validate JWT token');
+      return false;
+      // throw Exception('Failed to validate JWT token');
     }
   } catch (e) {
     print('Error: $e');
@@ -164,7 +165,19 @@ Future<bool> userExists(String username) async {
   final String url = '$baseUrl/wp-json/wp/v2/users?search=$username';
 
   // use tester's token as it has administrative privileges
-  String? token = await fetchJwtToken('tester', '123456');
+  // check if token has expired
+  String? token = await getToken('tester');
+  print('++++++++++++++++++++++++++++++++++');
+  print(token);
+
+
+  if (!await validateToken(token)) {
+    // get a new token if the old one has expired
+    token = await fetchJwtToken('tester', '123456');
+    storage.write(key: 'tester', value: token);
+    print('=================================');
+    print(token);
+  }
 
   final response = await http.get(
     Uri.parse(url),
@@ -185,7 +198,7 @@ Future<bool> userExists(String username) async {
   } else {
     print('Status code: ${response.statusCode}');
     print('Response body: ${response.body}');
-    throw Exception("Failed to login user");
+    return false;
   }
 }
 
