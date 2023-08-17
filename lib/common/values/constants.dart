@@ -1,7 +1,7 @@
 /// 常量
 class Constants {
   // wp Server address (Testing)
-  static const wpApiBaseUrl = 'https://joyfulteams.shop';
+  static const wpApiBaseUrl = 'https://teamjoyful.buzz';
   static const wcEndpointBaseUrl = '/wp-json/wc/v3';
   static const jwtEndpointUrl = '/jwt-auth/v1/token';
 

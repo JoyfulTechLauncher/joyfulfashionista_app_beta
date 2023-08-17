@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:get/get.dart';
-
 import '../index.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'dart:convert';
 
 /// 用户服务
 class UserService extends GetxService {
@@ -9,7 +12,7 @@ class UserService extends GetxService {
 
   // 是否登录
   final _isLogin = false.obs;
-
+  final String baseUrl = Constants.wpApiBaseUrl;
   // 用户令牌
   String token = '';
 
@@ -36,6 +39,109 @@ class UserService extends GetxService {
       _profile(UserProfileModel.fromJson(jsonDecode(profileOffline)));
     }
   }
+
+  Future<String> fetchJwtToken(String username, String password) async {
+    final String url = '$baseUrl/wp-json/jwt-auth/v1/token';
+
+    final Map<String, String> headers = {
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+    };
+
+    final Map<String, String> body = {
+      'username': username,
+      'password': password,
+    };
+
+    final response = await http.post(
+      Uri.parse(url),
+      headers: headers,
+      body: json.encode(body),
+    );
+
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      print('Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      return jsonResponse['token'];
+    } else {
+      print('Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception('Failed to fetch JWT token');
+    }
+  }
+
+  Future<bool> validateToken(String? token) async {
+    String url = '$baseUrl/wp-json/jwt-auth/v1/token/validate';
+
+    final Map<String, String> headers = {
+      'Authorization': 'Bearer $token',
+      'Connection': 'keep-alive',
+      'Content-Type': 'application/json',
+    };
+
+    final response = await http.post(
+        Uri.parse(url),
+        headers: headers);
+
+    try {
+      if (response.statusCode == 200) {
+        print('Token validated successfully');
+        print('Response: ${response.body}');
+        return true;
+      } else {
+        print('Error: ${response.statusCode}');
+        return false;
+      }
+    } catch (e) {
+      print('Error: $e');
+      throw Exception('Failed to validate JWT token');
+    }
+  }
+
+  /// Checks if a user exists
+  Future<bool> userExists(String username) async {
+    final String url = '$baseUrl/wp-json/wp/v2/users?search=$username';
+
+    // use tester's token as it has administrative privileges
+    String? token = await fetchJwtToken('tester', '123456');
+
+    final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
+    );
+
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      if (jsonResponse.isNotEmpty) {
+        print('user exists');
+        return true;
+      } else {
+        print('user does not exist');
+        return false;
+      }
+    } else {
+      print('Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception("Failed to login user");
+    }
+  }
+
+  Future<void> storeToken(String username, String userToken) async {
+    await Storage().secureStorage.write(key: username, value: userToken);
+  }
+
+  Future<String?> getToken(String username) async {
+    return await Storage().secureStorage.read(key: username);
+  }
+
+  Future<bool> deleteToken(String username) async {
+    await Storage().secureStorage.delete(key: username);
+    return true;
+  }
+
 
   /// 设置令牌
   Future<void> setToken(String value) async {

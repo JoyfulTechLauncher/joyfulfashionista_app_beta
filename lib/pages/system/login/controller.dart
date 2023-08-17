@@ -10,7 +10,7 @@ class LoginController extends GetxController {
 
   /// Define the input controller
   TextEditingController userNameController =
-      TextEditingController(text: "tester_1");
+      TextEditingController(text: "tester");
   TextEditingController passwordController =
       TextEditingController(text: "123456");
 
@@ -30,12 +30,29 @@ class LoginController extends GetxController {
         //   username: userNameController.text,
         //   password: passwordController.text
         // ));
+        String? username = userNameController.text;
+        String? password = passwordController.text;
+        bool userExists = await UserService.to.userExists(username);
+
+        if (!userExists) {
+          Loading.dismiss();
+          return;
+        }
+
+        // String? token = await UserService.to.getToken(username);
+        // bool validateResult = await UserService.to.validateToken(token);
+
+        // if (validateResult) {
+        //   Loading.success();
+        //   Get.back(result: true);
+        //   return;
+        // }
 
         final response = await http.post(
-          Uri.parse('https://joyfulteams.shop/wp-json/jwt-auth/v1/token'),
+          Uri.parse(Constants.wpApiBaseUrl + '/wp-json/jwt-auth/v1/token'),
           body: {
-            'username': userNameController.text,
-            'password': passwordController.text
+            'username': username,
+            'password': password
           },
         );
 
@@ -43,15 +60,18 @@ class LoginController extends GetxController {
           final jsonResponse = jsonDecode(response.body);
           String userToken = jsonResponse['token'];
 
-          await UserService.to.setToken(userToken);
-          await UserService.to.getProfile();
+          await UserService.to.storeToken(username, userToken);
+          // TODO: fix excessive loading time if user profile is not cached
+          // TODO: fix getProfile() not working
+          // await UserService.to.getProfile();
 
           Loading.success();
           Get.back(result: true);
+          return;
         }
         else {
           print('Status code: ${response.statusCode}');
-          throw Exception('Failed to login');
+          Loading.error("Login failed");
         }
 
 
@@ -71,8 +91,12 @@ class LoginController extends GetxController {
       // } finally {
       //   Loading.dismiss();
       // }
+
     }
   }
+
+
+
 
   /// Sign Up
   void onSignUp() {

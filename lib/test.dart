@@ -151,7 +151,7 @@ Future<bool> validateToken(String? token) async {
       return true;
     } else {
       print('Error: ${response.statusCode}');
-      throw Exception('Failed to validate JWT token');
+      return false;
     }
   } catch (e) {
     print('Error: $e');

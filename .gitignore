@@ -38,7 +38,6 @@ doc/api/
 **/linux/**/generated_plugins.cmake
 **/windows/**/generated_plugins.cmake
 **/ios/Podfile.lock
-**android/local.properties
 
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -78,7 +77,5 @@ doc/api/
 # macOS
 **/macos/Flutter/GeneratedPluginRegistrant.swift
 
-
-*.properties
 *generated
 *local
