@@ -72,6 +72,8 @@ class UserService extends GetxService {
     token = '';
   }
 
+
+
   /// 检查是否登录
   Future<bool> checkIsLogin() async {
     if (_isLogin.value == false) {
