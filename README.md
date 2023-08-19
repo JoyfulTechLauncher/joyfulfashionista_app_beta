@@ -1,3 +1,6 @@
+# Project Introduction
+According to statistics, nearly 100 million tons of textiles are discarded or wasted every year, especially clothing, which causes great damage to the environment and takes up a lot of land resources to dispose of them. The Joyful Fashionista seeks to encourage sustainability in fashion by creating an online site for buying and selling second-hand clothing. In essence, it is like a giant op shop. One of the key issues to overcoming the 'valley of death' with this project is encouraging people to list items for sale on the platform.
+
 # joyfulfashionista_app
 
 Current Development Version 2.2.0
