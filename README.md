@@ -24,7 +24,7 @@ samples, guidance on mobile development, and API references.
 
 * [Google Drive](https://drive.google.com/drive/folders/1tQWr3RSNDnVh6_8kT9q02h9V2ErS1Gov)
 
-* [Handover Doc](https://docs.google.com/document/d/1YZrJK5xcn4Gp1iEAHEqlIAOfD_yojc8Z/edit?usp=share_link&ouid=106117912773886480299&rtpof=true&sd=true](https://hackmd.io/EanODv0tR-aWW4ldTdBhUw)
+* [Handover Doc](https://docs.google.com/document/d/1YZrJK5xcn4Gp1iEAHEqlIAOfD_yojc8Z/edit)
 
 * [Code Specification](https://drive.google.com/file/d/1PMfqL7QbGsSwZDLw5jllw8H9VI1s-rFg/view?usp=share_link)
 
