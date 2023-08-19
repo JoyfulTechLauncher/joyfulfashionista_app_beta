@@ -22,16 +22,16 @@ samples, guidance on mobile development, and API references.
 ## Documentation
 * [Notion](https://abrupt-crafter-012.notion.site/The-Joyful-Fashionista-Project-28a399f9c3644bad94603b3b4c4c8516)
 
-* Google Drive: https://drive.google.com/drive/folders/1tQWr3RSNDnVh6_8kT9q02h9V2ErS1Gov
+* [Google Drive](https://drive.google.com/drive/folders/1tQWr3RSNDnVh6_8kT9q02h9V2ErS1Gov)
 
-* Handover Doc: [https://docs.google.com/document/d/1YZrJK5xcn4Gp1iEAHEqlIAOfD_yojc8Z/edit?usp=share_link&ouid=106117912773886480299&rtpof=true&sd=true](https://hackmd.io/EanODv0tR-aWW4ldTdBhUw)
+* [Handover Doc](https://docs.google.com/document/d/1YZrJK5xcn4Gp1iEAHEqlIAOfD_yojc8Z/edit?usp=share_link&ouid=106117912773886480299&rtpof=true&sd=true](https://hackmd.io/EanODv0tR-aWW4ldTdBhUw)
 
-* Code Specification: https://drive.google.com/file/d/1PMfqL7QbGsSwZDLw5jllw8H9VI1s-rFg/view?usp=share_link
+* [Code Specification](https://drive.google.com/file/d/1PMfqL7QbGsSwZDLw5jllw8H9VI1s-rFg/view?usp=share_link)
 
-* Developer Doc: https://hackmd.io/@iOA2NMUzS7egrzn9NOP4_g/r11Nz9gEn
+* [Developer Doc](https://hackmd.io/@iOA2NMUzS7egrzn9NOP4_g/r11Nz9gEn)
 
-* Architecture Diagram: https://drive.google.com/file/d/1GB__ENodwQG_5qktCma4obqBYf2xDQ_j/view?usp=share_link
+* [Architecture Diagram](https://drive.google.com/file/d/1GB__ENodwQG_5qktCma4obqBYf2xDQ_j/view?usp=share_link)
 
-* Woocommerce Api Introduction: https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction
+* [Woocommerce Api Introduction](https://woocommerce.github.io/woocommerce-rest-api-docs/#introduction)
 
 
