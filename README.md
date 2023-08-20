@@ -1,4 +1,4 @@
-# The Joyful Fashionista Project
+# Joyful Fashionista
 Project Overview:
 According to statistics, nearly 100 million tons of textiles are discarded or wasted every year, especially clothing, which causes great damage to the environment and takes up a lot of land resources to dispose of them. The Joyful Fashionista seeks to encourage sustainability in fashion by creating an online site for buying and selling second-hand clothing. In essence, it is like a giant op shop. One of the key issues to overcoming the 'valley of death' with this project is encouraging people to list items for sale on the platform.
 
@@ -25,8 +25,6 @@ samples, guidance on mobile development, and API references.
 * [Google Drive](https://drive.google.com/drive/folders/1tQWr3RSNDnVh6_8kT9q02h9V2ErS1Gov)
 
 * [Handover Doc](https://docs.google.com/document/d/1YZrJK5xcn4Gp1iEAHEqlIAOfD_yojc8Z/edit)
-
-* [Code Specification](https://drive.google.com/file/d/1PMfqL7QbGsSwZDLw5jllw8H9VI1s-rFg/view?usp=share_link)
 
 * [Developer Doc](https://hackmd.io/@iOA2NMUzS7egrzn9NOP4_g/r11Nz9gEn)
 
