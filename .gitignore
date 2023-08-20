@@ -42,7 +42,11 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 
+.DS_Store
+._.DS_Store
 **/.DS_Store
+**/._.DS_Store
+
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
