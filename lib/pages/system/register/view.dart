@@ -63,8 +63,19 @@ class RegisterPage extends GetView<RegisterController> {
           validator: Validatorless.multiple([
             Validatorless.required(LocaleKeys.validatorRequired.tr),
             Validatorless.email(LocaleKeys.validatorEmail.tr),
+                (String? value) {
+              final String pattern =
+                  r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+              final RegExp regex = RegExp(pattern);
+              if (!regex.hasMatch(value ?? ''))
+                return LocaleKeys.validatorEmail.tr;  // You can replace this with your own error message or a localization key
+              else
+                return null;
+            },
           ]),
         ),
+
+
 
         // first name
         TextFormWidget(
