@@ -8,8 +8,7 @@ Current Development Version 2.2.0
 
 ## Burndown
 
-![Burndown Chart](assests/Joyful-Burndown.pdf)
-
+<image src="/assets/Joyful-Burndown.png" width=40%>
 ## Getting Started
 
 This project is a starting point for a Flutter application.
