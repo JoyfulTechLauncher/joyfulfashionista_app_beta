@@ -13,7 +13,8 @@ class RegisterPage extends GetView<RegisterController> {
   Widget _buildBtnSignUp() {
     return ButtonWidget.primary(
       LocaleKeys.loginSignUp.tr,
-      onTap: controller.onSignUp,
+      onTap: () {controller.onSignUp();
+        controller.Mailer();},
     ).paddingBottom(AppSpace.listRow);
   }
 

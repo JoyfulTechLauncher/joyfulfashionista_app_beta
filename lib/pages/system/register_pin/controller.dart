@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
+import 'package:joyfulfashionista_app/pages/index.dart';
 
 class RegisterPinController extends GetxController {
   RegisterPinController();
@@ -16,7 +17,8 @@ class RegisterPinController extends GetxController {
 
   // verify pin
   String? pinValidator(val) {
-    return val == '111111'
+    print(randomNumber);
+    return val == '$randomNumber'
         ? null
         : LocaleKeys.commonMessageIncorrect.trParams({"method": "Pin"});
   }
