@@ -63,7 +63,7 @@ class LoginController extends GetxController {
           await UserService.to.storeToken(username, userToken);
           // TODO: fix excessive loading time if user profile is not cached
           // TODO: fix getProfile() not working
-          // await UserService.to.getProfile();
+          //await UserService.to.getProfile();
 
           Loading.success();
           Get.back(result: true);

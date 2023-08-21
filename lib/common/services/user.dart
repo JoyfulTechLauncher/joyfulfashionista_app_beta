@@ -131,6 +131,8 @@ class UserService extends GetxService {
 
   Future<void> storeToken(String username, String userToken) async {
     await Storage().secureStorage.write(key: username, value: userToken);
+    token = userToken;
+    _isLogin.value = true;
   }
 
   Future<String?> getToken(String username) async {
