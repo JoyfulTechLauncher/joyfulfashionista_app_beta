@@ -83,8 +83,8 @@ class UserApi {
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
       if (jsonResponse.isNotEmpty) {
-        // print('Status code: ${response.statusCode}');
-        // print(jsonResponse["id"]);
+        //print('Status code: ${response.statusCode}');
+        //print(jsonResponse["id"]);
         return jsonResponse["id"];
       } else {
         //print('Status code: ${response.statusCode}');
@@ -123,6 +123,7 @@ class UserApi {
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
       if (jsonResponse.isNotEmpty) {
+        // print(id);
         print('Status code: ${response.statusCode}');
         print('Response body: ${response.body}');
         return UserProfileModel.fromJson(jsonResponse);

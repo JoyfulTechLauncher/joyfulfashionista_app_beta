@@ -28,7 +28,7 @@ class MainController extends GetxController {
 
   _initData() async {
     // read profile
-    await UserService.to.getProfile();
+    // await UserService.to.getProfile();
 
     // test
     // Get.toNamed(RouteNames.systemLogin);
