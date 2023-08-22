@@ -4,7 +4,7 @@ According to statistics, nearly 100 million tons of textiles are discarded or wa
 
 ## joyfulfashionista_app
 
-Current Development Version 2.2.0
+Current Development Version 2.3.0
 
 ## Burndown
 
