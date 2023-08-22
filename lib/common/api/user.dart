@@ -1,7 +1,7 @@
 import '../index.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'package:get/get.dart';
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         'ck_79e2c4c70e87dac66405834e972982eb7b02feb5:cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f'));
@@ -16,7 +16,8 @@ class UserApi {
 
     String requestBody = json.encode(req);
     print('Request Body: $requestBody');
-
+    String? username = req!.username;
+    String? password = req!.password;
     var res = await http.post(
           Uri.parse(apiUrl),
           body: json.encode(req),
@@ -28,7 +29,9 @@ class UserApi {
 
     print('Response Status: ${res.statusCode}');
     print('Response Body: ${res.body}');
+
     if (res.statusCode == 201) {
+      login(username!, password!);
            return true;
          }
          return false;
@@ -44,23 +47,25 @@ class UserApi {
   //   return UserTokenModel.fromResponse(res);
   // }
   /// login
-  static Future<String> login(String email, String password) async {
+  static Future<void> login(String username, String password) async {
 
     final response = await http.post(
       Uri.parse('https://teamjoyful.buzz/wp-json/jwt-auth/v1/token'),
       body: {
-        'username': email,
+        'username': username,
         'password': password,
       },
     );
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
-      String token = jsonResponse['token'];
-      print('Status code: ${response.statusCode}');
+      String userToken = jsonResponse['token'];
+      await UserService.to.storeToken(username, userToken);
+      await UserService.to.getProfile();
       // print('token $token');
       // print(jsonResponse);
-      return token;
+      Loading.success();
+      Get.back(result: true);
     } else {
       print('Status code: ${response.statusCode}');
       throw Exception('Failed to login');

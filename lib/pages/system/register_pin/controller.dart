@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
 import 'package:joyfulfashionista_app/pages/index.dart';
-
 class RegisterPinController extends GetxController {
   RegisterPinController();
-
   // register interface pass value
   UserRegisterReq? req = Get.arguments;
 
@@ -35,7 +33,6 @@ class RegisterPinController extends GetxController {
             LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
         Get.back(result: true);
       }
-
       // // succes
       // Loading.success(
       //     LocaleKeys.commonMessageSuccess.trParams({"method": "Register"}));
