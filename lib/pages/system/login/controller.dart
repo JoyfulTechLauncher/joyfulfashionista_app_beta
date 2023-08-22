@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:joyfulfashionista_app/common/services/user_manager.dart';
+
 class LoginController extends GetxController {
   LoginController();
 
@@ -32,6 +34,10 @@ class LoginController extends GetxController {
         // ));
         String? username = userNameController.text;
         String? password = passwordController.text;
+
+        UserManager().setUsername(password);
+        UserManager().setPassword(username);
+
         bool userExists = await UserService.to.userExists(username);
 
         if (!userExists) {

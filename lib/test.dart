@@ -6,6 +6,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'dart:convert';
 
+import 'common/values/constants.dart';
+
 // "username": "wpausersN4h4Cfb",
 // "password": "Pf1x8pQGFX4IsBJnrUa7sMoxKisu28UJ"
 const consumer_key = 'ck_79e2c4c70e87dac66405834e972982eb7b02feb5';
@@ -206,7 +208,18 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   String username = 'tester';
   String password = '123456';
-  // fetchJwtToken(username, password);
+  String? token = await getToken(username);
+
+  final res = await http.get(
+      Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/categories'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      }
+  );
+
+  print('Status code: ${res.statusCode}');
+  print('Response body: ${res.body}');
+
   //
   // storeJwtToken("123", "12345");
   // storeJwtToken("123", "99999");
@@ -222,7 +235,7 @@ void main() async{
   // print(token2);
   //
   // validateToken(await fetchJwtToken(username, password));
-  userExists('tester');
+  // userExists('tester');
 }
 
 
