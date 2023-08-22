@@ -49,13 +49,21 @@ class ProductApi {
 
   /// 商品列表
   static Future<List<ProductModel>> products(ProductsReq? req) async {
-    var res = await WPHttpService.to.get(
-        '/wp-json/wc/v3/products',
-        params: req?.toJson(),
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
+    // var res = await WPHttpService.to.get(
+    //     '/wp-json/wc/v3/products',
+    //     params: req?.toJson(),
+    // );
 
     List<ProductModel> products = [];
-    for (var item in res.data) {
+    final jsonResponse = json.decode(res.body);
+    for (var item in jsonResponse) {
       products.add(ProductModel.fromJson(item));
     }
     return products;

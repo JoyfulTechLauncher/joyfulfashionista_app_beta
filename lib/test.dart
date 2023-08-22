@@ -211,7 +211,7 @@ void main() async{
   String? token = await getToken(username);
 
   final res = await http.get(
-      Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/categories'),
+      Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/'),
       headers: {
         'Authorization': 'Bearer $token',
       }
