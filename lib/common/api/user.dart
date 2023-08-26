@@ -2,6 +2,7 @@ import '../index.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:get/get.dart';
+import '../services/user_manager.dart';
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         'ck_79e2c4c70e87dac66405834e972982eb7b02feb5:cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f'));
@@ -149,14 +150,32 @@ class UserApi {
 
   /// 保存用户 billing address
   static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
-    var res = await WPHttpService.to.put(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-      data: {
-        "billing": req,
-      },
-    );
-    return UserProfileModel.fromJson(res.data);
+
+      print('11111111111111');
+      // 1.get username 2. get user token
+      String token = Storage().getString(Constants.storageToken);
+      print('222222222');
+      // 3.get user id
+      int id = await UserApi.getSelfId(token);
+      print(id);
+      print(token);
+      String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
+      var body = jsonEncode({
+        'billing': req?.toJson(),
+      });
+      print(id);
+      var res = await http.put(
+          Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
+          body: body,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $testerToken',
+          }
+      );
+
+      print(res.statusCode);
+      return UserProfileModel.fromJson(jsonDecode(res.body));
+
   }
 
   /// 保存用户 shipping address
