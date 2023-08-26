@@ -170,7 +170,7 @@ class HomeController extends GetxController {
 
   //分类更新
   void onCategoryUpdate() async {
-    categoryItems = await ProductApi.categories(); // 获取分类数据
+    //categoryItems = await ProductApi.categories(); // 获取分类数据
     update(["home"]);
   }
   // 下拉刷新

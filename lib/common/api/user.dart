@@ -117,11 +117,11 @@ class UserApi {
 
   static Future<UserProfileModel> profile(String token) async{
     int id = await UserApi.getSelfId(token);
-
+    String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
     final response = await http.get(
         Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
         headers: {
-          'Authorization': 'Bearer $token',
+          'Authorization': 'Bearer $testerToken',
         }
     );
 
@@ -173,13 +173,16 @@ class UserApi {
 
   /// 大陆国家洲省列表
   static Future<List<ContinentsModel>> continents() async {
-    var res = await WPHttpService.to.get(
-      //'/users/continents',
-      '/wp-json/wc/v3/customers/shipping/country',
+    String? token = await UserService.to.fetchJwtToken('tester', '123456');
+    var res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl +'/wp-json/wc/v3/data/countries'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
     List<ContinentsModel> continents = [];
-    for (var item in res.data) {
+    for (var item in jsonDecode(res.body)) {
       continents.add(ContinentsModel.fromJson(item));
     }
     return continents;
