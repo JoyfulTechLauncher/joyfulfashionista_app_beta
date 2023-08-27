@@ -73,12 +73,9 @@ class UserApi {
     }
   }
 
-
-
   /// get id
   static Future<int> getSelfId(String token) async{
     final response = await http.get(
-        //Uri.parse('https://joyfulteams.shop/wp-json/wp/v2/users/me'),
         Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wp/v2/users/me'),
         headers: {
           'Authorization': 'Bearer $token',
@@ -88,12 +85,8 @@ class UserApi {
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
       if (jsonResponse.isNotEmpty) {
-        //print('Status code: ${response.statusCode}');
-        //print(jsonResponse["id"]);
         return jsonResponse["id"];
       } else {
-        //print('Status code: ${response.statusCode}');
-        //print('Response body: ${response.body}');
         throw Exception("User not found");
       }
     } else {
@@ -106,22 +99,14 @@ class UserApi {
 
   /// Profile
 
-/*  static Future<UserProfileModel> profile1() async {
-    var res = await WPHttpService.to.get(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-    );
-    print('---------------------------'+ UserProfileModel.fromJson(res.data).toString());
-    return UserProfileModel.fromJson(res.data);
-  }*/
-
   static Future<UserProfileModel> profile(String token) async{
     int id = await UserApi.getSelfId(token);
 
+    String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
     final response = await http.get(
         Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
         headers: {
-          'Authorization': 'Bearer $token',
+          'Authorization': 'Bearer $testerToken',
         }
     );
 
