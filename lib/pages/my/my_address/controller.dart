@@ -184,10 +184,10 @@ class MyAddressController extends GetxController {
 
   // 国家选择
   void onCountryPicker() async {
-    List<KeyValueModel> countriesList_simple = [];
+    List<KeyValueModel> countriesListSimple = [];
     for (var i = 0; i < countriesList.length; i++) {
       var item = countriesList[i];
-      countriesList_simple.add(KeyValueModel<String>(
+      countriesListSimple.add(KeyValueModel<String>(
         key: item.keys.first.key,
         value: item.keys.first.value,
       ));
@@ -197,7 +197,7 @@ class MyAddressController extends GetxController {
       context: Get.context!,
       // 数据
       adapter: PickerDataAdapter<KeyValueModel<String>>(
-        pickerdata: countriesList_simple,
+        pickerdata: countriesListSimple,
       ),
       // 默认选中 [index, index]
       selecteds: countrySels,

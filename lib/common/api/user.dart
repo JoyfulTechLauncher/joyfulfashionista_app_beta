@@ -1,3 +1,5 @@
+import 'package:joyfulfashionista_app/test.dart';
+
 import '../index.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -10,6 +12,8 @@ String basicAuth = 'Basic ' +
 
 /// 用户 api
 class UserApi {
+
+  final UserManager userManager = UserManager();
 
   /// 注册
   static Future<bool> register(UserRegisterReq? req) async {
@@ -57,6 +61,10 @@ class UserApi {
         'password': password,
       },
     );
+
+    // 存储用户名密码
+    UserApi().userManager.setUsername('$username');
+    UserApi().userManager.setPassword('$password');
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
@@ -151,19 +159,15 @@ class UserApi {
   /// 保存用户 billing address
   static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
 
-      print('11111111111111');
-      // 1.get username 2. get user token
-      String token = Storage().getString(Constants.storageToken);
-      print('222222222');
-      // 3.get user id
-      int id = await UserApi.getSelfId(token);
-      print(id);
-      print(token);
+      String username = UserApi().userManager.getUsername();
+      String? token = await UserService.to.getToken(username);
+      int id = await UserApi.getSelfId(token!);
+
       String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
       var body = jsonEncode({
         'billing': req?.toJson(),
       });
-      print(id);
+
       var res = await http.put(
           Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
           body: body,
@@ -180,14 +184,26 @@ class UserApi {
 
   /// 保存用户 shipping address
   static Future<UserProfileModel> saveShippingAddress(Shipping? req) async {
-    var res = await WPHttpService.to.put(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-      data: {
-        "shipping": req,
-      },
+
+    String username = UserApi().userManager.getUsername();
+    String? token =await getToken(username);
+    int id = await UserApi.getSelfId(token!);
+
+    String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
+    var body = jsonEncode({
+      'shipping': req?.toJson(),
+    });
+    
+    var res = await http.put(
+      Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
+      body: body,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $testerToken',
+      }
     );
-    return UserProfileModel.fromJson(res.data);
+    
+    return UserProfileModel.fromJson(jsonDecode(res.body));
   }
 
   /// 大陆国家洲省列表
@@ -209,16 +225,15 @@ class UserApi {
 
   /// 保存用户 first name 、 last name 、 email
   static Future<UserProfileModel> saveBaseInfo(UserProfileModel req) async {
-    var res = await WPHttpService.to.put(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-      data: {
+    var res = await http.put(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers'),
+      body: {
         "first_name": req.firstName,
         "last_name": req.lastName,
         "email": req.email,
       },
     );
-    return UserProfileModel.fromJson(res.data);
+    return UserProfileModel.fromJson(jsonDecode(res.body));
   }
 }
 
