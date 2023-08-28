@@ -160,7 +160,7 @@ class UserApi {
   static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
 
       String username = UserApi().userManager.getUsername();
-      String? token = await UserService.to.getToken(username);
+      String? token = await UserService.to.getToken('$username');
       int id = await UserApi.getSelfId(token!);
 
       String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
@@ -186,7 +186,7 @@ class UserApi {
   static Future<UserProfileModel> saveShippingAddress(Shipping? req) async {
 
     String username = UserApi().userManager.getUsername();
-    String? token =await getToken(username);
+    String? token = await UserService.to.getToken('$username');
     int id = await UserApi.getSelfId(token!);
 
     String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
@@ -202,7 +202,7 @@ class UserApi {
         'Authorization': 'Bearer $testerToken',
       }
     );
-    
+    print(res.statusCode);
     return UserProfileModel.fromJson(jsonDecode(res.body));
   }
 

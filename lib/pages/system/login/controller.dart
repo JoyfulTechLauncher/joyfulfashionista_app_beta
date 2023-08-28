@@ -36,8 +36,8 @@ class LoginController extends GetxController {
         String? username = userNameController.text;
         String? password = passwordController.text;
 
-        UserManager().setUsername(password);
-        UserManager().setPassword(username);
+        UserManager().setUsername(username);
+        UserManager().setPassword(password);
 
         bool userExists = await UserService.to.userExists(username);
 
