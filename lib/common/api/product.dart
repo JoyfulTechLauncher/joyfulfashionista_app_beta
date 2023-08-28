@@ -61,15 +61,24 @@ class ProductApi {
     Map<String, List<ProductModel>> categoryProducts = {};
 
     for (var _ in _categories) {
-      categoryProducts[_.name!] = [];
+      categoryProducts[_.id.toString()!] = [];
     }
 
     for (var productModel in _products) {
         for (var category in productModel.categories!) {
-          categoryProducts[category]!.add(productModel);
+          categoryProducts[category.id.toString()]!.add(productModel);
         }
     }
     return categoryProducts;
+  }
+
+  static Future<List<ProductModel>> getCategoryProducts(int id) async {
+
+    var categoryId = id.toString();
+    Map<String, List<ProductModel>> categoryProducts = await ProductApi.categorizeProducts();
+    List<ProductModel> items = categoryProducts[categoryId.toString()]!;
+    return items;
+
   }
 
   /// 商品列表
