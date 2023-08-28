@@ -100,11 +100,11 @@ class ProductDetailsController extends GetxController
   // 读取缓存
   _loadCache() async {
     // 颜色列表
-    var stringColors = "black";
+    var stringColors = "";
     // Storage().getString(Constants.storageProductsAttributesColors);
 
     // 尺寸列表
-    var stringSizes = "8";
+    var stringSizes = "";
     // Storage().getString(Constants.storageProductsAttributesSizes);
 
     colors = stringColors != ""

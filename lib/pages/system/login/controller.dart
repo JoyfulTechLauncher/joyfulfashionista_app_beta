@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
 
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+import 'package:joyfulfashionista_app/common/services/user_manager.dart';
+
 class LoginController extends GetxController {
   LoginController();
 
   /// Define the input controller
   TextEditingController userNameController =
-      TextEditingController(text: "ducafecat5");
+      TextEditingController(text: "tester");
   TextEditingController passwordController =
       TextEditingController(text: "123456");
 
@@ -17,30 +22,87 @@ class LoginController extends GetxController {
   /// Sign In
   Future<void> onSignIn() async {
     if ((formKey.currentState as FormState).validate()) {
-      try {
+      // try {
         Loading.show();
 
         // aes encrypted password
-        var password = EncryptUtil().aesEncode(passwordController.text);
 
         // api request
-        UserTokenModel res = await UserApi.login(UserLoginReq(
-          username: userNameController.text,
-          password: password,
-        ));
+        // UserTokenModel res = await UserApi.login(UserLoginReq(
+        //   username: userNameController.text,
+        //   password: passwordController.text
+        // ));
+        String? username = userNameController.text;
+        String? password = passwordController.text;
 
-        // local save token
-        await UserService.to.setToken(res.token!);
-        // get user profile
-        await UserService.to.getProfile();
+        UserManager().setUsername(password);
+        UserManager().setPassword(username);
 
-        Loading.success();
-        Get.back(result: true);
-      } finally {
-        Loading.dismiss();
-      }
+        bool userExists = await UserService.to.userExists(username);
+
+        if (!userExists) {
+          Loading.dismiss();
+          return;
+        }
+
+        // String? token = await UserService.to.getToken(username);
+        // bool validateResult = await UserService.to.validateToken(token);
+
+        // if (validateResult) {
+        //   Loading.success();
+        //   Get.back(result: true);
+        //   return;
+        // }
+
+        final response = await http.post(
+          Uri.parse(Constants.wpApiBaseUrl + '/wp-json/jwt-auth/v1/token'),
+          body: {
+            'username': username,
+            'password': password
+          },
+        );
+
+        if (response.statusCode == 200) {
+          final jsonResponse = jsonDecode(response.body);
+          String userToken = jsonResponse['token'];
+
+          await UserService.to.storeToken(username, userToken);
+          // TODO: fix excessive loading time if user profile is not cached
+          // TODO: fix getProfile() not working
+          await UserService.to.getProfile();
+
+          Loading.success();
+          Get.back(result: true);
+          return;
+        }
+        else {
+          print('Status code: ${response.statusCode}');
+          Loading.error("Login failed");
+        }
+
+
+        // if (res.statusCode == 200) {
+        //   // // local save token
+        //   // await UserService.to.setToken(res.token!);
+        //   // // get user profile
+        //   // await UserService.to.getProfile();
+        //   Loading.success();
+        //   Get.back(result: true);
+        // }
+        // else {
+        //   print('Status code: ${res.statusCode}');
+        //   print('User token: ${res.token}');
+        //   Loading.dismiss();
+        // }
+      // } finally {
+      //   Loading.dismiss();
+      // }
+
     }
   }
+
+
+
 
   /// Sign Up
   void onSignUp() {
