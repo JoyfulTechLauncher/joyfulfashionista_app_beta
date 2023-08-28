@@ -65,8 +65,7 @@ class HomeController extends GetxController {
     // 分类
     categoryItems = await ProductApi.categories();
     // 推荐商品
-    flashShellProductList =
-        await ProductApi.products(ProductsReq(featured: true));
+    flashShellProductList = await ProductApi.products(ProductsReq(featured: true));
     // 新商品
     newProductProductList = await ProductApi.products(ProductsReq());
     // 颜色
@@ -82,15 +81,11 @@ class HomeController extends GetxController {
 
     // 保存离线数据 - 基础数据
     Storage().setJson(Constants.storageProductsCategories, categoryItems);
-    Storage()
-        .setJson(Constants.storageProductsAttributesColors, attributeColors);
+    Storage().setJson(Constants.storageProductsAttributesColors, attributeColors);
     Storage().setJson(Constants.storageProductsAttributesSizes, attributeSizes);
-    Storage().setString(
-        Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
-    Storage().setString(
-        Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
-    Storage().setString(Constants.storageProductsAttributesCondition,
-        jsonEncode(attributeCondition));
+    Storage().setString(Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
+    Storage().setString(Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
+    Storage().setString(Constants.storageProductsAttributesCondition, jsonEncode(attributeCondition));
 
     // 保存离线数据 - 首页业务
     Storage().setJson(Constants.storageHomeBanner, bannerItems);
@@ -102,6 +97,7 @@ class HomeController extends GetxController {
     await Future.delayed(const Duration(seconds: 1));
 
     update(["home"]);
+
   }
 
   // 读取缓存
@@ -168,9 +164,12 @@ class HomeController extends GetxController {
     update(["home_news_sell"]);
   }
 
+
   //分类更新
   void onCategoryUpdate() async {
-    categoryItems = await ProductApi.categories(); // 获取分类数据
+    if (categoryItems.isEmpty) {
+      categoryItems = await ProductApi.categories();
+    }
     update(["home"]);
   }
   // 下拉刷新

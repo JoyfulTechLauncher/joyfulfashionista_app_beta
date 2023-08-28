@@ -56,10 +56,6 @@ class ProductApi {
           'Authorization': 'Bearer $token',
         }
     );
-    // var res = await WPHttpService.to.get(
-    //     '/wp-json/wc/v3/products',
-    //     params: req?.toJson(),
-    // );
 
     List<ProductModel> products = [];
     final jsonResponse = json.decode(res.body);
@@ -71,21 +67,33 @@ class ProductApi {
 
   /// 商品详情
   static Future<ProductModel> productDetail(int? id) async {
-    var res = await WPHttpService.to.get(
-      '/wp-json/wc/v3/products$id',
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/$id'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
-    return ProductModel.fromJson(res.data);
+    final jsonResponse = json.decode(res.body);
+    return ProductModel.fromJson(jsonResponse);
   }
 
   /// 属性列表
   /// id 1 颜色 2 尺寸
   static Future<List<AttributeModel>> attributes(int id) async {
-    var res = await WPHttpService.to.get(
-      '/products/attributes/$id/terms',
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/attributes/$id/terms'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
+    final jsonResponse = json.decode(res.body);
     List<AttributeModel> attributes = [];
-    for (var item in res.data) {
+    for (var item in jsonResponse) {
       attributes.add(AttributeModel.fromJson(item));
     }
     // 排序 menuOrder , 小号在前
@@ -95,13 +103,18 @@ class ProductApi {
 
   /// 评论列表
   static Future<List<ReviewModel>> reviews(ReviewsReq? req) async {
-    var res = await WPHttpService.to.get(
-      '/products/reviews',
-      params: req?.toJson(),
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/reviews'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
+    final jsonResponse = json.decode(res.body);
     List<ReviewModel> reviews = [];
-    for (var item in res.data) {
+    for (var item in jsonResponse) {
       reviews.add(ReviewModel.fromJson(item));
     }
     return reviews;
@@ -109,13 +122,18 @@ class ProductApi {
 
   /// tags 列表
   static Future<List<TagsModel>> tags(TagsReq? req) async {
-    var res = await WPHttpService.to.get(
-      '/products/tags',
-      params: req?.toJson(),
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/tags'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
+    final jsonResponse = json.decode(res.body);
     List<TagsModel> tags = [];
-    for (var item in res.data) {
+    for (var item in jsonResponse) {
       tags.add(TagsModel.fromJson(item));
     }
     return tags;

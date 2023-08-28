@@ -60,18 +60,9 @@ class CategoryController extends GetxController {
   }
 
   _initData() async {
-    // 读缓存
-    var stringCategories =
-        Storage().getString(Constants.storageProductsCategories);
-    categoryItems = stringCategories != ""
-        ? jsonDecode(stringCategories).map<CategoryModel>((item) {
-            return CategoryModel.fromJson(item);
-          }).toList()
-        : [];
 
-    // 如果本地缓存空
     if (categoryItems.isEmpty) {
-      categoryItems = await ProductApi.categories(); // 获取分类数据
+      categoryItems = await ProductApi.categories();// 获取分类数据
     }
     update(["category"]);
   }
@@ -85,7 +76,9 @@ class CategoryController extends GetxController {
 
   //分类更新
   void onCategoryUpdate() async {
-    categoryItems = await ProductApi.categories(); // 获取分类数据
+    if (categoryItems.isEmpty) {
+      categoryItems = await ProductApi.categories();// 获取分类数据
+    }
     update(["left_nav"]);
   }
 
