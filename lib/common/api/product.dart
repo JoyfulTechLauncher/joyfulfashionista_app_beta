@@ -1,11 +1,17 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+
 import '../index.dart';
 import 'package:http/http.dart' as http;
 
+const List<String> categoryList = Constants.categoryList;
+
+
 /// 商品 api
 class ProductApi {
-  static List<String> categoryList = ['Man', 'Woman', 'Children', 'Inclusive', 'Accessories', 'Shipping', 'Popular'];
+  late Map<String, List<String>> categoryProducts;
+
   /// 分类列表
   static Future<List<CategoryModel>> categories() async {
     String? token = await UserService.to.getToken("tester");
@@ -47,8 +53,44 @@ class ProductApi {
     return categories;
   }
 
+  static Future<Map<String, List<ProductModel>>> categorizeProducts() async {
+
+    List<CategoryModel> _categories = await categories();
+    List<ProductModel> _products = await getProducts();
+
+    Map<String, List<ProductModel>> categoryProducts = {};
+
+    for (var _ in _categories) {
+      categoryProducts[_.name!] = [];
+    }
+
+    for (var productModel in _products) {
+        for (var category in productModel.categories!) {
+          categoryProducts[category]!.add(productModel);
+        }
+    }
+    return categoryProducts;
+  }
+
   /// 商品列表
   static Future<List<ProductModel>> products(ProductsReq? req) async {
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
+    );
+
+    List<ProductModel> products = [];
+    final jsonResponse = json.decode(res.body);
+    for (var item in jsonResponse) {
+      products.add(ProductModel.fromJson(item));
+    }
+    return products;
+  }
+
+  static Future<List<ProductModel>> getProducts() async {
     String? token = await UserService.to.getToken("tester");
     final res = await http.get(
         Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/'),
