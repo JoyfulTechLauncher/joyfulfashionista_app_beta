@@ -28,7 +28,7 @@ doc/api/
 *.js.deps
 *.js.map
 
-/assets/Joyful-Burndown.png
+**/assets/Joyful-Burndown-4.png
 
 **/android/**/local.properties
 **/android/**/GeneratedPluginRegistrant.java
