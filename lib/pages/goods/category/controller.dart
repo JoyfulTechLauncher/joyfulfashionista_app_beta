@@ -38,6 +38,8 @@ class CategoryController extends GetxController {
       category: categoryId.toString(),
     ));
 
+    items = await ProductApi.getCategoryProducts(categoryId!);
+
     // 下拉刷新
     if (isRefresh) {
       _page = 1; // 重置页数1
@@ -63,14 +65,18 @@ class CategoryController extends GetxController {
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories();// 获取分类数据
     }
-    update(["category"]);
+    items = await ProductApi.getCategoryProducts(categoryId!);
+
+    update(["category", "product_list"]);
   }
 
   // 分类点击事件
   void onCategoryTap(int id) async {
-    categoryId = id;
+
     refreshController.requestRefresh();
-    update(["left_nav"]);
+    categoryId = id;
+    items = await ProductApi.getCategoryProducts(categoryId!);
+    update(["left_nav", "product_list"]);
 
   }
 
@@ -103,7 +109,7 @@ class CategoryController extends GetxController {
       // 设置无数据
       refreshController.loadNoData();
     }
-    update(["product_list"]);
+    //update(["product_list"]);
   }
 
   // 下拉刷新
@@ -115,7 +121,7 @@ class CategoryController extends GetxController {
       // 刷新失败
       refreshController.refreshFailed();
     }
-    update(["product_list"]);
+    //update(["product_list"]);
   }
 
   // @override

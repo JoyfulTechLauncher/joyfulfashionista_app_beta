@@ -1,7 +1,10 @@
+import 'package:joyfulfashionista_app/test.dart';
+
 import '../index.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:get/get.dart';
+import '../services/user_manager.dart';
 String basicAuth = 'Basic ' +
     base64Encode(utf8.encode(
         'ck_79e2c4c70e87dac66405834e972982eb7b02feb5:cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f'));
@@ -9,6 +12,8 @@ String basicAuth = 'Basic ' +
 
 /// 用户 api
 class UserApi {
+
+  final UserManager userManager = UserManager();
 
   /// 注册
   static Future<bool> register(UserRegisterReq? req) async {
@@ -57,6 +62,10 @@ class UserApi {
       },
     );
 
+    // 存储用户名密码
+    UserApi().userManager.setUsername('$username');
+    UserApi().userManager.setPassword('$password');
+
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
       String userToken = jsonResponse['token'];
@@ -101,7 +110,6 @@ class UserApi {
 
   static Future<UserProfileModel> profile(String token) async{
     int id = await UserApi.getSelfId(token);
-
     String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
     final response = await http.get(
         Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
@@ -134,37 +142,66 @@ class UserApi {
 
   /// 保存用户 billing address
   static Future<UserProfileModel> saveBillingAddress(Billing? req) async {
-    var res = await WPHttpService.to.put(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-      data: {
-        "billing": req,
-      },
-    );
-    return UserProfileModel.fromJson(res.data);
+
+      String username = UserApi().userManager.getUsername();
+      String? token = await UserService.to.getToken('$username');
+      int id = await UserApi.getSelfId(token!);
+
+      String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
+      var body = jsonEncode({
+        'billing': req?.toJson(),
+      });
+
+      var res = await http.put(
+          Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
+          body: body,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer $testerToken',
+          }
+      );
+
+      print(res.statusCode);
+      return UserProfileModel.fromJson(jsonDecode(res.body));
+
   }
 
   /// 保存用户 shipping address
   static Future<UserProfileModel> saveShippingAddress(Shipping? req) async {
-    var res = await WPHttpService.to.put(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-      data: {
-        "shipping": req,
-      },
+
+    String username = UserApi().userManager.getUsername();
+    String? token = await UserService.to.getToken('$username');
+    int id = await UserApi.getSelfId(token!);
+
+    String? testerToken = await UserService.to.fetchJwtToken('tester', '123456');
+    var body = jsonEncode({
+      'shipping': req?.toJson(),
+    });
+    
+    var res = await http.put(
+      Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers/$id'),
+      body: body,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $testerToken',
+      }
     );
-    return UserProfileModel.fromJson(res.data);
+    print(res.statusCode);
+    return UserProfileModel.fromJson(jsonDecode(res.body));
   }
 
   /// 大陆国家洲省列表
   static Future<List<ContinentsModel>> continents() async {
-    var res = await WPHttpService.to.get(
-      //'/users/continents',
-      '/wp-json/wc/v3/customers/shipping/country',
+    String? token = await UserService.to.fetchJwtToken('tester', '123456');
+    var res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl +'/wp-json/wc/v3/data/countries'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
     List<ContinentsModel> continents = [];
-    for (var item in res.data) {
+    for (var item in jsonDecode(res.body)) {
       continents.add(ContinentsModel.fromJson(item));
     }
     return continents;
@@ -172,16 +209,15 @@ class UserApi {
 
   /// 保存用户 first name 、 last name 、 email
   static Future<UserProfileModel> saveBaseInfo(UserProfileModel req) async {
-    var res = await WPHttpService.to.put(
-      //'/users/me',
-      '/wp-json/wc/v3/customers',
-      data: {
+    var res = await http.put(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/customers'),
+      body: {
         "first_name": req.firstName,
         "last_name": req.lastName,
         "email": req.email,
       },
     );
-    return UserProfileModel.fromJson(res.data);
+    return UserProfileModel.fromJson(jsonDecode(res.body));
   }
 }
 

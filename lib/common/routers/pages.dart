@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:joyfulfashionista_app/pages/goods/product_upload/index.dart';
 import 'package:joyfulfashionista_app/pages/index.dart';
 import 'package:get/get.dart';
 import 'package:joyfulfashionista_app/pages/my/about_me/view.dart';
@@ -51,7 +52,10 @@ class RoutePages {
       name: RouteNames.goodsProductList,
       page: () => const ProductListPage(),
     ),
-   
+    GetPage(
+      name: RouteNames.goodsProductUpload,
+      page: () => const ProductUploadPage(),
+    ),
     GetPage(
       name: RouteNames.myMyAddress,
       page: () => const MyAddressPage(),

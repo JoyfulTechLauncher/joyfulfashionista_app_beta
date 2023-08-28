@@ -39,12 +39,12 @@ class ProductItemWidget extends StatelessWidget {
       // 描述
       <Widget>[
         // 标题
-        TextWidget.body2(product.name ?? ""),
+        TextWidget.body2(product.name ?? "",),
 
         // 价格
         if (product.price != null)
           TextWidget.body2(
-            product.price ?? "",
+            '\$${product.price}' ?? "",
             weight: FontWeight.bold,
           ),
       ]

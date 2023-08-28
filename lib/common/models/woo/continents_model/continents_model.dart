@@ -1,20 +1,26 @@
 import 'country.dart';
 import 'links.dart';
+import 'state.dart';
 
 class ContinentsModel {
   String? code;
   String? name;
-  List<Country>? countries;
+  List<States>? states;
   Links? links;
 
-  ContinentsModel({this.code, this.name, this.countries, this.links});
+  //ContinentsModel({this.code, this.name, this.countries, this.links});
+  @override
+  String toString() {
+    return 'ContinentsModel{code: $code, name: $name, states: $states, links: $links}';
+  }
+  ContinentsModel({this.code, this.name, this.states, this.links});
 
   factory ContinentsModel.fromJson(Map<String, dynamic> json) {
     return ContinentsModel(
       code: json['code'] as String?,
       name: json['name'] as String?,
-      countries: (json['countries'] as List<dynamic>?)
-          ?.map((e) => Country.fromJson(e as Map<String, dynamic>))
+      states: (json['states'] as List<dynamic>?)
+          ?.map((e) => States.fromJson(e as Map<String, dynamic>))
           .toList(),
       links: json['_links'] == null
           ? null
@@ -25,7 +31,7 @@ class ContinentsModel {
   Map<String, dynamic> toJson() => {
         'code': code,
         'name': name,
-        'countries': countries?.map((e) => e.toJson()).toList(),
+        'states': states?.map((e) => e.toJson()).toList(),
         '_links': links?.toJson(),
       };
 }

@@ -11,6 +11,10 @@ class LocaleKeys {
   static const commonSelectTips = 'common_select_tips';
   static const commonMessageSuccess = 'common_message_success';
   static const commonMessageIncorrect = 'common_message_incorrect';
+  static const commonMessageSwipeLeftToDelete = 'common_message_swipe_left_to_delete';
+  static const commonBottomUpload = 'common_bottom_upload';
+
+
 
   // 样式
   static const stylesTitle = 'styles_title';
@@ -21,6 +25,7 @@ class LocaleKeys {
   static const validatorMin = 'validator_min';
   static const validatorMax = 'validator_max';
   static const validatorPassword = 'validator_password';
+  static const validatorConfirmPassword = 'validator_re_password';
 
   // APP 主导航
   static const tabBarHome = 'tab_bar_home';
@@ -54,6 +59,7 @@ class LocaleKeys {
   static const registerFormEmail = 'register_form_email';
   static const registerFormPhoneNumber = 'register_form_phone_number';
   static const registerFormPassword = 'register_form_password';
+  static const registerFormConfirmPassword = 'register_form_repeat_password';
   static const registerFormFirstName = 'register_form_first_name';
   static const registerFormLastName = 'register_form_last_name';
   static const registerHaveAccount = 'register_have_account';
@@ -91,6 +97,26 @@ class LocaleKeys {
   static const gDetailBtnAddCart = "goods_detail_btn_add_cart";
   static const gDetailBtnBuy = "goods_detail_btn_buy";
 
+  // 商品-上传
+  static const gProductUpload = "goods_product_upload";
+  static const gProductUploadImages = "goods_product_upload_images";
+  static const gProductUploadTitle = "goods_product_upload_title";
+  static const gProductUploadTitleHint = "goods_product_upload_title_hint";
+  static const gProductUploadDescription = "goods_product_upload_description";
+  static const gProductUploadDescriptionHint = "goods_product_upload_description_hint";
+  static const gProductUploadSize = "goods_product_upload_size";
+  static const gProductUploadSizeHint = "goods_product_upload_size_hint";
+  static const gProductUploadTag = "goods_product_upload_tag";
+  static const gProductUploadTagHint = "goods_product_upload_tag_hint";
+  static const gProductUploadImagesExceedError = "goods_product_upload_images_exceed_error";
+  static const gProductUploadImagesEmptyError = "goods_product_upload_images_empty_error";
+  static const gProductUploadTagsEmptyError = "goods_product_upload_tags_empty_error";
+  static const gProductUploadTagExists = "goods_product_upload_tag_exists";
+
+
+
+
+
   // 搜索
   static const searchPlaceholder = "search_placeholder";
   static const searchOrder = "search_order";
@@ -120,6 +146,11 @@ class LocaleKeys {
   static const myBtnBillingAddress = "my_btn_billing_address";
   static const myBtnShippingAddress = "my_btn_shipping_address";
   static const myBtnAboutMe = "my_btn_about_me";
+  static const myFollowers = "my_followers";
+  static const mySettled = "my_settled";
+  static const myTrading = "my_trading";
+  static const myRating = "my_rating";
+
 
   // 订单配送地址
   static const addressViewTitle = "address_view_title";
@@ -184,6 +215,9 @@ class LocaleKeys {
   static const orderDetailsTotal = "order_details_total";
   static const orderDetailsShipping = "order_details_shipping";
   static const orderDetailsDiscount = "order_details_discount";
+  static const orderDelivery = "order_delivery";
+  static const orderAddressEdit = 'order_address_edit';
+
 
   // 拍照、相册
   static const pickerTakeCamera = 'picker_take_camera';
@@ -203,4 +237,6 @@ class LocaleKeys {
   //Message
   static const messagePage = "message_page";
   static const noMessage = "no_message";
+
+
 }

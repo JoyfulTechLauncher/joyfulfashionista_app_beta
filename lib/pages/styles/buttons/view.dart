@@ -35,7 +35,7 @@ class ButtonsPage extends GetView<ButtonsController> {
       // text button
       ButtonWidget.text(
         "文字按钮",
-        textSize: 15,
+        textSize: 16,
         onTap: () {},
         // onTap: () async {
         //   await ConfigService.to.switchThemeModel();
@@ -56,7 +56,7 @@ class ButtonsPage extends GetView<ButtonsController> {
       ButtonWidget.textFilled(
         "15",
         bgColor: Get.theme.colorScheme.surfaceVariant.withOpacity(0.5),
-        textSize: 12,
+        textSize: 14,
         onTap: () {},
       ).paddingBottom(AppSpace.listRow),
 
@@ -65,7 +65,7 @@ class ButtonsPage extends GetView<ButtonsController> {
         "5",
         bgColor: Get.theme.colorScheme.surfaceVariant.withOpacity(0.4),
         borderRadius: 12,
-        textSize: 9,
+        textSize: 12,
         onTap: () {},
       ).tight(width: 24, height: 24).paddingBottom(AppSpace.listRow),
 

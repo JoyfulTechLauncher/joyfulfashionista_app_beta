@@ -35,6 +35,11 @@ class CategoryListItemWidget extends StatelessWidget {
         category.name ?? "-", // 文字内容
         size: 18.sp,
         color: selectId == category.id ? AppColors.onSecondary : null, // 选中颜色
+        weight: FontWeight.bold,
+        style: TextStyle(
+          overflow: TextOverflow.ellipsis,
+          fontFamily: "Noto_Serif_SC"
+        ),
       ),
     ]
         .toColumn(
