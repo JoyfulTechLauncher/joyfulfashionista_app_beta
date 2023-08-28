@@ -1,13 +1,17 @@
-class State {
+class States {
   String? code;
   String? name;
 
-  State({
+  States({
     this.code,
     this.name,
   });
 
-  factory State.fromJson(Map<String, dynamic> json) => State(
+  @override
+  String toString() {
+    return 'States{code: $code, name: $name}';
+  }
+  factory States.fromJson(Map<String, dynamic> json) => States(
         code: "${json['code']}",
         name: "${json['name']}",
       );

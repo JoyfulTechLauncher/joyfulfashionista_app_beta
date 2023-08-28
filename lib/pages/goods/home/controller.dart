@@ -168,9 +168,11 @@ class HomeController extends GetxController {
 
   //分类更新
   void onCategoryUpdate() async {
+
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories();
     }
+
     update(["home"]);
   }
   // 下拉刷新

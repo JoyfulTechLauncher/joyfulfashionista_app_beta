@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/Picker.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
+import 'package:joyfulfashionista_app/common/models/woo/continents_model/state.dart';
 import 'package:get/get.dart';
 
 class MyAddressController extends GetxController {
@@ -44,18 +45,18 @@ class MyAddressController extends GetxController {
     continents = await UserApi.continents();
     countriesList = List.generate(continents.length, (index) {
       var entity = continents[index];
-      List<KeyValueModel> countryList = [];
-      for (Country country in entity.countries ?? []) {
-        countryList.add(KeyValueModel<String>(
-          key: country.code ?? "-",
-          value: country.name ?? "-",
+      List<KeyValueModel> stateList = [];
+      for (States states in entity.states ?? []) {
+        statesList.add(KeyValueModel<String>(
+          key: states.code ?? "-",
+          value: states.name ?? "-",
         ));
       }
       return {
         KeyValueModel<String>(
           key: entity.code ?? "-",
           value: entity.name ?? "-",
-        ): countryList,
+        ): statesList,
       };
     });
   }
@@ -64,17 +65,18 @@ class MyAddressController extends GetxController {
   void _filterStates(String countryCode) {
     for (var i = 0; i < continents.length; i++) {
       var continent = continents[i];
-      var country =
-          continent.countries!.firstWhereOrNull((el) => el.code == countryCode);
-      if (country != null) {
-        statesList = List.generate(country.states?.length ?? 0, (index) {
-          var state = country.states?.elementAt(index);
-          return KeyValueModel<String>(
-            key: state?.code ?? "-",
-            value: state?.name ?? "-",
-          );
-        });
-        break;
+      if (continent.code == countryCode){
+        if((continent.states ?? []).isNotEmpty){
+          print(continent.states.toString());
+          statesList = List.generate(continent.states?.length ?? 0, (index)
+          {
+            var state = continent.states?[index];
+            return KeyValueModel<String>(
+              key: state?.code ?? "-",
+              value: state?.name ?? "-",
+            );
+          });
+        }
       }
     }
   }
@@ -113,20 +115,20 @@ class MyAddressController extends GetxController {
     String countryCode = countryController.text;
 
     // 国家选着器 - 选中 index
-    for (var i = 0; i < continents.length; i++) {
-      // 大陆
-      var continent = continents[i];
-      // 检查是否有选中的国家
-      int iCountryIndex =
-          continent.countries?.indexWhere((el) => el.code == countryCode) ?? 0;
-      if (iCountryIndex > 0) {
-        countrySels = [
-          i,
-          iCountryIndex,
-        ];
-        break;
-      }
-    }
+    // for (var i = 0; i < continents.length; i++) {
+    //   // 大陆
+    //   var continent = continents[i];
+    //   // 检查是否有选中的国家
+    //   int iCountryIndex =
+    //       continent.name?.indexWhere((el) => el.code == countryCode) ?? 0;
+    //   if (iCountryIndex > 0) {
+    //     countrySels = [
+    //       i,
+    //       iCountryIndex,
+    //     ];
+    //     break;
+    //   }
+    // }
 
     // 洲省代码
     String statesCode = statesController.text;
@@ -182,21 +184,29 @@ class MyAddressController extends GetxController {
 
   // 国家选择
   void onCountryPicker() async {
+    List<KeyValueModel> countriesListSimple = [];
+    for (var i = 0; i < countriesList.length; i++) {
+      var item = countriesList[i];
+      countriesListSimple.add(KeyValueModel<String>(
+        key: item.keys.first.key,
+        value: item.keys.first.value,
+      ));
+    }
     ActionBottomSheet.data(
       title: 'Country',
       context: Get.context!,
       // 数据
       adapter: PickerDataAdapter<KeyValueModel<String>>(
-        pickerdata: countriesList,
+        pickerdata: countriesListSimple,
       ),
       // 默认选中 [index, index]
       selecteds: countrySels,
       // 确认回调
       onConfirm: (value) {
         if (value.isEmpty) return;
-        if (value.length == 2) {
-          countryController.text = '${value[1].key}';
-          _filterStates(value[1].key); // 刷新洲数据
+        else {
+          countryController.text = '${value[0].key}';
+          _filterStates(value[0].key); // 刷新洲数据
         }
       },
     );
@@ -204,6 +214,7 @@ class MyAddressController extends GetxController {
 
   // 洲省市选择
   void onStatesPicker() async {
+
     ActionBottomSheet.data(
       title: 'States',
       context: Get.context!,

@@ -61,7 +61,8 @@ class UserService extends GetxService {
 
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
-      print('Status code: ${response.statusCode}');
+      print('token fetch successfully');
+      //print('Status code: ${response.statusCode}');
       print('Response body: ${response.body}');
       return jsonResponse['token'];
     } else {
@@ -116,7 +117,7 @@ class UserService extends GetxService {
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
       if (jsonResponse.isNotEmpty) {
-        print('user exists');
+        print('user $username exists');
         return true;
       } else {
         print('user does not exist');

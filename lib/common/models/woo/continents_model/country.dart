@@ -10,7 +10,7 @@ class Country {
   int? numDecimals;
   String? thousandSep;
   String? weightUnit;
-  List<State>? states;
+  List<States>? states;
 
   Country({
     this.code,
@@ -36,7 +36,7 @@ class Country {
         thousandSep: json['thousand_sep'] as String?,
         weightUnit: json['weight_unit'] as String?,
         states: (json['states'] as List<dynamic>?)
-            ?.map((e) => State.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => States.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
 
