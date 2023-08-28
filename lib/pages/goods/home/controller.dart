@@ -49,6 +49,7 @@ class HomeController extends GetxController {
     if (result.isNotEmpty) {
       // 页数+1
       _page++;
+      newProductProductList.clear(); // 清空数据
 
       // 添加数据
       newProductProductList.addAll(result);

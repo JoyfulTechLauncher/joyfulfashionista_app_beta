@@ -48,10 +48,9 @@ class CategoryController extends GetxController {
     if (result.isNotEmpty) {
       // 页数+1
       _page++;
+      items.clear(); // 清空数据
 
       // 添加数据
-      items.addAll(result);
-      items.addAll(result);
       items.addAll(result);
     }
 
@@ -72,9 +71,10 @@ class CategoryController extends GetxController {
     categoryId = id;
     refreshController.requestRefresh();
     update(["left_nav"]);
+
   }
 
-  //分类更新
+  // 分类更新
   void onCategoryUpdate() async {
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories();// 获取分类数据
