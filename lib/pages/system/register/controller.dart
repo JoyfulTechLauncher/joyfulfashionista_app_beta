@@ -34,6 +34,9 @@ class RegisterController extends GetxController {
   // password
   TextEditingController passwordController =
       TextEditingController(text: "12345678");
+  // repeat password
+  TextEditingController repeatPasswordController =
+      TextEditingController(text: "12345678");
 
   // sign up
   void onSignUp() {

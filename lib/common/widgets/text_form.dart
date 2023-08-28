@@ -54,6 +54,12 @@ class TextFormWidget extends StatefulWidget {
   /// 点击事件
   final Function()? onTap;
 
+  /// 最小行数
+  final int? minLines;
+
+  /// 最大行数
+  final int? maxLines;
+
   const TextFormWidget({
     Key? key,
     this.controller,
@@ -68,6 +74,8 @@ class TextFormWidget extends StatefulWidget {
     this.readOnly = false,
     this.onTap,
     this.hintText,
+    this.minLines,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -86,41 +94,39 @@ class _TextFormWidgetState extends State<TextFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      onTap: widget.onTap, // 点击事件
-      readOnly: widget.readOnly!, // 是否只读
-      autofocus: widget.autofocus!, // 自动焦点
-      keyboardType: widget.keyboardType, // 输入法类型
-      controller: widget.controller, // 控制器
-      decoration: widget.isObscure == true
-          ? InputDecoration(
-              hintText: widget.hintText, // 提示文字
-              // 标题
-              labelText: widget.isMustBeEnter == true
-                  ? "* ${widget.labelText}"
-                  : widget.labelText,
-              // 密码按钮
-              suffixIcon: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _isShowObscureIcon = !_isShowObscureIcon;
-                  });
-                },
-                icon: Icon(
-                  _isShowObscureIcon == true
-                      ? Icons.visibility
-                      : Icons.visibility_off,
-                  size: 15,
-                  color: AppColors.surfaceVariant,
-                ),
-              ),
-            )
-          : InputDecoration(
-              hintText: widget.hintText,
-              labelText: widget.isMustBeEnter == true
-                  ? "* ${widget.labelText}"
-                  : widget.labelText,
-            ),
+    final withObscure = TextFormField(
+      onTap: widget.onTap,
+      // 点击事件
+      readOnly: widget.readOnly!,
+      // 是否只读
+      autofocus: widget.autofocus!,
+      // 自动焦点
+      keyboardType: widget.keyboardType,
+      // 输入法类型
+      controller: widget.controller,
+      // 控制器
+      decoration: InputDecoration(
+        hintText: widget.hintText, // 提示文字
+        // 标题
+        labelText: widget.isMustBeEnter == true
+            ? "* ${widget.labelText}"
+            : widget.labelText,
+        // 密码按钮
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              _isShowObscureIcon = !_isShowObscureIcon;
+            });
+          },
+          icon: Icon(
+            _isShowObscureIcon == true
+                ? Icons.visibility
+                : Icons.visibility_off,
+            size: 15,
+            color: AppColors.surfaceVariant,
+          ),
+        ),
+      ),
       // 校验
       validator: widget.validator,
       // 是否密码
@@ -128,5 +134,31 @@ class _TextFormWidgetState extends State<TextFormWidget> {
       // 输入格式
       inputFormatters: widget.inputFormatters,
     );
+    final withoutObscure = TextFormField(
+      onTap: widget.onTap,
+      // 点击事件
+      readOnly: widget.readOnly!,
+      // 是否只读
+      autofocus: widget.autofocus!,
+      // 自动焦点
+      keyboardType: widget.keyboardType,
+      // 输入法类型
+      controller: widget.controller,
+      // 控制器
+      decoration: widget.decoration ??
+          InputDecoration(
+            hintText: widget.hintText,
+            labelText: widget.isMustBeEnter == true
+                ? "* ${widget.labelText}"
+                : widget.labelText,
+          ),
+      // 校验
+      validator: widget.validator,
+      // 是否密码
+      obscureText: _isShowObscureIcon,
+      // 输入格式
+      inputFormatters: widget.inputFormatters,
+    );
+    return widget.isObscure == true ? withObscure : withoutObscure;
   }
 }

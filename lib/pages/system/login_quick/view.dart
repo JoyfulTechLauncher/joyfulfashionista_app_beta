@@ -62,7 +62,7 @@ class LoginQuickPage extends GetView<LoginQuickController> {
         <Widget>[
           // text
           const TextWidget.body1(
-            "Don’t have an accoun?",
+            "Don’t have an account?",
             color: Color(0xff838383),
           ).paddingRight(AppSpace.listItem),
 

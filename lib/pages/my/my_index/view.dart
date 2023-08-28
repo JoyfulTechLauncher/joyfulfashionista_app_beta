@@ -77,6 +77,60 @@ class MyIndexPage extends GetView<MyIndexController> {
                 size: 21.sp,
               ),
             ].toRow().paddingHorizontal(AppSpace.card),
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              spacing: 30.w,
+              children: [
+                Column(
+                  children: [
+                    TextWidget.title3(
+                      LocaleKeys.myFollowers.tr,
+                      color: Colors.white,
+                    ),
+                    TextWidget.body2(
+                      '${20}',
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    TextWidget.title3(
+                      LocaleKeys.mySettled.tr,
+                      color: Colors.white,
+                    ),
+                    TextWidget.body2(
+                      '${6} months',
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    TextWidget.title3(
+                      LocaleKeys.myTrading.tr,
+                      color: Colors.white,
+                    ),
+                    TextWidget.body2(
+                      '${56}',
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    TextWidget.title3(
+                      LocaleKeys.myRating.tr,
+                      color: Colors.white,
+                    ),
+                    TextWidget.body2(
+                      '${99}%',
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+              ],
+            ).paddingBottom(20.h),
 
             // 功能栏位
             <Widget>[
@@ -179,6 +233,13 @@ class MyIndexPage extends GetView<MyIndexController> {
         onTap: () => Get.toNamed(RouteNames.stylesSettingIndex),
       ),
 
+      // product upload
+      ButtonItemWidget(
+        title: LocaleKeys.gProductUpload.tr,
+        svgPath: AssetsSvgs.navCartSvg,
+        color: "4971FF".toColor,
+        onTap: () => Get.toNamed(RouteNames.goodsProductUpload),
+      ),
       // end
     ].toColumn().card().paddingBottom(30.h);
   }

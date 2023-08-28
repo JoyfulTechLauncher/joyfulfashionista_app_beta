@@ -159,7 +159,6 @@ class UserService extends GetxService {
     // TODO: Fix getting profile
     UserProfileModel result = await UserApi.profile(token);
     _profile(result);
-    _isLogin.value = true;
 
     Storage().setString(Constants.storageProfile, jsonEncode(result));
   }

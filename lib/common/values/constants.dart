@@ -4,7 +4,7 @@ class Constants {
   static const wpApiBaseUrl = 'https://teamjoyful.buzz';
   static const wcEndpointBaseUrl = '/wp-json/wc/v3';
   static const jwtEndpointUrl = '/jwt-auth/v1/token';
-
+  static const List<String> categoryList = ['Man', 'Woman', 'Children', 'Inclusive', 'Accessories', 'Shipping', 'Popular'];
   // 本地存储key
   static const storageLanguageCode = 'language_code';
   static const storageThemeCode = 'theme_code';

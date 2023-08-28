@@ -38,6 +38,8 @@ class CategoryController extends GetxController {
       category: categoryId.toString(),
     ));
 
+    items = await ProductApi.getCategoryProducts(categoryId!);
+
     // 下拉刷新
     if (isRefresh) {
       _page = 1; // 重置页数1
@@ -48,10 +50,9 @@ class CategoryController extends GetxController {
     if (result.isNotEmpty) {
       // 页数+1
       _page++;
+      items.clear(); // 清空数据
 
       // 添加数据
-      items.addAll(result);
-      items.addAll(result);
       items.addAll(result);
     }
 
@@ -60,32 +61,30 @@ class CategoryController extends GetxController {
   }
 
   _initData() async {
-    // 读缓存
-    var stringCategories =
-        Storage().getString(Constants.storageProductsCategories);
-    categoryItems = stringCategories != ""
-        ? jsonDecode(stringCategories).map<CategoryModel>((item) {
-            return CategoryModel.fromJson(item);
-          }).toList()
-        : [];
 
-    // 如果本地缓存空
     if (categoryItems.isEmpty) {
-      categoryItems = await ProductApi.categories(); // 获取分类数据
+      categoryItems = await ProductApi.categories();// 获取分类数据
     }
-    update(["category"]);
+    items = await ProductApi.getCategoryProducts(categoryId!);
+
+    update(["category", "product_list"]);
   }
 
   // 分类点击事件
   void onCategoryTap(int id) async {
-    categoryId = id;
+
     refreshController.requestRefresh();
-    update(["left_nav"]);
+    categoryId = id;
+    items = await ProductApi.getCategoryProducts(categoryId!);
+    update(["left_nav", "product_list"]);
+
   }
 
-  //分类更新
+  // 分类更新
   void onCategoryUpdate() async {
-    categoryItems = await ProductApi.categories(); // 获取分类数据
+    if (categoryItems.isEmpty) {
+      categoryItems = await ProductApi.categories();// 获取分类数据
+    }
     update(["left_nav"]);
   }
 
@@ -110,7 +109,7 @@ class CategoryController extends GetxController {
       // 设置无数据
       refreshController.loadNoData();
     }
-    update(["product_list"]);
+    //update(["product_list"]);
   }
 
   // 下拉刷新
@@ -122,7 +121,7 @@ class CategoryController extends GetxController {
       // 刷新失败
       refreshController.refreshFailed();
     }
-    update(["product_list"]);
+    //update(["product_list"]);
   }
 
   // @override
