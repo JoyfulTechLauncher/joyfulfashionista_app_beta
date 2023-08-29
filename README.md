@@ -6,6 +6,14 @@ According to statistics, nearly 100 million tons of textiles are discarded or wa
 
 Current Development Version 2.3.0
 
+## Commit rules:
+use prefixes while committing e.g.:
+1. fix: ... for bug fixes
+2. feat: ... for new features
+3. modify: ... for modifying files
+4. delete: ... for deleting files
+5. revert: ... for reverting files
+
 ## Burndown
 
 <image src="/assets/Joyful-Burndown-4.png" width=40%>
