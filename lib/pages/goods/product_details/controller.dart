@@ -29,6 +29,9 @@ class ProductDetailsController extends GetxController
   // tab 控制器
   int tabIndex = 0;
 
+  List<String> attributeColor = [];
+
+  List<String> attributeSize = [];
   // 颜色列表
   List<KeyValueModel<AttributeModel>> colors = [];
   // 选中颜色列表
@@ -67,17 +70,31 @@ class ProductDetailsController extends GetxController
           .toList();
     }
 
+
     // 选中值
     if (product?.attributes != null) {
       // 颜色
-      var colorAttr = product?.attributes?.where((e) => e.name == "Color");
-      if (colorAttr?.isNotEmpty == true) {
-        colorKeys = colorAttr?.first.options ?? [];
+      //var colorAttr = product?.attributes?.where((e) => e.name == "Color");
+      // id为1对应的是颜色的相关属性
+      var targetAttribute1 = product?.attributes?.firstWhere((attributes) => attributes.id == 1);
+      // options中储存的为颜色数据
+      var attributeColor = targetAttribute1 != null ? targetAttribute1.options : null;
+
+      if (attributeColor?.isNotEmpty == true) {
+        //colorKeys = colorAttr?.first.options ?? [];
+        colorKeys = attributeColor?? [];
+
       }
       // 尺寸
-      var sizeAttr = product?.attributes?.where((e) => e.name == "Size");
-      if (sizeAttr?.isNotEmpty == true) {
-        sizeKeys = sizeAttr?.first.options ?? [];
+      //var sizeAttr = product?.attributes?.where((e) => e.name == "Size");
+      // id为2对应商品尺寸相关属性
+      var targetAttribute2 = product?.attributes?.firstWhere((attributes) => attributes.id == 2);
+      // options中储存的为颜色数据
+      var attributeSize = targetAttribute2 != null ? targetAttribute2.options : null;
+
+      if (attributeSize?.isNotEmpty == true) {
+        //sizeKeys = sizeAttr?.first.options ?? [];
+        sizeKeys = attributeSize?? [];
       }
     }
 
