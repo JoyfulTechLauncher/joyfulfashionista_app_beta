@@ -38,7 +38,7 @@ class BuildListTitle extends StatelessWidget {
           weight: FontWeight.bold,
           size: 18,
           style: TextStyle(
-            fontFamily: "Noto_Serif_SC",
+            fontFamily: "Montserrat",
           )
         ),
         IconWidget.icon(Icons.chevron_right),
