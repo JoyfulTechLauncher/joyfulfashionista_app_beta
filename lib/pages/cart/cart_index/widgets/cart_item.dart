@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
@@ -20,17 +19,13 @@ class CartItem extends StatelessWidget {
   /// 选中事件
   final Function(bool)? onSelect;
 
-  /// item点击事件
-  final Function()? onTap;
-
-  const CartItem(
-      {Key? key,
-      required this.lineItem,
-      required this.isSelected,
-      this.onChangeQuantity,
-      this.onSelect,
-      this.onTap})
-      : super(key: key);
+  const CartItem({
+    Key? key,
+    required this.lineItem,
+    required this.isSelected,
+    this.onChangeQuantity,
+    this.onSelect,
+  }) : super(key: key);
 
   // 主视图
   Widget _buildView() {
@@ -48,19 +43,16 @@ class CartItem extends StatelessWidget {
       ).paddingRight(AppSpace.iconTextSmail),
 
       // 图片
-      InkWell(
-        onTap: onTap,
-        child: ImageWidget.url(
-          Convert.aliImageResize(
-            product.images?.first.src ?? "",
-            width: 100.w,
-          ),
-          fit: BoxFit.cover,
-          width: 78.w,
-          height: 100.w,
-          radius: AppRadius.image.w,
-        ).paddingRight(AppSpace.iconTextSmail),
-      ),
+      ImageWidget.url(
+        Convert.aliImageResize(
+          product.images?.first.src ?? "",
+          width: 100.w,
+        ),
+        fit: BoxFit.cover,
+        width: 78.w,
+        height: 100.w,
+        radius: AppRadius.image.w,
+      ).paddingRight(AppSpace.iconTextSmail),
 
       // 标题、金额、数量
       <Widget>[
