@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:get/get.dart';
+import 'package:joyfulfashionista_app/pages/cart/buy_now/view.dart';
 
 import 'index.dart';
 import 'widgets/index.dart';
@@ -18,20 +19,24 @@ class CartIndexPage extends GetView<CartIndexController> {
           direction: DismissDirection.endToStart,
           key: Key('${item.id}'),
           onDismissed: (direction) {
-            print("delete product :${item.productId}",);
+            print(
+              "delete product :${item.productId}",
+            );
             // todo: delete product from cart
           },
           background: Container(
-            color: Colors.red,
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(right: 10),
-            child: Text(
-              LocaleKeys.commonMessageSwipeLeftToDelete.tr,
-              style: TextStyle(color: Colors.white),
-            )
-          ),
+              color: Colors.red,
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(right: 10),
+              child: Text(
+                LocaleKeys.commonMessageSwipeLeftToDelete.tr,
+                style: TextStyle(color: Colors.white),
+              )),
           child: CartItem(
             lineItem: item,
+            onTap: () {
+              controller.goProductDetail(item.productId!);
+            },
             // 是否选中
             isSelected: controller.isSelected(item.productId!),
             // 选中回调
@@ -104,6 +109,14 @@ class CartIndexPage extends GetView<CartIndexController> {
       ButtonWidget.primary(
         LocaleKeys.gCartBtnCheckout.tr,
         borderRadius: 3.sp,
+        onTap: () {
+          // 立刻购买 checkout
+          ActionBottomSheet.barModel(
+            BuyNowPage(
+              product: CartService.to.product,
+            ),
+          );
+        },
       ).tight(
         width: 100.w,
         height: 40.w,
