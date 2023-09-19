@@ -163,7 +163,10 @@ class MyAddressPage extends GetView<MyAddressController> {
       // 保存按钮
       ButtonWidget.primary(
         LocaleKeys.commonBottomSave.tr,
-        onTap: controller.onSave,
+        onTap: () {
+          controller.onSave();
+          Loading.success("Saved");
+        },
         height: AppSpace.buttonHeight,
       ),
     ].toColumn().paddingAll(AppSpace.page);
