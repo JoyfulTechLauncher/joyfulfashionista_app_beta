@@ -11,7 +11,6 @@ Any contributor MUST use ```<type> (/<field>/): <subject>``` where
 - type must be one of the followings
 - field is optional
 - subject is compulsory
-to commit.
 
 e.g.:
 1. fix: ...; for bug fixes
