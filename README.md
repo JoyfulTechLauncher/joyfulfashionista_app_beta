@@ -22,9 +22,6 @@ e.g.:
 6. perf: ...; for code efficiency improvement, code enhancement...
 7. chore: ...; for none of types above
 
-## Burndown
-
-<image src="/assets/Joyful-Burndown-4.png" width=40%>
 ## Getting Started
 
 This project is a starting point for a Flutter application.
