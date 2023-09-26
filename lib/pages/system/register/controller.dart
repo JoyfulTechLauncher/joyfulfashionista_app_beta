@@ -22,21 +22,23 @@ class RegisterController extends GetxController {
 
   // User
   TextEditingController userNameController =
-      TextEditingController(text: "ducafecat5");
+      TextEditingController(text:"");
   // Mail
   TextEditingController emailController =
-      TextEditingController(text: "ducafecat5@gmail.com");
+      TextEditingController(text: "");
   // last name
   TextEditingController firstNameController =
-      TextEditingController(text: "ducafe");
+      TextEditingController(text: "");
   // first name
-  TextEditingController lastNameController = TextEditingController(text: "cat");
+  TextEditingController lastNameController = TextEditingController(text: "");
   // password
   TextEditingController passwordController =
-      TextEditingController(text: "12345678");
+      TextEditingController(text: "");
   // repeat password
   TextEditingController repeatPasswordController =
-      TextEditingController(text: "12345678");
+      TextEditingController(text: "");
+
+
 
   // sign up
   void onSignUp() {

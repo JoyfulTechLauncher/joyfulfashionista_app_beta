@@ -32,8 +32,17 @@ class UserApi {
           }
           );
 
-    print('Response Status: ${res.statusCode}');
+    //print('Response Status: ${res.statusCode}');
     print('Response Body: ${res.body}');
+
+    if (res.statusCode == 400) {
+      if (res.body.contains("registration-error-username-exists")){
+        Loading.error("Username has already been used");
+      }
+      else if (res.body.contains("registration-error-email-exists")){
+        Loading.error("Email address has been used");
+      }
+    }
 
     if (res.statusCode == 201) {
       login(username!, password!);
