@@ -40,7 +40,7 @@ class UserApi {
         Loading.error("Username has already been used");
       }
       else if (res.body.contains("registration-error-email-exists")){
-        Loading.error("Email address has been used");
+        Loading.error("Email address has already been used");
       }
     }
 
