@@ -71,7 +71,7 @@ class ProductUploadController extends GetxController {
       if (images.isEmpty) {
         Loading.error(LocaleKeys.gProductUploadImagesEmptyError.tr);
         return;
-      }else if (images.length > 5) {
+      } else if (images.length > 5) {
         Loading.error(LocaleKeys.gProductUploadImagesExceedError.trParams({
           "size": "5",
         }));
@@ -82,6 +82,10 @@ class ProductUploadController extends GetxController {
         Loading.error(LocaleKeys.gProductUploadTagsEmptyError.tr);
         return;
       }
+
+
+
+      UserApi.uploadProduct(images, titleController.toString(), descriptionController.toString());
       // 提交
       // UserProfileModel profile = await UserApi.saveBaseInfo(UserProfileModel(
       //   firstName: titleController.text,

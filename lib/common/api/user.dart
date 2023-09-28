@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:joyfulfashionista_app/test.dart';
 
 import '../index.dart';
@@ -42,16 +44,7 @@ class UserApi {
          return false;
   }
 
-  /// login
-  // static Future<UserTokenModel> login(UserLoginReq? req) async {
-  //   var res = await WPHttpService.to.post(
-  //     '/wp-json/jwt-auth/v1/token',
-  //     data: req,
-  //   );
-  //
-  //   return UserTokenModel.fromResponse(res);
-  // }
-  /// login
+
   static Future<void> login(String username, String password) async {
 
     final response = await http.post(
@@ -62,7 +55,7 @@ class UserApi {
       },
     );
 
-    // 存储用户名密码
+    // Save username and password
     UserApi().userManager.setUsername('$username');
     UserApi().userManager.setPassword('$password');
 
@@ -81,6 +74,57 @@ class UserApi {
 
     }
   }
+
+  // FIXME: fix images upload
+  /// Upload product
+  static Future<void> uploadProduct(List<File> images, String title, String description) async {
+    // WooCommerce API endpoint for products
+    String apiUrl = Constants.wpApiBaseUrl + "/wp-json/wc/v3/products";
+
+    // JWT token
+    String? jwtToken = await UserService().getToken("tester");
+
+    // Product data
+    Map<String, dynamic> productData = {
+      "name": "$title",
+      "description": "$description",
+      // "categories": [{"id": 1}], // Category ID
+      "images": images,
+      // "attributes": [
+      //   {
+      //     "name": "Size",
+      //     "visible": true,
+      //     "options": ["Small", "Medium", "Large"]
+      //   }
+      // ],
+      // "tags": [{"id": 5}] // Tag ID
+    };
+
+    // Encode product data to JSON
+    String requestBody = json.encode(productData);
+
+    // Create headers with JWT token
+    Map<String, String> headers = {
+      'Authorization': 'Bearer $jwtToken',
+      'Content-Type': 'application/json',
+    };
+
+    // Send POST request to create the product
+    http.Response response = await http.post(
+        Uri.parse(apiUrl),
+        headers: headers,
+        body: requestBody
+    );
+
+    if (response.statusCode == 201) {
+      print('Product uploaded successfully');
+      print('Product ID: ${json.decode(response.body)['id']}');
+    } else {
+      print('Failed to upload product');
+      print('Response: ${response.body}');
+    }
+  }
+
 
   /// get id
   static Future<int> getSelfId(String token) async{
