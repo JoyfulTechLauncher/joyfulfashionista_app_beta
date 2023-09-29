@@ -77,31 +77,12 @@ class UserApi {
 
   // FIXME: fix images upload
   /// Upload product
-  static Future<void> uploadProduct(List<File> images, String title, String description) async {
+  static Future<void> uploadProduct(List<String> imagesURL, String title, String description) async {
     // WooCommerce API endpoint for products
     String apiUrl = Constants.wpApiBaseUrl + "/wp-json/wc/v3/products";
 
     // JWT token
     String? jwtToken = await UserService().getToken("tester");
-
-    // Product data
-    Map<String, dynamic> productData = {
-      "name": "$title",
-      "description": "$description",
-      // "categories": [{"id": 1}], // Category ID
-      "images": images,
-      // "attributes": [
-      //   {
-      //     "name": "Size",
-      //     "visible": true,
-      //     "options": ["Small", "Medium", "Large"]
-      //   }
-      // ],
-      // "tags": [{"id": 5}] // Tag ID
-    };
-
-    // Encode product data to JSON
-    String requestBody = json.encode(productData);
 
     // Create headers with JWT token
     Map<String, String> headers = {
@@ -109,13 +90,24 @@ class UserApi {
       'Content-Type': 'application/json',
     };
 
-    // Send POST request to create the product
-    http.Response response = await http.post(
+    // Create the images list for WooCommerce
+    List<Map<String, String>> wooImages = imagesURL.map((url) => {"src": url}).toList();
+
+    // Build the request body with product info and images
+    Map<String, dynamic> body = {
+      'name': title,
+      'description': description,
+      'images': wooImages,
+    };
+
+    // Send the POST request
+    var response = await http.post(
         Uri.parse(apiUrl),
         headers: headers,
-        body: requestBody
+        body: json.encode(body)
     );
 
+    // Check for response status code
     if (response.statusCode == 201) {
       print('Product uploaded successfully');
       print('Product ID: ${json.decode(response.body)['id']}');
@@ -125,6 +117,25 @@ class UserApi {
     }
   }
 
+  /// upload to imgur
+  final String _clientID = '333783c2f7a8750';
+
+  Future<String?> uploadToImgur(File image) async {
+    final request = http.MultipartRequest('POST', Uri.parse('https://api.imgur.com/3/upload'));
+    request.headers['Authorization'] = 'Client-ID $_clientID';
+
+    request.files.add(await http.MultipartFile.fromPath('image', image.path));
+
+    final response = await http.Response.fromStream(await request.send());
+
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      return responseData['data']['link'] as String;
+    } else {
+      print('Failed to upload image to Imgur: ${response.body}');
+      return null;
+    }
+  }
 
   /// get id
   static Future<int> getSelfId(String token) async{

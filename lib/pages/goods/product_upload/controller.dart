@@ -22,8 +22,12 @@ class ProductUploadController extends GetxController {
   // tags
   List<String> tags = [];
 
+  // images urls
+  List<String> imageUrls = [];
   // 本机图片file
   File? filePhoto;
+
+  final userApi = UserApi();
 
   _initData() {
     update(["product_upload"]);
@@ -46,6 +50,12 @@ class ProductUploadController extends GetxController {
             filePhoto = await result.file;
             if (filePhoto != null) {
               images.add(filePhoto!);
+              String? imgURL = await userApi.uploadToImgur(filePhoto!);
+              if (imgURL != null) {
+                imageUrls.add(imgURL);
+              } else {
+                print('Failed to upload image to Imgur');
+              }
             }
             update(["product_upload"]);
           }
@@ -56,6 +66,12 @@ class ProductUploadController extends GetxController {
             filePhoto = await result.first.file;
             if (filePhoto != null) {
               images.add(filePhoto!);
+              String? imgURL = await userApi.uploadToImgur(filePhoto!);
+              if (imgURL != null) {
+                imageUrls.add(imgURL);
+              } else {
+                print('Failed to upload image to Imgur');
+              }
             }
             update(["product_upload"]);
           }
@@ -85,7 +101,7 @@ class ProductUploadController extends GetxController {
 
 
 
-      UserApi.uploadProduct(images, titleController.text, descriptionController.text);
+      UserApi.uploadProduct(imageUrls, titleController.text, descriptionController.text);
       // 提交
       // UserProfileModel profile = await UserApi.saveBaseInfo(UserProfileModel(
       //   firstName: titleController.text,
