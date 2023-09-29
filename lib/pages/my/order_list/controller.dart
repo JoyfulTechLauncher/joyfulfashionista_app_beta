@@ -22,9 +22,15 @@ class OrderListController extends GetxController {
     // 拉取数据
     var result = await OrderApi.orders(OrdersReq(
       // 刷新, 重置页数1
-      page: isRefresh ? 1 : _page,
-      // 每页条数
-      prePage: _limit,
+      // page: isRefresh ? 1 : _page,
+      // // 每页条数
+      // prePage: _limit,
+      // 消费者密钥
+      // consumerKey: "ck_79e2c4c70e87dac66405834e972982eb7b02feb5",
+      // consumerSecret: "cs_fb0e4132784e31f0c5ca87ddc2529ecf1d59ca6f",
+      // 用户ID
+      customer: UserService.to.profile.id,
+
     ));
 
     // 下拉刷新

@@ -33,15 +33,37 @@ class OrderApi {
 
   /// 订单列表
   static Future<List<OrderModel>> orders(OrdersReq req) async {
-    var res = await WPHttpService.to.get(
-      '/orders',
-      params: req.toJson(),
-    );
-
     List<OrderModel> orders = [];
-    for (var item in res.data) {
-      orders.add(OrderModel.fromJson(item));
+
+    try {
+      var res = await WPHttpService.to.get(
+        '/wp-json/wc/v3/orders',
+        params: req.toJson(),
+      );
+
+
+      var ordersData = res.data;
+
+      // Check if 'orders' key exists and is a List
+      if (ordersData is List) {
+        for (var item in ordersData) {
+          if (item is Map<String, dynamic>) {
+            orders.add(OrderModel.fromJson(item));
+          } else {
+            // Handle the case where an item is not a Map<String, dynamic>
+            print('Unexpected item format: $item');
+          }
+        }
+      } else {
+        // Handle the case where 'orders' key is missing or its value is not a List
+        print('Unexpected response format for orders: $ordersData');
+      }
+    } catch (e) {
+      // 输出错误信息
+      print('Error fetching orders: $e');
     }
+
     return orders;
   }
+
 }
