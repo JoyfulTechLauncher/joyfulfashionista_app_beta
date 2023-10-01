@@ -64,11 +64,9 @@ class ProductDetailsController extends GetxController
   final int _reviewsLimit = 20;
 
 
-
-  List<Product> recommendedProducts = [
-    Product(name: "Product 1", price: 19.99, imageUrl: "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/bag/718Y%2BhJkMgL._AC_UY695_.jpg"),
-    Product(name: "Product 2", price: 29.99, imageUrl: "https://ducafecat-pub.oss-cn-qingdao.aliyuncs.com/bag/81M4BxGW4TL._AC_UY695_.jpg"),];
-
+ List<Product> recommendedProducts = [
+    Product(name: "Fleece Sweater", price: 19.99, imageUrl: "https://s3.bmp.ovh/imgs/2023/10/01/c8627f18db577088.png"),
+    Product(name: "Fleece Sweatshirt", price: 29.99, imageUrl: "https://s3.bmp.ovh/imgs/2023/10/01/1931ac3e729e38ff.jpg"),];
 
 
 
