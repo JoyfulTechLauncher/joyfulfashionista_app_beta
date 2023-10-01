@@ -94,6 +94,58 @@ class ProductUploadPage extends GetView<ProductUploadController> {
         ]),
       ).marginOnly(bottom: AppSpace.listRow),
 
+      // price
+      TextFormWidget(
+        controller: controller.priceController,
+        decoration: InputDecoration(
+          labelText: '*${LocaleKeys.gProductUploadPrice.tr}',
+          hintText: LocaleKeys.gProductUploadPriceHint.tr,
+        ),
+        validator: Validatorless.multiple([
+          Validatorless.required("The field is obligatory"),
+          Validatorless.min(
+              1, "Length cannot be less than @size".trParams({"size": "1"})),
+          Validatorless.max(18,
+              "Length cannot be greater than @size".trParams({"size": "18"})),
+        ]),
+      ).marginOnly(bottom: AppSpace.listRow),
+
+      // size
+      TextFormWidget(
+        controller: controller.sizeController,
+        decoration: InputDecoration(
+          labelText: '*${LocaleKeys.gProductUploadSize.tr}',
+          hintText: LocaleKeys.gProductUploadSizeHint.tr,
+        ),
+        validator: Validatorless.multiple([
+          Validatorless.required("The field is obligatory"),
+          Validatorless.min(
+              1, "Length cannot be less than @size".trParams({"size": "1"})),
+          Validatorless.max(18,
+              "Length cannot be greater than @size".trParams({"size": "18"})),
+        ]),
+      ).marginOnly(bottom: AppSpace.listRow),
+
+
+
+
+      // colour
+      TextFormWidget(
+        controller: controller.colourController,
+        decoration: InputDecoration(
+          labelText: '*${LocaleKeys.gProductUploadColour.tr}',
+          hintText: LocaleKeys.gProductUploadColourHint.tr,
+        ),
+        validator: Validatorless.multiple([
+          Validatorless.required("The field is obligatory"),
+          Validatorless.min(
+              1, "Length cannot be less than @size".trParams({"size": "1"})),
+          Validatorless.max(18,
+              "Length cannot be greater than @size".trParams({"size": "18"})),
+        ]),
+      ).marginOnly(bottom: AppSpace.listRow),
+
+      
       // description
       TextFormWidget(
         controller: controller.descriptionController,
@@ -115,21 +167,7 @@ class ProductUploadPage extends GetView<ProductUploadController> {
         ]),
       ).marginOnly(bottom: AppSpace.listRow),
 
-      // size
-      TextFormWidget(
-        controller: controller.sizeController,
-        decoration: InputDecoration(
-          labelText: '*${LocaleKeys.gProductUploadSize.tr}',
-          hintText: LocaleKeys.gProductUploadSizeHint.tr,
-        ),
-        validator: Validatorless.multiple([
-          Validatorless.required("The field is obligatory"),
-          Validatorless.min(
-              1, "Length cannot be less than @size".trParams({"size": "1"})),
-          Validatorless.max(18,
-              "Length cannot be greater than @size".trParams({"size": "18"})),
-        ]),
-      ).marginOnly(bottom: AppSpace.listRow),
+
 
       // tags
       Align(
