@@ -16,7 +16,7 @@ class CategoryController extends GetxController {
 
   // 刷新控制器
   final RefreshController refreshController = RefreshController(
-    initialRefresh: true, // 一开始就自动下拉刷新
+    initialRefresh: false, // 一开始就自动下拉刷新
   );
   // 列表
   List<ProductModel> items = [];
@@ -62,10 +62,28 @@ class CategoryController extends GetxController {
 
   _initData() async {
 
+    var stringCategories = Storage().getString(Constants.storageProductsCategories);
+    var stringCategorizedProduct = Storage().getString(Constants.storageCategorizedProduct + categoryId.toString());
+
+    categoryItems = stringCategories != ""
+        ? jsonDecode(stringCategories).map<CategoryModel>((item) {
+      return CategoryModel.fromJson(item);
+    }).toList()
+        : [];
+
+    items = stringCategorizedProduct != ""
+        ? jsonDecode(stringCategorizedProduct).map<ProductModel>((item) {
+      return ProductModel.fromJson(item);
+    }).toList()
+        : [];
+
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories();// 获取分类数据
+      Storage().setJson(Constants.storageProductsCategories, categoryItems);
     }
-    items = await ProductApi.getCategoryProducts(categoryId!);
+    if (items.isEmpty){
+      items = await ProductApi.getCategoryProducts(categoryId!);
+    }
 
     update(["category", "product_list"]);
   }
@@ -75,13 +93,25 @@ class CategoryController extends GetxController {
 
     refreshController.requestRefresh();
     categoryId = id;
-    items = await ProductApi.getCategoryProducts(categoryId!);
+
+    var stringCategorizedProduct = Storage().getString(Constants.storageCategorizedProduct + categoryId.toString());
+    items = stringCategorizedProduct != ""
+        ? jsonDecode(stringCategorizedProduct).map<ProductModel>((item) {
+      return ProductModel.fromJson(item);
+    }).toList()
+        : [];
+
+    if (items.isEmpty){
+      items = await ProductApi.getCategoryProducts(categoryId!);
+    }
+
     update(["left_nav", "product_list"]);
 
   }
 
   // 分类更新
   void onCategoryUpdate() async {
+
     if (categoryItems.isEmpty) {
       categoryItems = await ProductApi.categories();// 获取分类数据
     }
@@ -109,7 +139,6 @@ class CategoryController extends GetxController {
       // 设置无数据
       refreshController.loadNoData();
     }
-    //update(["product_list"]);
   }
 
   // 下拉刷新
@@ -121,7 +150,6 @@ class CategoryController extends GetxController {
       // 刷新失败
       refreshController.refreshFailed();
     }
-    //update(["product_list"]);
   }
 
   // @override

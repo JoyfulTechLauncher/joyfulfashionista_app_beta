@@ -5,6 +5,7 @@ class Constants {
   static const wcEndpointBaseUrl = '/wp-json/wc/v3';
   static const jwtEndpointUrl = '/jwt-auth/v1/token';
   static const List<String> categoryList = ['Man', 'Woman', 'Children', 'Inclusive', 'Accessories', 'Shipping', 'Popular'];
+
   // 本地存储key
   static const storageLanguageCode = 'language_code';
   static const storageThemeCode = 'theme_code';
@@ -32,8 +33,10 @@ class Constants {
   // 性别
   static const storageProductsAttributesGender = 'products_attributes_gender';
   // 新旧
-  static const storageProductsAttributesCondition =
-      'products_attributes_condition';
+  static const storageProductsAttributesCondition = 'products_attributes_condition';
+  // 分类后的产品清单
+  static const storageCategorizedProduct = "category_";
+
 
   // 首页离线
   static const storageHomeBanner = 'home_banner';
