@@ -196,7 +196,7 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Guess you like",
+          "You may like",
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
