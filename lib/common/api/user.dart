@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:joyfulfashionista_app/test.dart';
 
 import '../index.dart';
@@ -42,16 +44,7 @@ class UserApi {
          return false;
   }
 
-  /// login
-  // static Future<UserTokenModel> login(UserLoginReq? req) async {
-  //   var res = await WPHttpService.to.post(
-  //     '/wp-json/jwt-auth/v1/token',
-  //     data: req,
-  //   );
-  //
-  //   return UserTokenModel.fromResponse(res);
-  // }
-  /// login
+
   static Future<void> login(String username, String password) async {
 
     final response = await http.post(
@@ -62,7 +55,7 @@ class UserApi {
       },
     );
 
-    // 存储用户名密码
+    // Save username and password
     UserApi().userManager.setUsername('$username');
     UserApi().userManager.setPassword('$password');
 
@@ -79,6 +72,68 @@ class UserApi {
       print('Status code: ${response.statusCode}');
       throw Exception('Failed to login');
 
+    }
+  }
+
+  // FIXME: fix images upload
+  /// Upload product
+  static Future<void> uploadProduct(List<String> imagesURL, String title, String description) async {
+    // WooCommerce API endpoint for products
+    String apiUrl = Constants.wpApiBaseUrl + "/wp-json/wc/v3/products";
+
+    // JWT token
+    String? jwtToken = await UserService().getToken("tester");
+
+    // Create headers with JWT token
+    Map<String, String> headers = {
+      'Authorization': 'Bearer $jwtToken',
+      'Content-Type': 'application/json',
+    };
+
+    // Create the images list for WooCommerce
+    List<Map<String, String>> wooImages = imagesURL.map((url) => {"src": url}).toList();
+
+    // Build the request body with product info and images
+    Map<String, dynamic> body = {
+      'name': title,
+      'description': description,
+      'images': wooImages,
+    };
+
+    // Send the POST request
+    var response = await http.post(
+        Uri.parse(apiUrl),
+        headers: headers,
+        body: json.encode(body)
+    );
+
+    // Check for response status code
+    if (response.statusCode == 201) {
+      print('Product uploaded successfully');
+      print('Product ID: ${json.decode(response.body)['id']}');
+    } else {
+      print('Failed to upload product');
+      print('Response: ${response.body}');
+    }
+  }
+
+  /// upload to imgur
+  final String _clientID = '333783c2f7a8750';
+
+  Future<String?> uploadToImgur(File image) async {
+    final request = http.MultipartRequest('POST', Uri.parse('https://api.imgur.com/3/upload'));
+    request.headers['Authorization'] = 'Client-ID $_clientID';
+
+    request.files.add(await http.MultipartFile.fromPath('image', image.path));
+
+    final response = await http.Response.fromStream(await request.send());
+
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      return responseData['data']['link'] as String;
+    } else {
+      print('Failed to upload image to Imgur: ${response.body}');
+      return null;
     }
   }
 

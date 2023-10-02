@@ -24,8 +24,12 @@ class ProductUploadController extends GetxController {
   // tags
   List<String> tags = [];
 
+  // images urls
+  List<String> imageUrls = [];
   // 本机图片file
   File? filePhoto;
+
+  final userApi = UserApi();
 
   _initData() {
     update(["product_upload"]);
@@ -48,6 +52,12 @@ class ProductUploadController extends GetxController {
             filePhoto = await result.file;
             if (filePhoto != null) {
               images.add(filePhoto!);
+              String? imgURL = await userApi.uploadToImgur(filePhoto!);
+              if (imgURL != null) {
+                imageUrls.add(imgURL);
+              } else {
+                print('Failed to upload image to Imgur');
+              }
             }
             update(["product_upload"]);
           }
@@ -58,6 +68,12 @@ class ProductUploadController extends GetxController {
             filePhoto = await result.first.file;
             if (filePhoto != null) {
               images.add(filePhoto!);
+              String? imgURL = await userApi.uploadToImgur(filePhoto!);
+              if (imgURL != null) {
+                imageUrls.add(imgURL);
+              } else {
+                print('Failed to upload image to Imgur');
+              }
             }
             update(["product_upload"]);
           }
@@ -73,7 +89,7 @@ class ProductUploadController extends GetxController {
       if (images.isEmpty) {
         Loading.error(LocaleKeys.gProductUploadImagesEmptyError.tr);
         return;
-      }else if (images.length > 5) {
+      } else if (images.length > 5) {
         Loading.error(LocaleKeys.gProductUploadImagesExceedError.trParams({
           "size": "5",
         }));
@@ -84,6 +100,10 @@ class ProductUploadController extends GetxController {
         Loading.error(LocaleKeys.gProductUploadTagsEmptyError.tr);
         return;
       }
+
+
+
+      UserApi.uploadProduct(imageUrls, titleController.text, descriptionController.text);
       // 提交
       // UserProfileModel profile = await UserApi.saveBaseInfo(UserProfileModel(
       //   firstName: titleController.text,

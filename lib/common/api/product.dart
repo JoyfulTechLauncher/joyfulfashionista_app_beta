@@ -39,7 +39,7 @@ class ProductApi {
       categories.add(category);
     }
     // transform category names to Chinese
-    if(ConfigService.to.locale.toLanguageTag() != "en-US") {
+    if (ConfigService.to.locale.toLanguageTag() != "en-US") {
       categories[0].name = "男性";
       categories[1].name = "女性";
       categories[2].name = "儿童";
