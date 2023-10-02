@@ -112,7 +112,10 @@ class LocaleKeys {
   static const gProductUploadImagesEmptyError = "goods_product_upload_images_empty_error";
   static const gProductUploadTagsEmptyError = "goods_product_upload_tags_empty_error";
   static const gProductUploadTagExists = "goods_product_upload_tag_exists";
-
+  static const gProductUploadPrice = "goods_product_upload_price";
+  static const gProductUploadPriceHint = "goods_product_upload_price_hint";
+  static const gProductUploadColour = "goods_product_upload_colour";
+  static const gProductUploadColourHint = "goods_product_upload_colour_hint";
 
 
 

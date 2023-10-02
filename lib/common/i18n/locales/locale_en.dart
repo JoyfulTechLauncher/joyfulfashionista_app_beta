@@ -113,6 +113,10 @@ Map<String, String> localeEn = {
   LocaleKeys.gProductUploadImagesEmptyError: 'Please upload at least one image',
   LocaleKeys.gProductUploadTagsEmptyError: 'Please enter at least one tag',
   LocaleKeys.gProductUploadTagExists: 'Tag already exists',
+  LocaleKeys.gProductUploadPrice: 'Price',
+  LocaleKeys.gProductUploadPriceHint: 'Please enter price',
+  LocaleKeys.gProductUploadColour: 'Colour',
+  LocaleKeys.gProductUploadColourHint: 'Please enter colour',
 
   // 搜索
   LocaleKeys.searchPlaceholder: 'Search Product',

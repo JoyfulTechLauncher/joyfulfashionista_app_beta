@@ -15,6 +15,8 @@ class ProductUploadController extends GetxController {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController sizeController = TextEditingController();
   TextEditingController tagController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  TextEditingController colourController = TextEditingController();
 
   // images
   List<File> images = [];
