@@ -60,47 +60,47 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
         );
   }
 
-  // 纵向状态
+ // 纵向状态
   Widget _buildVerticalStatus() {
     return <Widget>[
       const StepVerticalItemWidget(
         statusName: "Delivered",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "03 Oct, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.none,
       ),
       const StepVerticalItemWidget(
         statusName: "Shipped",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "01 Oct, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.none,
       ),
       const StepVerticalItemWidget(
         statusName: "Picked",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "30 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.running,
       ),
       const StepVerticalItemWidget(
         statusName: "Processing",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Confirm",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Pending",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.success,
@@ -111,6 +111,7 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
           right: AppSpace.page,
         );
   }
+
 
   // 寄件地、目的地
   Widget _buildBillAddress() {

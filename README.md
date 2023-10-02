@@ -6,17 +6,21 @@ According to statistics, nearly 100 million tons of textiles are discarded or wa
 
 Current Development Version 2.3.0
 
-## Commit rules:
-use prefixes while committing e.g.:
-1. fix: ... for bug fixes
-2. feat: ... for new features
-3. modify: ... for modifying files
-4. delete: ... for deleting files
-5. revert: ... for reverting files
+## Commit Message Conventions:
+Any contributor MUST use ```<type> (/<field>/): <subject>``` where
+- type must be one of the followings
+- field is optional
+- subject is compulsory
 
-## Burndown
+e.g.:
+1. fix: ...; for bug fixes
+2. feat: ...; for new features
+3. refactor: ...; for changes of neither a bugfix or a new feature
+4. docs: ...; for documentational edit
+5. revert: ...; for reverting to previous commits
+6. perf: ...; for code efficiency improvement, code enhancement...
+7. chore: ...; for none of types above
 
-<image src="/assets/Joyful-Burndown-4.png" width=40%>
 ## Getting Started
 
 This project is a starting point for a Flutter application.

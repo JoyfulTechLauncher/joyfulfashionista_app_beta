@@ -114,6 +114,10 @@ Map<String, String> localeZh = {
   LocaleKeys.gProductUploadImagesEmptyError: '请添加商品图片',
   LocaleKeys.gProductUploadTagsEmptyError: '请添加商品标签',
   LocaleKeys.gProductUploadTagExists: '标签已存在',
+  LocaleKeys.gProductUploadPrice: '价格',
+  LocaleKeys.gProductUploadPriceHint: '请输入商品价格',
+  LocaleKeys.gProductUploadColour: '颜色',
+  LocaleKeys.gProductUploadColourHint: '请输入商品颜色',
 
   // 搜索
   LocaleKeys.searchPlaceholder: '搜索商品',

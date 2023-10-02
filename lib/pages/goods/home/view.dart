@@ -65,33 +65,35 @@ class HomePage extends GetView<HomeController> {
   }
 
   // 分类导航
-  Widget _buildCategories1() {
+ Widget _buildCategories1() {
     controller.onCategoryUpdate();
-    if(ConfigService.to.locale.toLanguageTag() == "en-US"){
-      return <Widget>[
-      for (var i = 0; i < 4; i++)
-        CategoryListItemWidget(
-          category: controller.categoryItems[i],
-          onTap: (categoryId) => controller.onCategoryTap(categoryId),
-        ).paddingHorizontal(AppSpace.listRow)
-    ]
-        .toListView(
-          scrollDirection: Axis.horizontal,
-        )
-        .height(90.w)
-        .paddingVertical(AppSpace.listRow)
-        .sliverToBoxAdapter()
-        .sliverPaddingHorizontal(AppSpace.page);
+    if (ConfigService.to.locale.toLanguageTag() == "en-US") {
+      return Row(
+        children: <Widget>[
+          for (var i = 0; i < 4; i++)
+            Expanded(
+              child: CategoryListItemWidget(
+                category: controller.categoryItems[i],
+                onTap: (categoryId) => controller.onCategoryTap(categoryId),
+              ).paddingHorizontal(AppSpace.listRow),
+            ),
+        ],
+      )
+          .height(90.w)
+          .paddingVertical(AppSpace.listRow)
+          .sliverToBoxAdapter()
+          .sliverPaddingHorizontal(AppSpace.page);
     }
-    return <Widget>[
-      for (var i = 0; i < 4; i++)
-        CategoryListItemWidget(
-          category: controller.categoryItems[i],
-          onTap: (categoryId) => controller.onCategoryTap(categoryId),
-        ).paddingHorizontal(AppSpace.page)
-    ]
-        .toListView(
-      scrollDirection: Axis.horizontal,
+    return Row(
+      children: <Widget>[
+        for (var i = 0; i < 4; i++)
+          Expanded(
+            child: CategoryListItemWidget(
+              category: controller.categoryItems[i],
+              onTap: (categoryId) => controller.onCategoryTap(categoryId),
+            ).paddingHorizontal(AppSpace.page),
+          ),
+      ],
     )
         .height(90.w)
         .paddingVertical(AppSpace.listRow)
@@ -101,33 +103,35 @@ class HomePage extends GetView<HomeController> {
 
   Widget _buildCategories2() {
     controller.onCategoryUpdate();
-    if(ConfigService.to.locale.toLanguageTag() == "en-US"){
-      return <Widget>[
-        for (var i = 4; i < controller.categoryItems.length; i++)
-          CategoryListItemWidget(
-            category: controller.categoryItems[i],
-            onTap: (categoryId) => controller.onCategoryTap(categoryId),
-          ).paddingHorizontal(AppSpace.listItem-4)
-      ]
-          .toListView(
-        scrollDirection: Axis.horizontal,
+    if (ConfigService.to.locale.toLanguageTag() == "en-US") {
+      return Row(
+        children: <Widget>[
+          for (var i = 4; i < controller.categoryItems.length; i++)
+            Expanded(
+              child: CategoryListItemWidget(
+                category: controller.categoryItems[i],
+                onTap: (categoryId) => controller.onCategoryTap(categoryId),
+              ).paddingHorizontal(AppSpace.listItem - 4),
+            ),
+        ],
       )
           .height(90.w)
           .paddingVertical(AppSpace.listRow)
           .sliverToBoxAdapter()
           .sliverPaddingHorizontal(AppSpace.page);
     }
-    return <Widget>[
-      for (var i = 4; i < controller.categoryItems.length; i++)
-        CategoryListItemWidget(
-          category: controller.categoryItems[i],
-          onTap: (categoryId) => controller.onCategoryTap(categoryId),
-        )
-            .paddingHorizontal(AppSpace.page)
-            .paddingRight(AppSpace.listRow-3)
-    ]
-        .toListView(
-      scrollDirection: Axis.horizontal,
+    return Row(
+      children: <Widget>[
+        for (var i = 4; i < controller.categoryItems.length; i++)
+          Expanded(
+            child: CategoryListItemWidget(
+              category: controller.categoryItems[i],
+              onTap: (categoryId) => controller.onCategoryTap(categoryId),
+            )
+                .paddingHorizontal(AppSpace.page)
+                .paddingRight(AppSpace.listRow - 3),
+          ),
+      ],
     )
         .height(90.w)
         .paddingVertical(AppSpace.listRow)
@@ -135,6 +139,8 @@ class HomePage extends GetView<HomeController> {
         .sliverToBoxAdapter()
         .sliverPaddingHorizontal(AppSpace.page);
   }
+
+
 
   // 推荐商品
   Widget _buildFlashSell() {

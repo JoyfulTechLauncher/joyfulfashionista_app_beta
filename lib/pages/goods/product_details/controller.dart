@@ -4,11 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:joyfulfashionista_app/common/index.dart';
 import 'package:joyfulfashionista_app/pages/cart/buy_now/view.dart';
 import 'package:get/get.dart';
+import 'package:joyfulfashionista_app/pages/goods/product_details/view.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
+
 
 class ProductDetailsController extends GetxController
     with GetSingleTickerProviderStateMixin {
   ProductDetailsController();
+
+  ////// 推荐商品列表数据
+  List<ProductModel> flashShellProductList = [];
+
+
 
   // 主界面 刷新控制器
   final RefreshController mainRefreshController = RefreshController(
@@ -54,6 +62,14 @@ class ProductDetailsController extends GetxController
   int _reviewsPage = 1;
   // 评论 页尺寸
   final int _reviewsLimit = 20;
+
+
+ List<Product> recommendedProducts = [
+    Product(name: "Fleece Sweater", price: 19.99, imageUrl: "https://s3.bmp.ovh/imgs/2023/10/01/c8627f18db577088.png"),
+    Product(name: "Fleece Sweatshirt", price: 29.99, imageUrl: "https://s3.bmp.ovh/imgs/2023/10/01/1931ac3e729e38ff.jpg"),];
+
+
+
 
   // 拉取商品详情
   _loadProduct() async {
@@ -124,6 +140,10 @@ class ProductDetailsController extends GetxController
     var stringSizes = "";
     // Storage().getString(Constants.storageProductsAttributesSizes);
 
+    //////
+   // var stringFlashSell = Storage().getString(Constants.storageHomeFlashSell);
+
+
     colors = stringColors != ""
         ? jsonDecode(stringColors).map<KeyValueModel<AttributeModel>>((item) {
             var arrt = AttributeModel.fromJson(item);
@@ -137,7 +157,17 @@ class ProductDetailsController extends GetxController
             return KeyValueModel(key: "${arrt.name}", value: arrt);
           }).toList()
         : [];
+
+    /////
+    /*
+    flashShellProductList = stringFlashSell != ""
+        ? jsonDecode(stringFlashSell).map<ProductModel>((item) {
+      return ProductModel.fromJson(item);
+    }).toList()
+        : [];
+    */
   }
+
 
   // 评论 拉取数据
   Future<bool> _loadReviews(bool isRefresh) async {
@@ -166,7 +196,7 @@ class ProductDetailsController extends GetxController
     return reviewsListTmp.isEmpty;
   }
 
-  _initData() async {
+   _initData() async {
     // await _loadProduct();
 
     // 初始化 tab 控制器
@@ -180,6 +210,58 @@ class ProductDetailsController extends GetxController
 
     update(["product_details"]);
   }
+
+
+
+  /*
+  _initData() async {
+
+    // await _loadProduct();
+
+    // 初始化 tab 控制器
+    tabController = TabController(length: 3, vsync: this);
+
+    // 监听 tab 切换
+    tabController.addListener(() {
+      tabIndex = tabController.index;
+      update(['product_tab']);
+    });
+
+    // 首页
+    // banner
+    bannerItems = await SystemApi.banners();
+    // 推荐商品
+    flashShellProductList = await ProductApi.products(ProductsReq(featured: true));
+
+    // 颜色
+    var attributeColors = await ProductApi.attributes(1);
+    // 尺寸
+    var attributeSizes = await ProductApi.attributes(2);
+    // 品牌
+    var attributeBrand = await ProductApi.attributes(3);
+    // 性别
+    var attributeGender = await ProductApi.attributes(4);
+    // 新旧
+    var attributeCondition = await ProductApi.attributes(5);
+
+    // 保存离线数据 - 基础数据
+    Storage().setJson(Constants.storageProductsAttributesColors, attributeColors);
+    Storage().setJson(Constants.storageProductsAttributesSizes, attributeSizes);
+    Storage().setString(Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
+    Storage().setString(Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
+    Storage().setString(Constants.storageProductsAttributesCondition, jsonEncode(attributeCondition));
+
+    // 保存离线数据 - 首页业务
+    Storage().setJson(Constants.storageHomeBanner, bannerItems);
+    Storage().setJson(Constants.storageHomeFlashSell, flashShellProductList);
+
+    // 模拟网络延迟 1 秒
+    await Future.delayed(const Duration(seconds: 1));
+
+    update(["product_details"]);
+
+  }  */
+
 
   // Banner 切换事件
   void onChangeBanner(int index, reason) {

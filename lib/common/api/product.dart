@@ -55,10 +55,10 @@ class ProductApi {
 
   static Future<Map<String, List<ProductModel>>> categorizeProducts() async {
 
+    Map<String, List<ProductModel>> categoryProducts = {};
+
     List<CategoryModel> _categories = await categories();
     List<ProductModel> _products = await getProducts();
-
-    Map<String, List<ProductModel>> categoryProducts = {};
 
     for (var _ in _categories) {
       categoryProducts[_.id.toString()!] = [];
@@ -69,6 +69,12 @@ class ProductApi {
           categoryProducts[category.id.toString()]!.add(productModel);
         }
     }
+
+    for (var categoryId in categoryProducts.keys) {
+      List<ProductModel> categoryItems = categoryProducts[categoryId.toString()]!;
+      Storage().setJson(Constants.storageCategorizedProduct + categoryId.toString(), categoryItems);
+    }
+
     return categoryProducts;
   }
 
