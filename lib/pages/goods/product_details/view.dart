@@ -6,6 +6,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import 'index.dart';
 import 'widgets/index.dart';
+//final ProductDetailsController controller = Get.find<ProductDetailsController>();
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({Key? key}) : super(key: key);
@@ -57,17 +58,21 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
             currentIndex: controller.bannerCurrentIndex,
             // 切换回调
             onPageChanged: controller.onChangeBanner,
-            // 高度
-            height: 190.w,
+            ////////// 高度
+            height: 340.w,
             // 指示器圆点
             indicatorCircle: false,
             // 指示器位置
             indicatorAlignment: MainAxisAlignment.start,
             // 指示器颜色
             indicatorColor: AppColors.highlight,
+            /////
+            //product: controller.recommendedProducts,
           );
         }).backgroundColor(AppColors.surfaceVariant);
   }
+
+
 
   // 商品标题
   Widget _buildTitle() {
@@ -90,9 +95,9 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
         ),
       ].toRow(),
 
-      // 次标题
+      ///////// 次标题
       TextWidget.body1(
-        controller.product?.shortDescription?.clearHtml ?? "-",
+        controller.product?.name.toString() ?? "-",
       ),
     ]
         .toColumn(
@@ -148,7 +153,7 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
           controller: controller.tabController,
           children: [
             // 规格
-            TabProductView(uniqueTag: uniqueTag),
+            //TabProductView(uniqueTag: uniqueTag),
             // 详情
             TabDetailView(uniqueTag: uniqueTag),
             // 评论
@@ -184,24 +189,95 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
         .paddingHorizontal(AppSpace.page);
   }
 
-  // 主视图
+
+
+  Widget _buildRecommendedProducts() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "You may like",
+          style: TextStyle(
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(height: 10.0),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              for (final product in controller.recommendedProducts)
+                Card(
+                  // 构建推荐商品卡片
+                  child: Column(
+                    children: [
+                      Image.network(
+                        product.imageUrl,
+                        fit: BoxFit.contain,
+                        width: 200,
+                        height: 100,
+                      ),
+                      Text(product.name),
+                      Text("\$${product.price.toStringAsFixed(2)}"),
+                      // 添加其他商品信息
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+
+
+
+
+// 在 _buildView 中添加推荐商品小部件
+
+
   Widget _buildView() {
     return controller.product == null
         ? const PlaceholdWidget() // 占位图
-        : <Widget>[
-            // 滚动图
-            _buildBanner(),
+        : Column(
+      children: [
+        // 滚动图
+        _buildBanner(),
 
-            // 商品标题
-            _buildTitle(),
+        // 商品标题
+        _buildTitle(),
 
-            // Tab 栏位
-            _buildTabBar(),
+        // Tab 栏位
+        _buildTabBar(),
 
-            // TabView 视图
-            _buildTabView(),
-          ].toColumn();
+        // TabView 视图
+        _buildTabView( ),
+
+        // 推荐商品
+        _buildRecommendedProducts(),
+      ],
+    );
   }
+
+  /*Widget _buildView() {
+    return controller.product == null
+        ? const PlaceholdWidget()
+        : Column(
+      children: [
+        Expanded(child: _buildBanner(), flex: 2), // 使用不同的flex值
+        Expanded(child: _buildTitle(), flex: 1),
+        Expanded(child: _buildTabBar(), flex: 1),
+        Expanded(child: _buildTabView(), flex: 3),
+        Expanded(child: _buildRecommendedProducts(controller.recommendedProducts), flex: 2),
+      ],
+    );
+  } */
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -240,3 +316,18 @@ class _ProductDetailsViewGetX extends GetView<ProductDetailsController> {
     );
   }
 }
+
+
+
+class Product {
+  final String name;
+  final double price;
+  final String imageUrl;
+
+  Product({
+    required this.name,
+    required this.price,
+    required this.imageUrl,
+  });
+}
+
