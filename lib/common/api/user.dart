@@ -77,7 +77,7 @@ class UserApi {
 
   // FIXME: fix images upload
   /// Upload product
-  static Future<void> uploadProduct(List<String> imagesURL, String title, String description) async {
+  static Future<void> uploadProduct(List<String> imagesURL, String title, String description, String color, String price, String size, int tag) async {
     // WooCommerce API endpoint for products
     String apiUrl = Constants.wpApiBaseUrl + "/wp-json/wc/v3/products";
 
@@ -97,6 +97,28 @@ class UserApi {
     Map<String, dynamic> body = {
       'name': title,
       'description': description,
+      'regular-price' : price,
+      'attributes' : [
+        {
+          'id' : 1,
+          'name' : 'Color',
+          'position' : 1,
+          'visible' : true,
+          'options' : color
+        },
+        {
+          'id' : 2,
+          'name' : 'Size',
+          'position' : 4,
+          'visible' : true,
+          'options' : size
+        }
+      ],
+      'categories' : [
+        {
+          'id' : tag
+        }
+      ],
       'images': wooImages,
     };
 
@@ -116,6 +138,7 @@ class UserApi {
       print('Response: ${response.body}');
     }
   }
+
 
   /// upload to imgur
   final String _clientID = '333783c2f7a8750';

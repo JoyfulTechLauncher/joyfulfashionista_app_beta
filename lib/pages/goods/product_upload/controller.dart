@@ -102,8 +102,8 @@ class ProductUploadController extends GetxController {
       }
 
 
-
-      UserApi.uploadProduct(imageUrls, titleController.text, descriptionController.text);
+      int tag = int.parse(tagController.text);
+      UserApi.uploadProduct(imageUrls, titleController.text, descriptionController.text, colourController.text, priceController.text, sizeController.text, tag);
       // 提交
       // UserProfileModel profile = await UserApi.saveBaseInfo(UserProfileModel(
       //   firstName: titleController.text,
