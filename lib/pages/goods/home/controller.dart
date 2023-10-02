@@ -21,7 +21,7 @@ class HomeController extends GetxController {
 
   // 刷新控制器
   final RefreshController refreshController = RefreshController(
-    initialRefresh: true,
+    initialRefresh: false,
   );
   // 页码
   int _page = 1;
@@ -93,9 +93,6 @@ class HomeController extends GetxController {
     Storage().setJson(Constants.storageHomeCategories, categoryItems);
     Storage().setJson(Constants.storageHomeFlashSell, flashShellProductList);
     Storage().setJson(Constants.storageHomeNewSell, newProductProductList);
-
-    // 模拟网络延迟 1 秒
-    await Future.delayed(const Duration(seconds: 1));
 
     update(["home"]);
 
