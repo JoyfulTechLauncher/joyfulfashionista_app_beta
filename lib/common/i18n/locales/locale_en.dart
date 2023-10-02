@@ -109,7 +109,8 @@ Map<String, String> localeEn = {
   LocaleKeys.gProductUploadSizeHint: 'Please enter size',
   LocaleKeys.gProductUploadTag: 'Tag',
   LocaleKeys.gProductUploadTagHint: 'Please enter tag, click "+" to add',
-  LocaleKeys.gProductUploadImagesExceedError: 'Upload up to @max images at most',
+  LocaleKeys.gProductUploadImagesExceedError:
+      'Upload up to @max images at most',
   LocaleKeys.gProductUploadImagesEmptyError: 'Please upload at least one image',
   LocaleKeys.gProductUploadTagsEmptyError: 'Please enter at least one tag',
   LocaleKeys.gProductUploadTagExists: 'Tag already exists',
@@ -167,7 +168,6 @@ Map<String, String> localeEn = {
   LocaleKeys.addressEmail: 'Email',
   LocaleKeys.shippingAddress: 'Shipping',
   LocaleKeys.billingAddress: 'Billing',
-
 
   // 购物车
   LocaleKeys.gCartTitle: 'My Cart',
@@ -238,4 +238,9 @@ Map<String, String> localeEn = {
   //消息
   LocaleKeys.messagePage: 'Message',
   LocaleKeys.noMessage: 'No Message',
+  LocaleKeys.deleteAllMessage: 'Delete all message',
+  LocaleKeys.delivery: 'Delivery',
+  LocaleKeys.discount: 'Discount',
+  LocaleKeys.coupons: 'Coupons',
+  LocaleKeys.surverycenter: "Survery Center"
 };

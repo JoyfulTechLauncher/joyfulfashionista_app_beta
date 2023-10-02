@@ -12,6 +12,8 @@ class CartService extends GetxService {
   /// 购物车商品
   final List<LineItem> lineItems = RxList<LineItem>();
 
+  ProductModel product = ProductModel(price: "0",id: 1);
+
   /// 加入商品
   void addCart(LineItem item) {
     // 检查是否存在
@@ -23,12 +25,14 @@ class CartService extends GetxService {
       item.quantity = item.quantity! + 1;
       item.price = double.parse(item.product!.price ?? "0");
       item.total = '${item.price! * item.quantity!}';
+      product.price = item.total;
     } else {
       // 不存在，添加
       item.quantity = 1;
       item.price = double.parse(item.product!.price ?? "0");
       item.total = '${item.price! * item.quantity!}';
       lineItems.add(item);
+      product.price = item.total;
     }
   }
 
@@ -51,6 +55,8 @@ class CartService extends GetxService {
     item.quantity = quantity;
     item.price = double.parse(item.product!.price ?? "0");
     item.total = '${item.price! * item.quantity!}';
+
+    product.price = item.total;
   }
 
   /// 清空购物车

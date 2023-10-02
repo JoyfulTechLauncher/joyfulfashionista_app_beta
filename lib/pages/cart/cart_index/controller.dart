@@ -24,6 +24,15 @@ class CartIndexController extends GetxController {
     return selectedIds.any((val) => val == productId);
   }
 
+  void goProductDetail(int productId) {
+    Get.toNamed(
+      RouteNames.goodsProductDetails,
+      arguments: {
+        "id": productId,
+      },
+    );
+  }
+
   // 全选
   void onSelectAll(bool isSelected) {
     if (isSelected) {

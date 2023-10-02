@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '../locale_keys.dart';
 
 /// 多语言 中文
@@ -26,7 +28,6 @@ Map<String, String> localeZh = {
   LocaleKeys.validatorMax: '长度不能大于 @size',
   LocaleKeys.validatorPassword: '密码长度必须 大于 @min 小于 @max',
   LocaleKeys.validatorConfirmPassword: '两次输入密码不一致',
-
 
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: '选择您喜欢的产品',
@@ -117,7 +118,6 @@ Map<String, String> localeZh = {
   LocaleKeys.gProductUploadPriceHint: '请输入商品价格',
   LocaleKeys.gProductUploadColour: '颜色',
   LocaleKeys.gProductUploadColourHint: '请输入商品颜色',
-
 
   // 搜索
   LocaleKeys.searchPlaceholder: '搜索商品',
@@ -237,4 +237,9 @@ Map<String, String> localeZh = {
   //消息
   LocaleKeys.messagePage: '消息',
   LocaleKeys.noMessage: '无消息',
+  LocaleKeys.deleteAllMessage: '删除所有消息',
+  LocaleKeys.delivery: '快递',
+  LocaleKeys.discount: '折扣',
+  LocaleKeys.coupons: '优惠券',
+  LocaleKeys.surverycenter: "客户中心"
 };
