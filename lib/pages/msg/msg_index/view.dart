@@ -40,7 +40,7 @@ class MsgIndexPage extends GetView<MsgIndexController> {
         return Scaffold(
           appBar: AppBar(
             title: Text(LocaleKeys.messagePage.tr),
-            leading: Icon(Icons.arrow_back_ios_new),
+            //leading: Icon(Icons.arrow_back_ios_new),
             centerTitle: true,
           ),
           body: SafeArea(
