@@ -39,19 +39,19 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
       ),
       const StepHorizontalItemWidget(
         statusName: "Processing",
-        status: StepStatus.running,
+        status: StepStatus.success,
       ),
       const StepHorizontalItemWidget(
         statusName: "Picked",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepHorizontalItemWidget(
         statusName: "Shipped",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepHorizontalItemWidget(
         statusName: "Delivered",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
     ].toRow().padding(
           bottom: AppSpace.listRow,
@@ -60,7 +60,7 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
         );
   }
 
- // 纵向状态
+  // 纵向状态
   Widget _buildVerticalStatus() {
     return <Widget>[
       const StepVerticalItemWidget(
@@ -68,21 +68,21 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
         statusDateTime: "03 Oct, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Shipped",
-        statusDateTime: "01 Oct, 2023",
+        statusDateTime: "03 Oct, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Picked",
-        statusDateTime: "30 Sep, 2023",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
-        status: StepStatus.running,
+        status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Processing",
@@ -111,6 +111,7 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
           right: AppSpace.page,
         );
   }
+
 
 
   // 寄件地、目的地
