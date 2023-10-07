@@ -12,11 +12,11 @@ class SystemApi {
       KeyValueModel(
           key: "02",
           value:
-              "https://joyfulfashionista.com.au/wp-content/uploads/2021/12/yz-pTJ0U-scaled-300x148.jpeg"),
+              "https://s3.bmp.ovh/imgs/2023/10/01/61760a8c86efe889.png"),
       KeyValueModel(
           key: "03",
           value:
-              "https://s3.bmp.ovh/imgs/2023/10/01/61760a8c86efe889.png"),
+              "https://s3.bmp.ovh/imgs/2023/10/07/58db8c2a5d3c272e.png"),
     ];
 
     return bannerItems;
