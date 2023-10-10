@@ -41,10 +41,10 @@ class ProductListController extends GetxController {
       // 页数+1
       _page++;
 
+      items.clear();
       // 添加数据
       items.addAll(result);
-      items.addAll(result);
-      items.addAll(result);
+
     }
 
     // 是否空

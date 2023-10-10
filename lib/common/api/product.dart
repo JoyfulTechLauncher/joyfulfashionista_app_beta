@@ -1,49 +1,122 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+
 import '../index.dart';
-import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+
+const List<String> categoryList = Constants.categoryList;
+
 
 /// 商品 api
 class ProductApi {
+  late Map<String, List<String>> categoryProducts;
+
   /// 分类列表
   static Future<List<CategoryModel>> categories() async {
-    var res = await WPHttpService.to.get(
-      '/products/categories',
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/categories'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
-    List<CategoryModel> categories = [];
-    for (var item in res.data) {
-      categories.add(CategoryModel.fromJson(item));
+
+    final jsonResponse = json.decode(res.body);
+    List<CategoryModel> _categories = [];
+
+    // store correct categories
+    for (var item in jsonResponse) {
+      CategoryModel serializedItem = CategoryModel.fromJson(item);
+      if (categoryList.contains(serializedItem.name)) {
+        _categories.add(serializedItem);
+      }
     }
-    // 排序 menuOrder , 小号在前
-    categories.sort((a, b) => a.menuOrder!.compareTo(b.menuOrder as int));
-    if(ConfigService.to.locale.toLanguageTag() == "en-US") {
-      categories[0].name = "Man";
-      categories[1].name = "Woman";
-      categories[2].name = "Children";
-      categories[3].name = "Inclusive";
-      categories[4].name = "Shipping";
-      categories[5].name = "Accessories";
-      categories[6].name = "Popular";
-    } else {
+    // order categories according to `categoryList`
+    List<CategoryModel> categories = [];
+    for (var categoryName in categoryList) {
+      var category = _categories.firstWhere((cat) => cat.name == categoryName);
+      categories.add(category);
+    }
+    // transform category names to Chinese
+    if (ConfigService.to.locale.toLanguageTag() != "en-US") {
       categories[0].name = "男性";
       categories[1].name = "女性";
       categories[2].name = "儿童";
       categories[3].name = "包容性服装";
-      categories[4].name = "海魂衫";
-      categories[5].name = "配饰";
-      categories[6].name = "流行";
-      categories[7].name = "更多";
+      // categories[4].name = "海魂衫";
+      categories[4].name = "配饰";
+      categories[5].name = "流行";
+      categories[6].name = "更多";
     }
+
     return categories;
+  }
+
+  static Future<Map<String, List<ProductModel>>> categorizeProducts() async {
+
+    Map<String, List<ProductModel>> categoryProducts = {};
+
+    List<CategoryModel> _categories = await categories();
+    List<ProductModel> _products = await getProducts();
+
+    for (var _ in _categories) {
+      categoryProducts[_.id.toString()!] = [];
+    }
+
+    for (var productModel in _products) {
+        for (var category in productModel.categories!) {
+          categoryProducts[category.id.toString()]!.add(productModel);
+        }
+    }
+
+    for (var categoryId in categoryProducts.keys) {
+      List<ProductModel> categoryItems = categoryProducts[categoryId.toString()]!;
+      Storage().setJson(Constants.storageCategorizedProduct + categoryId.toString(), categoryItems);
+    }
+
+    return categoryProducts;
+  }
+
+  static Future<List<ProductModel>> getCategoryProducts(int id) async {
+
+    var categoryId = id.toString();
+    Map<String, List<ProductModel>> categoryProducts = await ProductApi.categorizeProducts();
+    List<ProductModel> items = categoryProducts[categoryId.toString()]!;
+    return items;
+
   }
 
   /// 商品列表
   static Future<List<ProductModel>> products(ProductsReq? req) async {
-    var res = await WPHttpService.to.get(
-      '/products',
-      params: req?.toJson(),
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
     List<ProductModel> products = [];
-    for (var item in res.data) {
+    final jsonResponse = json.decode(res.body);
+    for (var item in jsonResponse) {
+      products.add(ProductModel.fromJson(item));
+    }
+    return products;
+  }
+
+  static Future<List<ProductModel>> getProducts() async {
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
+    );
+
+    List<ProductModel> products = [];
+    final jsonResponse = json.decode(res.body);
+    for (var item in jsonResponse) {
       products.add(ProductModel.fromJson(item));
     }
     return products;
@@ -51,21 +124,33 @@ class ProductApi {
 
   /// 商品详情
   static Future<ProductModel> productDetail(int? id) async {
-    var res = await WPHttpService.to.get(
-      '/products/$id',
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/$id'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
-    return ProductModel.fromJson(res.data);
+    final jsonResponse = json.decode(res.body);
+    return ProductModel.fromJson(jsonResponse);
   }
 
   /// 属性列表
   /// id 1 颜色 2 尺寸
   static Future<List<AttributeModel>> attributes(int id) async {
-    var res = await WPHttpService.to.get(
-      '/products/attributes/$id/terms',
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/attributes/$id/terms'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
+    final jsonResponse = json.decode(res.body);
     List<AttributeModel> attributes = [];
-    for (var item in res.data) {
+    for (var item in jsonResponse) {
       attributes.add(AttributeModel.fromJson(item));
     }
     // 排序 menuOrder , 小号在前
@@ -75,13 +160,18 @@ class ProductApi {
 
   /// 评论列表
   static Future<List<ReviewModel>> reviews(ReviewsReq? req) async {
-    var res = await WPHttpService.to.get(
-      '/products/reviews',
-      params: req?.toJson(),
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/reviews'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
+    final jsonResponse = json.decode(res.body);
     List<ReviewModel> reviews = [];
-    for (var item in res.data) {
+    for (var item in jsonResponse) {
       reviews.add(ReviewModel.fromJson(item));
     }
     return reviews;
@@ -89,13 +179,18 @@ class ProductApi {
 
   /// tags 列表
   static Future<List<TagsModel>> tags(TagsReq? req) async {
-    var res = await WPHttpService.to.get(
-      '/products/tags',
-      params: req?.toJson(),
+
+    String? token = await UserService.to.getToken("tester");
+    final res = await http.get(
+        Uri.parse(Constants.wpApiBaseUrl + '/wp-json/wc/v3/products/tags'),
+        headers: {
+          'Authorization': 'Bearer $token',
+        }
     );
 
+    final jsonResponse = json.decode(res.body);
     List<TagsModel> tags = [];
-    for (var item in res.data) {
+    for (var item in jsonResponse) {
       tags.add(TagsModel.fromJson(item));
     }
     return tags;

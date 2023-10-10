@@ -27,6 +27,7 @@ class ActionBar extends StatelessWidget {
         fontColor: AppColors.highlight,
         label: TextWidget.body1(
           LocaleKeys.gCartBtnSelectAll.tr,
+          weight: FontWeight.bold,
         ),
       ).expanded(),
 

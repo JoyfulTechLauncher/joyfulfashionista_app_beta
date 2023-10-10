@@ -8,7 +8,6 @@ import '../index.dart';
 /// 商品规格
 class TabProductView extends GetView<ProductDetailsController> {
   final String uniqueTag;
-
   const TabProductView({Key? key, required this.uniqueTag}) : super(key: key);
 
   @override
@@ -24,7 +23,7 @@ class TabProductView extends GetView<ProductDetailsController> {
     if(ConfigService.to.locale.toLanguageTag() == "en-US") {
       return <Widget>[
         // 颜色
-        _buildTitle("Color: Gray"),
+        _buildTitle("Color: ${controller.colorKeys[0]}"),
         GetBuilder<ProductDetailsController>(
           id: "product_colors",
           tag: uniqueTag,
@@ -39,7 +38,7 @@ class TabProductView extends GetView<ProductDetailsController> {
         ),
 
         // 尺寸
-        _buildTitle("Size: 10"),
+        _buildTitle("Size: ${controller.sizeKeys[0]}"),
         GetBuilder<ProductDetailsController>(
           id: "product_sizes",
           tag: uniqueTag,
@@ -74,7 +73,7 @@ class TabProductView extends GetView<ProductDetailsController> {
     }
     return <Widget>[
       // 颜色
-      _buildTitle("颜色: 灰色"),
+      _buildTitle("颜色: ${controller.sizeKeys[0]}"),
       GetBuilder<ProductDetailsController>(
         id: "product_colors",
         tag: uniqueTag,
@@ -89,7 +88,7 @@ class TabProductView extends GetView<ProductDetailsController> {
       ),
 
       // 尺寸
-      _buildTitle("尺寸: 10"),
+      _buildTitle("尺寸: ${controller.sizeKeys[0]}"),
       GetBuilder<ProductDetailsController>(
         id: "product_sizes",
         tag: uniqueTag,

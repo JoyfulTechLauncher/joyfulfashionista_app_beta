@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '../locale_keys.dart';
 
 /// 多语言 中文
@@ -13,6 +15,8 @@ Map<String, String> localeZh = {
   LocaleKeys.commonSelectTips: '请选择',
   LocaleKeys.commonMessageSuccess: '@method 成功',
   LocaleKeys.commonMessageIncorrect: '@method 不正确',
+  LocaleKeys.commonMessageSwipeLeftToDelete: '左滑删除',
+  LocaleKeys.commonBottomUpload: '上传',
 
   // 样式
   LocaleKeys.stylesTitle: '设置',
@@ -23,6 +27,7 @@ Map<String, String> localeZh = {
   LocaleKeys.validatorMin: '长度不能小于 @size',
   LocaleKeys.validatorMax: '长度不能大于 @size',
   LocaleKeys.validatorPassword: '密码长度必须 大于 @min 小于 @max',
+  LocaleKeys.validatorConfirmPassword: '两次输入密码不一致',
 
   // welcome 欢迎
   LocaleKeys.welcomeOneTitle: '选择您喜欢的产品',
@@ -51,6 +56,7 @@ Map<String, String> localeZh = {
   LocaleKeys.registerFormEmail: '电子邮件',
   LocaleKeys.registerFormPhoneNumber: '电话号码',
   LocaleKeys.registerFormPassword: '密码',
+  LocaleKeys.registerFormConfirmPassword: '确认密码',
   LocaleKeys.registerFormFirstName: '姓',
   LocaleKeys.registerFormLastName: '名',
   LocaleKeys.registerHaveAccount: '你有现成账号?',
@@ -93,6 +99,25 @@ Map<String, String> localeZh = {
   LocaleKeys.gDetailTabReviews: '评论',
   LocaleKeys.gDetailBtnAddCart: '加入购物车',
   LocaleKeys.gDetailBtnBuy: '立刻购买',
+  // 商品-上传
+  LocaleKeys.gProductUpload: '上传商品',
+  LocaleKeys.gProductUploadImages: '商品图片',
+  LocaleKeys.gProductUploadTitle: '商品名称',
+  LocaleKeys.gProductUploadTitleHint: '输入商品名称',
+  LocaleKeys.gProductUploadDescription: '商品描述',
+  LocaleKeys.gProductUploadDescriptionHint: '输入商品描述',
+  LocaleKeys.gProductUploadSize: '商品尺寸',
+  LocaleKeys.gProductUploadSizeHint: '输入商品尺寸',
+  LocaleKeys.gProductUploadTag: '商品标签',
+  LocaleKeys.gProductUploadTagHint: '输入标签，点击右侧加号添加',
+  LocaleKeys.gProductUploadImagesExceedError: '最多上传 @max 张图片',
+  LocaleKeys.gProductUploadImagesEmptyError: '请添加商品图片',
+  LocaleKeys.gProductUploadTagsEmptyError: '请添加商品标签',
+  LocaleKeys.gProductUploadTagExists: '标签已存在',
+  LocaleKeys.gProductUploadPrice: '价格',
+  LocaleKeys.gProductUploadPriceHint: '请输入商品价格',
+  LocaleKeys.gProductUploadColour: '颜色',
+  LocaleKeys.gProductUploadColourHint: '请输入商品颜色',
 
   // 搜索
   LocaleKeys.searchPlaceholder: '搜索商品',
@@ -123,6 +148,10 @@ Map<String, String> localeZh = {
   LocaleKeys.myBtnBillingAddress: '账单地址',
   LocaleKeys.myBtnShippingAddress: '配送地址',
   LocaleKeys.myBtnAboutMe: '关于我',
+  LocaleKeys.myFollowers: '关注者',
+  LocaleKeys.mySettled: '加入于',
+  LocaleKeys.myTrading: '交易',
+  LocaleKeys.myRating: '评分',
 
   // 订单配送地址
   LocaleKeys.addressViewTitle: '@type 地址',
@@ -187,6 +216,8 @@ Map<String, String> localeZh = {
   LocaleKeys.orderDetailsPaid: '支付',
   LocaleKeys.orderDetailsShipping: '运费',
   LocaleKeys.orderDetailsDiscount: '折扣',
+  LocaleKeys.orderDelivery: '发货通知',
+  LocaleKeys.orderAddressEdit: '修改地址',
 
   // 拍照、相册
   LocaleKeys.pickerTakeCamera: '拍照',
@@ -206,4 +237,9 @@ Map<String, String> localeZh = {
   //消息
   LocaleKeys.messagePage: '消息',
   LocaleKeys.noMessage: '无消息',
+  LocaleKeys.deleteAllMessage: '删除所有消息',
+  LocaleKeys.delivery: '快递',
+  LocaleKeys.discount: '折扣',
+  LocaleKeys.coupons: '优惠券',
+  LocaleKeys.surverycenter: "客户中心"
 };

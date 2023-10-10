@@ -13,7 +13,8 @@ class RegisterPage extends GetView<RegisterController> {
   Widget _buildBtnSignUp() {
     return ButtonWidget.primary(
       LocaleKeys.loginSignUp.tr,
-      onTap: controller.onSignUp,
+      onTap: () {controller.onSignUp();
+        controller.Mailer();},
     ).paddingBottom(AppSpace.listRow);
   }
 
@@ -63,8 +64,19 @@ class RegisterPage extends GetView<RegisterController> {
           validator: Validatorless.multiple([
             Validatorless.required(LocaleKeys.validatorRequired.tr),
             Validatorless.email(LocaleKeys.validatorEmail.tr),
+                (String? value) {
+              final String pattern =
+                  r'^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+              final RegExp regex = RegExp(pattern);
+              if (!regex.hasMatch(value ?? ''))
+                return LocaleKeys.validatorEmail.tr;  // You can replace this with your own error message or a localization key
+              else
+                return null;
+            },
           ]),
         ),
+
+
 
         // first name
         TextFormWidget(
@@ -109,6 +121,20 @@ class RegisterPage extends GetView<RegisterController> {
               ),
             ),
           ]),
+        ),
+
+        // repeat password
+        TextFormWidget(
+          controller: controller.repeatPasswordController,
+          labelText: LocaleKeys.registerFormConfirmPassword.tr,
+          isObscure: true,
+          validator: (rePwd) {
+            if (rePwd != controller.passwordController.text) {
+              return LocaleKeys.validatorConfirmPassword.tr;
+            } else {
+              return null;
+            }
+          },
         ).paddingBottom(50),
 
         // sign up button

@@ -21,7 +21,7 @@ class HomeController extends GetxController {
 
   // 刷新控制器
   final RefreshController refreshController = RefreshController(
-    initialRefresh: true,
+    initialRefresh: false,
   );
   // 页码
   int _page = 1;
@@ -49,6 +49,7 @@ class HomeController extends GetxController {
     if (result.isNotEmpty) {
       // 页数+1
       _page++;
+      newProductProductList.clear(); // 清空数据
 
       // 添加数据
       newProductProductList.addAll(result);
@@ -65,8 +66,7 @@ class HomeController extends GetxController {
     // 分类
     categoryItems = await ProductApi.categories();
     // 推荐商品
-    flashShellProductList =
-        await ProductApi.products(ProductsReq(featured: true));
+    flashShellProductList = await ProductApi.products(ProductsReq(featured: true));
     // 新商品
     newProductProductList = await ProductApi.products(ProductsReq());
     // 颜色
@@ -82,15 +82,11 @@ class HomeController extends GetxController {
 
     // 保存离线数据 - 基础数据
     Storage().setJson(Constants.storageProductsCategories, categoryItems);
-    Storage()
-        .setJson(Constants.storageProductsAttributesColors, attributeColors);
+    Storage().setJson(Constants.storageProductsAttributesColors, attributeColors);
     Storage().setJson(Constants.storageProductsAttributesSizes, attributeSizes);
-    Storage().setString(
-        Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
-    Storage().setString(
-        Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
-    Storage().setString(Constants.storageProductsAttributesCondition,
-        jsonEncode(attributeCondition));
+    Storage().setString(Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
+    Storage().setString(Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
+    Storage().setString(Constants.storageProductsAttributesCondition, jsonEncode(attributeCondition));
 
     // 保存离线数据 - 首页业务
     Storage().setJson(Constants.storageHomeBanner, bannerItems);
@@ -98,10 +94,8 @@ class HomeController extends GetxController {
     Storage().setJson(Constants.storageHomeFlashSell, flashShellProductList);
     Storage().setJson(Constants.storageHomeNewSell, newProductProductList);
 
-    // 模拟网络延迟 1 秒
-    await Future.delayed(const Duration(seconds: 1));
-
     update(["home"]);
+
   }
 
   // 读取缓存
@@ -168,9 +162,14 @@ class HomeController extends GetxController {
     update(["home_news_sell"]);
   }
 
+
   //分类更新
   void onCategoryUpdate() async {
-    categoryItems = await ProductApi.categories(); // 获取分类数据
+
+    if (categoryItems.isEmpty) {
+      categoryItems = await ProductApi.categories();
+    }
+
     update(["home"]);
   }
   // 下拉刷新

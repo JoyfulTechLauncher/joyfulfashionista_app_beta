@@ -1,6 +1,7 @@
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 
 /// kv离线存储
 class Storage {
@@ -8,6 +9,7 @@ class Storage {
   static final Storage _instance = Storage._internal();
   factory Storage() => _instance;
   late final SharedPreferences _prefs;
+  final secureStorage = new FlutterSecureStorage();
 
   Storage._internal();
 

@@ -15,6 +15,12 @@ class SearchIndexPage extends GetView<SearchIndexController> {
       title: InputWidget.textBorder(
         controller: controller.searchEditController,
         hintText: "type something...", //LocaleKeys.commonSearchInput.tr,
+        suffixIcon: IconButton(
+          onPressed: (){
+            controller.searchEditController.clear();
+          },
+          icon: Icon(Icons.clear), //LocaleKeys.commonSearch.tr),
+        ),
         // onChanged: (val) {
         //   printInfo(info: val);
         // },

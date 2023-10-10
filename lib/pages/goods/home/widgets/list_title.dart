@@ -35,6 +35,11 @@ class BuildListTitle extends StatelessWidget {
       <Widget>[
         TextWidget.body1(
           LocaleKeys.gHomeMore.tr,
+          weight: FontWeight.bold,
+          size: 18,
+          style: TextStyle(
+            fontFamily: "Montserrat",
+          )
         ),
         IconWidget.icon(Icons.chevron_right),
       ]

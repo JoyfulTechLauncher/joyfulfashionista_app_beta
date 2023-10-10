@@ -1,7 +1,10 @@
 /// 常量
 class Constants {
-  // wp 服务器
-  static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
+  // wp Server address (Testing)
+  static const wpApiBaseUrl = 'https://teamjoyful.buzz';
+  static const wcEndpointBaseUrl = '/wp-json/wc/v3';
+  static const jwtEndpointUrl = '/jwt-auth/v1/token';
+  static const List<String> categoryList = ['Man', 'Woman', 'Children', 'Inclusive', 'Accessories', 'Shipping', 'Popular'];
 
   // 本地存储key
   static const storageLanguageCode = 'language_code';
@@ -14,6 +17,10 @@ class Constants {
   static const aesKey = 'aH5aH5bG0dC6aA3oN0cK4aU5jU6aK2lN';
   static const aesIV = 'hK6eB4aE1aF3gH5q';
 
+  // key&secret (Testing)
+  static const consumer_key = 'ck_b6edf8ca8492e34cbcec6cf3579a5e55745d9b8d';
+  static const consumer_secret = 'cs_1fcc12c1ff0aefe208147731cb51925744e089c2';
+  
   // 基础数据
   // 商品分类
   static const storageProductsCategories = 'home_categories';
@@ -26,8 +33,10 @@ class Constants {
   // 性别
   static const storageProductsAttributesGender = 'products_attributes_gender';
   // 新旧
-  static const storageProductsAttributesCondition =
-      'products_attributes_condition';
+  static const storageProductsAttributesCondition = 'products_attributes_condition';
+  // 分类后的产品清单
+  static const storageCategorizedProduct = "category_";
+
 
   // 首页离线
   static const storageHomeBanner = 'home_banner';

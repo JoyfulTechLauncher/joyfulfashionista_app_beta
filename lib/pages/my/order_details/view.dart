@@ -39,19 +39,19 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
       ),
       const StepHorizontalItemWidget(
         statusName: "Processing",
-        status: StepStatus.running,
+        status: StepStatus.success,
       ),
       const StepHorizontalItemWidget(
         statusName: "Picked",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepHorizontalItemWidget(
         statusName: "Shipped",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepHorizontalItemWidget(
         statusName: "Delivered",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
     ].toRow().padding(
           bottom: AppSpace.listRow,
@@ -65,42 +65,42 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
     return <Widget>[
       const StepVerticalItemWidget(
         statusName: "Delivered",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "03 Oct, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Shipped",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "03 Oct, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
-        status: StepStatus.none,
+        status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Picked",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
-        status: StepStatus.running,
+        status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Processing",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Confirm",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.success,
       ),
       const StepVerticalItemWidget(
         statusName: "Pending",
-        statusDateTime: "20 Jan, 2019",
+        statusDateTime: "29 Sep, 2023",
         statusDes:
             "Lorem Ipsum is simply dumy text of printing and typesetting industry.",
         status: StepStatus.success,
@@ -111,6 +111,8 @@ class OrderDetailsPage extends GetView<OrderDetailsController> {
           right: AppSpace.page,
         );
   }
+
+
 
   // 寄件地、目的地
   Widget _buildBillAddress() {

@@ -36,9 +36,18 @@ class BuildProductList extends StatelessWidget {
     // 头部
     ws.add(_tableHeader());
 
-    // 商品列表
+     // 商品列表
     for (int i = 0; i < lineItems.length; i++) {
       LineItem item = lineItems[i];
+      String imageUML = " ";
+      if(i == 1){
+        imageUML = "https://s3.bmp.ovh/imgs/2023/10/03/d2de11b35865f275.jpg";
+      };
+
+      if(i == 0){
+        imageUML = "https://s3.bmp.ovh/imgs/2023/10/03/bf5f975086e0b73a.jpg";
+      };
+
       TableRow tr = TableRow(children: [
         // 编号
         TextWidget.body2("${i + 1}").alignCenter(),
@@ -46,7 +55,9 @@ class BuildProductList extends StatelessWidget {
         // 图 + 名称
         <Widget>[
           ImageWidget.url(
-            Convert.aliImageResize(item.product?.images?[0].src ?? "",
+            //previous version: Convert.aliImageResize(item.product?.images?[0].src ?? "",
+            //                 width: 140)
+            Convert.aliImageResize(imageUML,
                 width: 140),
             width: 70.w,
             height: 70.w,
